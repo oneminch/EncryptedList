@@ -16,7 +16,7 @@
 		"localforage": "^1.9.0",
 		"lodash": "^4.17.20",
 		"markdown-it": "^13.0.1",
-		"vite-plugin-vue2": "^1.9.0",
+		"vite-plugin-vue2": "^2.0.2",
 		"vue": "^2.6.11",
 		"vue-meta": "^2.4.0",
 		"vue-router": "^3.4.9",

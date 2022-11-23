@@ -10,7 +10,7 @@
 		"@fontsource/ibm-plex-mono": "^4.5.2",
 		"airtable": "^0.10.1",
 		"axios": "^1.2.0",
-		"core-js": "^3.6.5",
+		"core-js": "^3.26.1",
 		"dotenv": "^8.2.0",
 		"json2md": "^1.12.0",
 		"localforage": "^1.9.0",

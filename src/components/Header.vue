@@ -16,7 +16,8 @@
 				</h3>
 				<p class="app-desc">
 					List of services that offer zero-knowledge or end-to-end encryption.
-					<em title="Database Last Updated">{{ databaseLastUpdated }}</em>
+					<!-- <em title="Database Last Updated">{{ databaseLastUpdated }}</em> -->
+					<em title="Message">Version 3 with Redesign Coming Soon!</em>
 				</p>
 			</div>
 		</router-link>

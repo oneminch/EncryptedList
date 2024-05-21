@@ -2,32 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer utilities {
+  /* Uniform Card Style */
+  .card-style {
+    @apply border border-slate-300 dark:border-slate-700 dark:bg-slate-700/50 bg-white;
+  }
+
+  .global-focus {
+    @apply outline-none ring-2 ring-offset-0 ring-amber-400 ring-opacity-75;
+  }
+
+  .action-item {
+    @apply h-10 flex items-center justify-center rounded-md border border-b-2  border-slate-400 focus-visible:global-focus bg-white;
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+* {
+  transition: all 250ms, color, background-color, border-color,
+    text-decoration-color, fill, stroke 100ms;
+}
+
+html {
+  @apply m-0 p-0;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  @apply w-full min-w-80 max-w-7xl mx-auto bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 px-2 font-mono;
 }

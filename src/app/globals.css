@@ -5,7 +5,7 @@
 @layer utilities {
   /* Uniform Card Style */
   .card-style {
-    @apply border border-slate-300 dark:border-slate-700 dark:bg-slate-700/50 bg-white;
+    @apply border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800;
   }
 
   .global-focus {
@@ -13,7 +13,7 @@
   }
 
   .action-item {
-    @apply h-10 flex items-center justify-center rounded-md border border-b-2  border-slate-400 focus-visible:global-focus bg-white;
+    @apply h-9 flex items-center justify-center rounded-md border border-b-2  border-zinc-200 dark:border-zinc-700 focus-visible:global-focus bg-zinc-50 dark:bg-zinc-800;
   }
 }
 
@@ -27,5 +27,5 @@ html {
 }
 
 body {
-  @apply w-full min-w-80 max-w-7xl mx-auto bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 px-2 font-mono;
+  @apply w-full min-w-80 max-w-7xl mx-auto bg-zinc-50 dark:bg-zinc-950 text-zinc-800 dark:text-zinc-100 px-2 font-mono;
 }

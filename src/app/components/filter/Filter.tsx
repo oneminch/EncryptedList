@@ -2,55 +2,14 @@
 
 import { Icon } from "@iconify-icon/react";
 import Tag from "./Tag";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useFilter, TAGS } from "@/app/hooks/useFilter";
 
-export default function Filter({ className }: { className: string }) {
-  const FILTERS = [
-    "Web App",
-    "Open-Source",
-    "Developer Tools",
-    "Opt-In",
-    "Free",
-    "Decentralized"
-  ];
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
-
-  // useEffect(() => {
-  //   const selectedTags = searchParams.get("tags");
-
-  //   if (selectedTags) {
-  //   }
-  // }, []);
-
-  const handleTagChange = (tagName: string, isTagChecked: boolean) => {
-    const selectedTags = searchParams.get("tags")?.split(",") || [];
-    console.log(selectedTags);
-
-    let newCheckedTags = [];
-    if (selectedTags.length === 0) {
-      if (isTagChecked) newCheckedTags.push(tagName);
-    } else {
-      newCheckedTags = isTagChecked
-        ? [...selectedTags, tagName]
-        : selectedTags.filter((tag) => tag !== tagName);
-    }
-
-    // Set URL params
-    const params = new URLSearchParams(searchParams);
-    if (newCheckedTags.length > 0) {
-      params.set("tags", newCheckedTags.join(","));
-    } else {
-      params.delete("tags");
-    }
-    replace(`${pathname}?${params.toString()}`);
-  };
+const Filter: React.FC<{ className: string }> = ({ className }) => {
+  const { handleClearTags, handleTagChange, isFilterApplied, isTagSelected } =
+    useFilter();
 
   return (
     <form
-      // onSubmit={handleChange}
       className={`border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 py-4 px-5 max-h-72 sticky top-2 rounded-lg flex flex-col gap-y-4 ${className}`}
     >
       <header className="flex items-center justify-between">
@@ -64,19 +23,26 @@ export default function Filter({ className }: { className: string }) {
         </button>
       </header>
       <div className="flex items-center flex-wrap">
-        {FILTERS.map((item) => (
+        {TAGS.map((item) => (
           <Tag
             key={item}
-            tagName={item.toLocaleLowerCase()}
+            tagName={item}
             tagLabel={item}
-            tagChecked={false}
+            tagSelected={isTagSelected(item)}
             onTagChange={handleTagChange}
           />
         ))}
       </div>
-      <button className="action-item w-full px-4 py-2 mt-auto" type="submit">
+      <button
+        className="w-full px-4 py-2 mt-auto h-9 flex items-center justify-center rounded-md border border-b-2 focus-visible:global-focus bg-yellow-500 text-zinc-800 border-zinc-800 disabled:cursor-not-allowed disabled:bg-zinc-50 dark:disabled:bg-zinc-800 disabled:text-zinc-400 dark:disabled:text-zinc-500 disabled:border-zinc-200 dark:disabled:border-zinc-700"
+        type="submit"
+        onClick={handleClearTags}
+        disabled={isFilterApplied()}
+      >
         Clear Tags
       </button>
     </form>
   );
-}
+};
+
+export default Filter;

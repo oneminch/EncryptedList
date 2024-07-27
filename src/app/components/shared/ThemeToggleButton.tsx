@@ -24,6 +24,7 @@ export default function ThemeToggle() {
               ? "heroicons:moon-20-solid"
               : "heroicons:sun-20-solid"
           }
+          data-testid="theme-toggle-icon"
         />
       </button>
     </div>

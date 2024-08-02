@@ -5,8 +5,14 @@ import Tag from "./Tag";
 import { useFilter, TAGS } from "@/app/hooks/useFilter";
 
 const Filter: React.FC<{ className: string }> = ({ className }) => {
-  const { handleClearTags, handleTagChange, isFilterApplied, isTagSelected } =
-    useFilter();
+  const {
+    handleClearTags,
+    handleTagChange,
+    isFilterApplied,
+    isTagSelected,
+    handleSort,
+    isSorted
+  } = useFilter();
 
   return (
     <form
@@ -16,8 +22,14 @@ const Filter: React.FC<{ className: string }> = ({ className }) => {
         <h2 className="font-medium text-xl">Tags</h2>
         <button
           type="submit"
-          className="action-item w-9"
+          className={`w-9 h-9 px-4 py-2 mt-auto font-medium flex items-center justify-center rounded-md border border-b-2 focus-visible:global-focus text-zinc-800 ${
+            isSorted
+              ? "bg-yellow-500 border-zinc-800 dark:border-yellow-500"
+              : "bg-zinc-50 dark:text-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700"
+          }`}
           aria-label="Sort Products"
+          title="Sort Products"
+          onClick={handleSort}
         >
           <Icon icon="heroicons:arrows-up-down-20-solid" />
         </button>
@@ -34,7 +46,7 @@ const Filter: React.FC<{ className: string }> = ({ className }) => {
         ))}
       </div>
       <button
-        className="w-full px-4 py-2 mt-auto h-9 flex items-center justify-center rounded-md border border-b-2 focus-visible:global-focus bg-yellow-500 text-zinc-800 border-zinc-800 disabled:cursor-not-allowed disabled:bg-zinc-50 dark:disabled:bg-zinc-800 disabled:text-zinc-400 dark:disabled:text-zinc-500 disabled:border-zinc-200 dark:disabled:border-zinc-700"
+        className="w-full px-4 py-2 mt-auto h-9 font-medium flex items-center justify-center rounded-md border border-b-2 focus-visible:global-focus bg-yellow-500 text-zinc-800 border-zinc-800 dark:border-yellow-500 disabled:cursor-not-allowed disabled:bg-zinc-50 dark:disabled:bg-zinc-800 disabled:text-zinc-400 dark:disabled:text-zinc-500 disabled:border-zinc-200 dark:disabled:border-zinc-700 disabled:focus-visible:ring-0"
         type="submit"
         onClick={handleClearTags}
         disabled={isFilterApplied()}

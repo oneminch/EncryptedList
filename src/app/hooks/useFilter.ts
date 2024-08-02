@@ -12,26 +12,31 @@ export const TAGS = [
 
 export const useFilter = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [selectedSort, setSelectedSort] = useState<string[]>([]);
+  const [isSorted, setIsSorted] = useState<boolean>();
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
   useEffect(() => {
     const tagsFromUrl = searchParams.get("tags");
+    const sortFromUrl = searchParams.get("sort");
 
-    if (tagsFromUrl) {
-      setSelectedTags(tagsFromUrl.split(","));
-    } else {
-      setSelectedTags([]);
-    }
+    setSelectedTags(tagsFromUrl ? tagsFromUrl.split(",") : []);
+    setSelectedSort(sortFromUrl ? sortFromUrl.split(",") : []);
   }, [searchParams]);
 
-  const updateUrlSearchParams = (tags: Set<string>) => {
+  useEffect(() => {
+    setIsSorted(selectedSort.length > 0);
+  }, [selectedSort]);
+
+  const updateUrlSearchParams = (key: string, value: string[]) => {
     const params = new URLSearchParams(searchParams);
-    if (tags.size > 0) {
-      params.set("tags", Array.from(tags).join(","));
+
+    if (value.length > 0) {
+      params.set(key, value.join(","));
     } else {
-      params.delete("tags");
+      params.delete(key);
     }
 
     replace(`${pathname}?${params.toString()}`);
@@ -42,20 +47,30 @@ export const useFilter = () => {
 
   const handleTagChange = (tagName: string) => {
     const newSelectedTags = new Set(selectedTags);
+
     if (newSelectedTags.has(tagName)) {
       newSelectedTags.delete(tagName);
     } else {
       newSelectedTags.add(tagName);
     }
 
-    setSelectedTags(Array.from(newSelectedTags));
-    updateUrlSearchParams(newSelectedTags);
+    const newSelectedTagsArray = Array.from(newSelectedTags);
+    setSelectedTags(newSelectedTagsArray);
+    updateUrlSearchParams("tags", newSelectedTagsArray);
   };
 
   const handleClearTags = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    updateUrlSearchParams(new Set());
+    updateUrlSearchParams("tags", []);
+  };
+
+  const handleSort = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    let newSelectedSort = selectedSort.length === 0 ? ["asc"] : [];
+
+    setSelectedSort(newSelectedSort);
+    updateUrlSearchParams("sort", newSelectedSort);
   };
 
   return {
@@ -63,6 +78,8 @@ export const useFilter = () => {
     isTagSelected,
     isFilterApplied,
     handleTagChange,
-    handleClearTags
+    handleClearTags,
+    handleSort,
+    isSorted
   };
 };

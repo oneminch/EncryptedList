@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { metadata as pageMeta } from "@/app/lib/metadata";
+import { metadata as pageMeta } from "@/lib/metadata";
 
 export const metadata: Metadata = {
   title: pageMeta["/submit"].title,

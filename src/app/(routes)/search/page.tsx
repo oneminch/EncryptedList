@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { metadata as pageMeta } from "@/app/lib/metadata";
-import ProductSearch from "@/app/components/search/ProductSearch";
+import { metadata as pageMeta } from "@/lib/metadata";
+import ProductSearch from "@/components/search/ProductSearch";
 
 export const metadata: Metadata = {
   title: pageMeta["/search"].title,

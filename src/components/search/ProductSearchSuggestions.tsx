@@ -1,7 +1,7 @@
 import React from "react";
 import ProductSearchItem from "./ProductSearchItem";
 import ProductSearchItemSkeleton from "./ProductSearchItemSkeleton";
-import useSearchSuggest from "@/app/hooks/useSearchSuggest";
+import useSearchSuggest from "@/hooks/useSearchSuggest";
 
 const SearchSuggestionItem = ({
   content

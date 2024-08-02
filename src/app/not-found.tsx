@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { metadata as pageMeta } from "@/app/lib/metadata";
-import GoBackButton from "./components/shared/GoBackButton";
+import { metadata as pageMeta } from "@/lib/metadata";
+import GoBackButton from "@/components/shared/GoBackButton";
 
 export const metadata: Metadata = {
   title: pageMeta["/not-found"].title,

@@ -1,9 +1,9 @@
 import { Suspense } from "react";
-import Filter from "./components/filter/Filter";
-import ProductList from "./components/products/ProductList";
-import ProductListSkeleton from "./components/products/ProductListSkeleton";
+import Filter from "@/components/filter/Filter";
+import ProductList from "@/components/products/ProductList";
+import ProductListSkeleton from "@/components/products/ProductListSkeleton";
 import type { Metadata } from "next";
-import { metadata as pageMeta } from "@/app/lib/metadata";
+import { metadata as pageMeta } from "@/lib/metadata";
 
 export const metadata: Metadata = {
   title: { absolute: pageMeta["/"].title },

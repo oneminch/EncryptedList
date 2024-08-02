@@ -2,7 +2,7 @@
 
 import { Icon } from "@iconify-icon/react";
 import Tag from "./Tag";
-import { useFilter, TAGS } from "@/app/hooks/useFilter";
+import { useFilter, TAGS } from "@/hooks/useFilter";
 
 const Filter: React.FC<{ className: string }> = ({ className }) => {
   const {

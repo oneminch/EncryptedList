@@ -3,7 +3,7 @@
 import Image from "next/image";
 import ProductSearch from "../search/ProductSearch";
 import { usePathname } from "next/navigation";
-import { metadata as pageMeta } from "@/app/lib/metadata";
+import { metadata as pageMeta } from "@/lib/metadata";
 
 export default function Hero({
   withSearchBar,

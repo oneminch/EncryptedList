@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "@/app/globals.css";
-import Header from "./components/layout/Header";
-import Hero from "./components/layout/Hero";
-import TabBar from "./components/layout/TabBar";
+import Header from "@/components/layout/Header";
+import Hero from "@/components/layout/Hero";
+import TabBar from "@/components/layout/TabBar";
 import { ThemeProvider } from "next-themes";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });

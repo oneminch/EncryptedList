@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { metadata as pageMeta } from "@/app/lib/metadata";
-import ProductListSkeleton from "@/app/components/products/ProductListSkeleton";
+import { metadata as pageMeta } from "@/lib/metadata";
+import ProductListSkeleton from "@/components/products/ProductListSkeleton";
 
 export const metadata: Metadata = {
   title: pageMeta["/favorites"].title,

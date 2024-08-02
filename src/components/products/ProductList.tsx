@@ -1,4 +1,4 @@
-import { queryProducts } from "@/app/lib/products";
+import { queryProducts } from "@/lib/products";
 import ProductListItem from "./ProductListItem";
 
 export default async function ProductList({

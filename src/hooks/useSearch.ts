@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { fetcher } from "@/app/lib/products";
+import { fetcher } from "@/lib/products";
 
 export default function useSearch(query: string) {
   const { data, error, isLoading } = useSWR<{ recipes: any[] }>(

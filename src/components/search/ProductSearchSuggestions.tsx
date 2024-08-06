@@ -30,6 +30,7 @@ export default function ProductSearchSuggestions({ query }: { query: string }) {
       <>
         <ProductSearchItemSkeleton />;
         <ProductSearchItemSkeleton />;
+        <ProductSearchItemSkeleton />;
       </>
     );
   } else if (isEmpty) {
@@ -49,9 +50,7 @@ export default function ProductSearchSuggestions({ query }: { query: string }) {
     >
       {searchSuggestions}
 
-      {totalCount > 3 && (
-        <SearchSuggestionItem content="Press 'Enter' for All Results" />
-      )}
+      <SearchSuggestionItem content="Press 'Enter' for All Results" />
     </ul>
   );
 }

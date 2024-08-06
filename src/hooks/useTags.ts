@@ -1,0 +1,69 @@
+import { useState, useEffect } from "react";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { updateSearchParams } from "@/lib/utils";
+
+export const TAGS = [
+  "Web App",
+  "Open-Source",
+  "Developer Tools",
+  "Opt-In",
+  "Free",
+  "Decentralized"
+];
+
+export const useTags = () => {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+  useEffect(() => {
+    const tagsFromUrl = searchParams.get("tags");
+    setSelectedTags(tagsFromUrl ? tagsFromUrl.split(",") : []);
+  }, [searchParams]);
+
+  const isTagSelected = (tag: string) => selectedTags.includes(tag);
+  const areAnyTagsSelected = (): boolean => selectedTags.length <= 0;
+
+  const handleSelectTag = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const updatedTags = new Set(selectedTags);
+    const tagName = e.target.name;
+
+    if (updatedTags.has(tagName)) {
+      updatedTags.delete(tagName);
+    } else {
+      updatedTags.add(tagName);
+    }
+
+    const tagParams = Array.from(updatedTags);
+    setSelectedTags(tagParams);
+
+    updateSearchParams({
+      key: "tags",
+      value: tagParams.join(","),
+      searchParams,
+      pathname,
+      callback: replace
+    });
+  };
+
+  const handleClearTags = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    updateSearchParams({
+      key: "tags",
+      value: "",
+      searchParams,
+      pathname,
+      callback: replace
+    });
+  };
+
+  return {
+    isTagSelected,
+    areAnyTagsSelected,
+    handleSelectTag,
+    handleClearTags
+  };
+};

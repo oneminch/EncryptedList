@@ -1,3 +1,4 @@
+import { ReadonlyURLSearchParams } from "next/navigation";
 import { QueryParams } from "./types";
 
 const stringifySearchParams = (searchParams: QueryParams): string => {
@@ -14,4 +15,28 @@ const stringifySearchParams = (searchParams: QueryParams): string => {
   return urlSearchParams.toString();
 };
 
-export { stringifySearchParams };
+const updateSearchParams = ({
+  key,
+  value,
+  searchParams,
+  pathname,
+  callback
+}: {
+  key: string;
+  value: string;
+  searchParams: ReadonlyURLSearchParams;
+  pathname: string;
+  callback: Function;
+}) => {
+  const params = new URLSearchParams(searchParams);
+
+  if (value.length > 0) {
+    params.set(key, value);
+  } else {
+    params.delete(key);
+  }
+
+  callback(`${pathname}?${params.toString()}`);
+};
+
+export { stringifySearchParams, updateSearchParams };

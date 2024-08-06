@@ -1,20 +1,58 @@
 "use client";
 
-import { useDebounce, useWindowSize } from "@uidotdev/usehooks";
-import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import ProductSearchSuggestions from "./ProductSearchSuggestions";
+import { useEffect, useRef, useState } from "react";
+import { useDebounce, useWindowSize } from "@uidotdev/usehooks";
 import { Icon } from "@iconify-icon/react";
+import ProductSearchSuggestions from "./ProductSearchSuggestions";
 
 export default function ProductSearch() {
-  const windowSize = useWindowSize();
+  const router = useRouter();
 
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
   const [isSearching, setIsSearching] = useState<boolean>(false);
 
+  const windowSize = useWindowSize();
   const debouncedQuery = useDebounce(query, 500);
-  const router = useRouter();
+
+  useEffect(() => {
+    const handleKeyboardShortcuts = (e: KeyboardEvent) => {
+      if (e.key === "/") {
+        e.preventDefault();
+        inputRef.current?.focus();
+      }
+
+      if (inputRef.current === document.activeElement && e.key === "Escape") {
+        e.preventDefault();
+        inputRef.current?.blur();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyboardShortcuts);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyboardShortcuts);
+    };
+  }, []);
+
+  useEffect(() => {
+    setIsSearching(debouncedQuery.trim().length >= 3);
+  }, [debouncedQuery]);
+
+  const hideSuggestions = (e: React.FocusEvent<HTMLInputElement>) => {
+    if (windowSize.width && windowSize.width >= 640) {
+      setIsSearching(false);
+    }
+  };
+
+  const showSuggestions = (e: React.FocusEvent<HTMLInputElement>) => {
+    setIsSearching(e.target.value.length >= 3);
+  };
+
+  const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
+  };
 
   const handleQuerySubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,39 +62,6 @@ export default function ProductSearch() {
     router.push(`/?${params.toString()}`);
     setQuery("");
   };
-
-  const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
-  };
-
-  const handleInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (windowSize.width && windowSize.width >= 640) {
-      setIsSearching(false);
-    }
-  };
-
-  const handleInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    setIsSearching(e.target.value.length >= 3);
-  };
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "/") {
-        e.preventDefault();
-        inputRef.current?.focus();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
-
-  useEffect(() => {
-    setIsSearching(debouncedQuery.trim().length >= 3);
-  }, [debouncedQuery]);
 
   return (
     <div className="w-full sm:w-2/3 lg:w-1/2 relative bg-white dark:bg-zinc-900">
@@ -77,11 +82,10 @@ export default function ProductSearch() {
             id="search-query"
             value={query}
             ref={inputRef}
-            onBlur={handleInputBlur}
-            onFocus={handleInputFocus}
+            onBlur={hideSuggestions}
+            onFocus={showSuggestions}
             onChange={handleQueryChange}
             type="text"
-            aria-label="Search"
             placeholder="Search 100,000 Products"
           />
           <span className="hidden sm:flex items-center justify-center w-6 h-6 bg-white dark:bg-zinc-900 border-[0.5px] border-b-2 border-zinc-300 dark:border-zinc-600 text-sm rounded-md absolute right-2 text-zinc-400 dark:text-zinc-600">

@@ -1,13 +1,17 @@
-import useSearch from "./useSearch";
+import useSWR from "swr";
+import { fetcher } from "@/lib/products";
 
 export default function useSearchSuggest(query: string) {
-  const { products, isEmpty, isError, isLoading } = useSearch(query);
+  const { data, error, isLoading } = useSWR<{ recipes: any[] }>(
+    `https://dummyjson.com/recipes/search?q=${query}&limit=3`,
+    fetcher
+  );
 
   return {
-    products: products.slice(0, 3),
-    totalCount: products.length,
-    isEmpty,
-    isError,
+    products: data ? data.recipes : [],
+    totalCount: data?.recipes?.length,
+    isEmpty: data?.recipes?.length === 0,
+    isError: !!error,
     isLoading
   };
 }

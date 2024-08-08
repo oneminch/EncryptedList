@@ -5,11 +5,11 @@ export default function ProductListItem({ product }: { product: any }) {
     <li className="w-full p-4 border-b last:border-none border-zinc-100 dark:border-zinc-800 bg-transparent flex flex-col gap-y-4">
       <div className="flex items-center gap-x-4">
         <Image
-          className="bg-zinc-200 rounded-full h-12 w-12 shrink-0"
+          className="bg-zinc-200 rounded-full h-12 w-12 shrink-0 overflow-hidden text-xs text-center"
           src={product.image}
           width={48}
           height={48}
-          alt={`Product Icon for ${product.name}`}
+          alt={`Logo for ${product.name}`}
         />
         <div className="flex flex-col gap-y-2">
           <div className="font-medium">{product.name}</div>

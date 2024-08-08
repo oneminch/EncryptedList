@@ -1,14 +1,16 @@
-import { QueryParams } from "./types";
+import type { ApiResponse, FetchResult } from "./types";
 
-export const queryProducts = async ({
-  page,
-  query,
-  sort,
-  tags
-}: QueryParams): Promise<any> => {
+export const queryProducts = async (
+  fetchParams: string
+): Promise<FetchResult> => {
   const perPage = 5;
   const baseUrl = `https://dummyjson.com/recipes`;
-  const searchParams = new URLSearchParams();
+
+  const searchParams = new URLSearchParams(fetchParams);
+  const page = parseInt(searchParams.get("page") || "1");
+  const query = searchParams.get("query") || "";
+  const sort = searchParams.get("sort") || "";
+  const tags = searchParams.get("tags")?.split(",") || [];
 
   searchParams.append("limit", perPage.toString());
   searchParams.append("select", "name,instructions,tags,image");
@@ -32,9 +34,28 @@ export const queryProducts = async ({
 
   const queryString = searchParams.toString();
   const apiUrl = queryString ? `${baseUrl}?${queryString}` : baseUrl;
-  console.log(apiUrl);
 
-  return fetch(apiUrl).then((res) => res.json());
+  try {
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+      throw new Error("Failed to Fetch Products");
+    }
+
+    const data: ApiResponse = await response.json();
+
+    return {
+      products: data.recipes,
+      total: data.total
+    };
+  } catch (error) {
+    console.error("Fetch Error:", error);
+    return {
+      products: null,
+      total: null,
+      error: (error as Error).message
+    };
+  }
 };
 
 export const searchProducts = async (query: string): Promise<any> => {

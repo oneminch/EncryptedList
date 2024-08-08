@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { fetcher } from "@/lib/products";
+import { fetcher } from "@/lib/data";
 
 export default function useSearchSuggest(query: string) {
   const { data, error, isLoading } = useSWR<{ recipes: any[] }>(

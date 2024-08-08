@@ -1,6 +1,7 @@
+import type { Product } from "@/lib/types";
 import Image from "next/image";
 
-export default function ProductListItem({ product }: { product: any }) {
+export default function ProductListItem({ product }: { product: Product }) {
   return (
     <li className="w-full p-4 border-b last:border-none border-zinc-100 dark:border-zinc-800 bg-transparent flex flex-col gap-y-4">
       <div className="flex items-center gap-x-4">

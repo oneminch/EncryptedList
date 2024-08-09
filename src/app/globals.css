@@ -9,7 +9,7 @@
   }
 
   .global-focus {
-    @apply outline-none ring-2 ring-offset-1 ring-offset-white dark:ring-offset-zinc-900 ring-amber-400 ring-opacity-75;
+    @apply outline-none ring-2 ring-offset-2 ring-offset-white dark:ring-offset-zinc-900 ring-amber-400 ring-opacity-75;
   }
 
   .action-item {

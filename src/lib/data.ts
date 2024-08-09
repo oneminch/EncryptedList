@@ -13,7 +13,7 @@ export const queryProducts = async (
   const tags = searchParams.get("tags")?.split(",") || [];
 
   searchParams.append("limit", perPage.toString());
-  searchParams.append("skip", (perPage * page).toString());
+  searchParams.append("skip", (perPage * (page - 1)).toString());
   searchParams.append("select", "name,instructions,tags,image");
 
   if (sort) {

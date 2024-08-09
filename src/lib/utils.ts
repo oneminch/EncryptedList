@@ -1,5 +1,5 @@
 import { ReadonlyURLSearchParams } from "next/navigation";
-import { QueryParams } from "./types";
+import { QueryParamKeys, QueryParams } from "./types";
 
 const stringifySearchParams = (searchParams: QueryParams): string => {
   const urlSearchParams = new URLSearchParams();
@@ -20,15 +20,21 @@ const updateSearchParams = ({
   value,
   searchParams,
   pathname,
-  callback
+  callback,
+  resetPagination = true
 }: {
-  key: string;
+  key: QueryParamKeys;
   value: string;
   searchParams: ReadonlyURLSearchParams;
   pathname: string;
   callback: Function;
+  resetPagination?: boolean;
 }) => {
   const params = new URLSearchParams(searchParams);
+
+  if (resetPagination) {
+    params.delete("page");
+  }
 
   if (value.length > 0) {
     params.set(key, value);
@@ -36,7 +42,7 @@ const updateSearchParams = ({
     params.delete(key);
   }
 
-  callback(`${pathname}?${params.toString()}`);
+  callback(`${pathname}?${params.toString()}`, { scroll: false });
 };
 
 export { stringifySearchParams, updateSearchParams };

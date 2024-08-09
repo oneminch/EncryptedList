@@ -27,7 +27,7 @@ export default function ProductListItem({ product }: { product: Product }) {
         </div>
       </div>
       <div>
-        <div className="rounded-lg text-zinc-600 dark:text-zinc-400">{`${product.instructions[0]} ${product.instructions[1]}`}</div>
+        <div className="rounded-lg text-sm text-zinc-600 dark:text-zinc-400">{`${product.instructions[0]} ${product.instructions[1]}`}</div>
       </div>
     </li>
   );

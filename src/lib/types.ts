@@ -23,4 +23,6 @@ interface QueryParams {
   tags?: string[];
 }
 
-export type { ApiResponse, FetchResult, Product, QueryParams };
+type QueryParamKeys = keyof QueryParams;
+
+export type { ApiResponse, FetchResult, Product, QueryParams, QueryParamKeys };

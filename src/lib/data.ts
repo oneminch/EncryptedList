@@ -3,7 +3,7 @@ import type { ApiResponse, FetchResult } from "./types";
 export const queryProducts = async (
   fetchParams: string
 ): Promise<FetchResult> => {
-  const perPage = 5;
+  const perPage = 3;
   const baseUrl = `https://dummyjson.com/recipes`;
 
   const searchParams = new URLSearchParams(fetchParams);
@@ -13,6 +13,7 @@ export const queryProducts = async (
   const tags = searchParams.get("tags")?.split(",") || [];
 
   searchParams.append("limit", perPage.toString());
+  searchParams.append("skip", (perPage * page).toString());
   searchParams.append("select", "name,instructions,tags,image");
 
   if (sort) {

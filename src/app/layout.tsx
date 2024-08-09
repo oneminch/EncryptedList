@@ -52,13 +52,13 @@ export default function RootLayout({
         {/*  Skip Navigation Link */}
         <a
           href="#main-content"
-          className="flex items-center justify-center bg-yellow-400 h-9 absolute top-0 left-1/2 -translate-x-1/2 py-2 px-4 rounded-md mx-auto z-50 transform duration-300 -translate-y-[125%] opacity-0 focus:translate-y-2 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-yellow-400/50 focus:ring-opacity-50 text-zinc-900"
+          className="flex items-center justify-center bg-yellow-400 h-9 absolute top-0 left-1/2 -translate-x-1/2 py-2 px-4 rounded-md mx-auto z-50 transform duration-300 -translate-y-[125%] opacity-0 focus-visible:translate-y-2 focus-visible:opacity-100 text-zinc-900 focus-visible:global-focus"
         >
           Skip to Content
         </a>
 
         <ThemeProvider attribute="class" enableSystem>
-          <main id="main-content" className="min-w-72">
+          <main className="min-w-72">
             <article className="pb-24">
               <div className="mb-2 hidden md:block">
                 <Header />

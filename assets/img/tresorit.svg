@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1280 1280" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(94.8329,0,0,94.8329,2086.98,1087.79)">
+        <g id="tresorit">
+            <g id="symbol" transform="matrix(0.0671273,0,0,0.0671273,-20.3935,-10.6679)">
+                <path d="M76.5,0.578L0.5,44.578L0.5,132.578L76.5,176.578L152.5,132.578L152.5,44.578L76.5,0.578ZM16.5,53.802L76.5,19.065L102.71,34.239L16.5,83.764L16.5,53.802ZM136.5,123.353L76.5,158.089L16.5,123.353L16.5,102.216L118.708,43.502L136.5,53.802L136.5,123.353Z" style="fill:url(#_Linear1);fill-rule:nonzero;"/>
+            </g>
+            <g id="border" transform="matrix(0.0671273,0,0,0.0671273,-20.3935,-10.6679)">
+                <path d="M76.5,0.578L152.5,44.578L152.5,132.578L76.5,176.578L0.5,132.578L0.5,44.578L76.5,0.578M16.5,83.764L102.71,34.24L76.5,19.065L16.5,53.802L16.5,83.764M76.5,158.089L136.5,123.353L136.5,53.802L118.708,43.502L16.5,102.216L16.5,123.353L76.5,158.089M76.5,1.733L1.5,45.154L1.5,132.001L76.5,175.422L151.5,132.001L151.5,45.154L76.5,1.733ZM15.5,85.492L15.5,83.764L15.5,53.802L15.5,53.225L15.999,52.936L75.999,18.199L76.5,17.909L77.001,18.199L103.211,33.373L104.711,34.242L103.208,35.106L16.998,84.63L15.5,85.492ZM76.5,159.245L75.999,158.955L15.999,124.219L15.5,123.93L15.5,123.354L15.5,102.217L15.5,101.638L16.002,101.35L118.21,42.635L118.71,42.348L119.209,42.637L137.001,52.938L137.5,53.227L137.5,123.931L137.001,124.22L77.001,158.956L76.5,159.245Z" style="fill-opacity:0.1;fill-rule:nonzero;"/>
+            </g>
+        </g>
+    </g>
+    <defs>
+        <linearGradient id="_Linear1" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-152.001,-88.0003,88.0003,-152.001,152.5,132.578)"><stop offset="0" style="stop-color:rgb(38,100,224);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(0,196,213);stop-opacity:1"/></linearGradient>
+    </defs>
+</svg>

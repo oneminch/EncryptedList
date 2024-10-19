@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <meta name="title" content="EncryptedList">
+   <meta name="description" content="List of services that offer end-to-end encryption and zero-knowledge security">
+   <meta property="og:type" content="website">
+   <meta property="og:site_name" content="EncryptedList">
+   <meta property="og:title" content="EncryptedList">
+   <meta property="og:url" content="https://minch.dev/encryptedlist/">
+
+   <!-- Open Graph / Facebook -->
+   <meta property="og:type" content="website">
+   <meta property="og:url" content="https://minch.dev/encryptedlist/">
+   <meta property="og:title" content="EncryptedList">
+   <meta property="og:description"
+      content="List of services that offer end-to-end encryption and zero-knowledge security">
+   <meta property="og:image"
+      content="https://raw.githubusercontent.com/oneminch/encryptedlist/master/assets/img/logo/logo.svg">
+   <meta property="twitter:image"
+      content="https://raw.githubusercontent.com/oneminch/encryptedlist/master/assets/img/logo/logo.svg">
+   <link rel="shortcut icon" href="./assets/img/logo/favicon.ico" type="image/x-icon">
+   <link rel="stylesheet" href="assets/css/style.css">
+   <title>EncryptedList</title>
+</head>
+
+<body>
+   <!-- Intro: Logo, name & description -->
+   <div class="intro">
+      <img src="./assets/img/logo/logo.svg" alt="Website Logo">
+      <h1>Encrypted List</h1>
+      <h3>
+         List of services that offer end-to-end encryption
+         <span class="disclaimer-btn"><img src="./assets/img/logo/info.svg" alt="Info"></span>
+      </h3>
+      <p class="disclaimer hide">
+         This list includes services that either have <a
+            href="https://protonmail.com/blog/what-is-end-to-end-encryption/" target="_blank">end-to-end encryption
+            👈</a> on some of
+         their
+         features
+         or implement it fully. It is based on claims made by their respective owners or companies.
+         Items tagged as "open-source" are more reliable. However, not all items tagged as "open-source" are
+         fully open source. Do your research before trusting a service 🤓 and enjoy!😉.
+      </p>
+   </div>
+   <!-- Redirection Message -->
+   <h3 class="redirect-msg message">
+      The new version of the site is live. You'll be redirected to it in a few seconds...😃
+      <br>
+      <br>
+      If you're not redirected soon, visit <a href="https://encryptedlist.xyz/" title="EncryptedList New Website">the new site here</a>.
+   </h3>
+
+   <!-- warning message -->
+   <h3 class="warning-msg message">
+      The list of products here is no longer updated/maintained. Please visit <a href="https://encryptedlist.xyz/" title="EncryptedList New Website">the new site here</a>.
+   </h3>
+   <!-- Filter options -->
+   <div class="options">
+      <!-- Dropdown menu: Categories -->
+      <div class="category">
+         <label>Category:</label>
+         <select class="category__list dropdown__list">:
+            <!-- 
+            <option value = "All" selected>All</option>
+            <option value = "Email">Email</option> ...
+            -->
+         </select>
+      </div>
+      <!-- Dropdown menu: Tags -->
+      <div class="tags">
+         <label>Tags:</label>
+         <select class="tags__list dropdown__list">
+            <!-- 
+            <option value = "all" selected>all</option>
+            <option value = "free">free</option> ...
+            -->
+         </select>
+      </div>
+   </div>
+   <div class="list">
+      <h1 class="list__type">All Products</h1>
+      <!-- Container of each list item -->
+      <div class="list__container">
+         <!-- Each item with class "list__item" has: Icon, Name, Description & Tags -->
+         <!-- 
+         <a target="_blank" href="https://send.firefox.com" class="list__item">
+            <div class="icon">
+               <img src="assets/img/firefox.svg" alt="%app%name% logo">
+            </div>
+            <div class="info">
+               <div class="name">Firefox Send</div>
+               <div class="desc">
+                  Share files with end-to-end encryption and a link that automatically expires.
+               </div>
+               <div class="tags">
+                  <span>#cross-platform</span>
+                  <span>#open-source</span>
+                  <span>#freemium</span>
+               </div>
+            </div>
+         </a> 
+         -->
+         <hr class="list__end">
+         <a href="https://github.com/oneminch/encryptedlist" class="github-page" title="How to submit">
+            <img src="./assets/img/logo/github.svg" alt="GitHub Page" />
+         </a>
+      </div>
+   </div>
+   <!-- Javascript -->
+   <script async src="dist/bundle.js"></script>
+   <script data-goatcounter="https://oneminch.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

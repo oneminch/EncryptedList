@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="shortcut icon" href="../assets/img/logo/favicon.ico" type="image/x-icon">
+   <link rel="stylesheet" href="./style.css">
+   <title>Product Entry Form</title>
+</head>
+
+<body>
+   <h2>Product Entry Form</h2>
+   <div class="container">
+      <input type="text" class="item-input name" placeholder="Name">
+      <textarea class="item-input desc" placeholder="Short description about product"></textarea>
+      <input type="url" class="item-input url" placeholder="https://example.com">
+      <div class="img_url">
+         <input type="text" class="item-input filename" placeholder="Product Name">
+         <select class="item-input image-type">
+            <option value="svg">SVG</option>
+            <option value="png">PNG</option>
+         </select>
+      </div>
+      <div class="item-input options">
+         <div class="item-input tags"></div>
+         <div class="item-input categories"></div>
+      </div>
+      <div class="item-input submit">Generate</div>
+   </div>
+   <div class="output">
+      <span class="commit-msg"></span>
+      <!-- Object(s) generated here -->
+   </div>
+   <!-- Javascript -->
+   <script src="./app.js"></script>
+</body>
+
+</html>

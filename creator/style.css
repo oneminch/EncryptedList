@@ -1,0 +1,144 @@
+@import url("https://rsms.me/inter/inter.css");
+
+* {
+   outline: none;
+   box-sizing: border-box;
+   text-decoration: none;
+   font-family: "Inter";
+   transition-duration: 0.25s;
+   background-color: #fff;
+   color: #000;
+   border-radius: 3px;
+   /* border: .5px solid red; */
+}
+
+html {
+   font-size: 90% !important;
+}
+
+body {
+   margin: 0;
+   padding: 0 5rem;
+}
+
+h2 {
+   text-align: center;
+   margin: 3rem 0;
+}
+
+.container {
+   width: 75%;
+   max-width: 768px;
+   height: auto;
+   margin: 0 auto;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: center;
+   text-align: left;
+}
+
+.item-input {
+   width: 100%;
+   min-height: 40px;
+   border: 2px solid #000;
+   margin: 1rem 0;
+   padding: .5rem;
+}
+
+.desc {
+   height: 75px;
+}
+
+.img_url {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.img_url>* {
+   height: 40px;
+}
+
+.img_url .filename {
+   width: 70%;
+}
+
+.img_url .image-type {
+   width: 25%;
+}
+
+.options {
+   width: 100%;
+}
+
+label {
+   cursor: pointer;
+}
+
+.tags,
+.categories {
+   width: 50%;
+   display: block;
+   float: left;
+   height: auto;
+   border: none;
+}
+
+.tags>*,
+.categories>* {
+   width: 100%;
+   margin: .5rem;
+   background: transparent;
+}
+
+.submit {
+   width: 125px;
+   height: 40px;
+   cursor: pointer;
+   text-align: center;
+}
+
+.output {
+   width: 75%;
+   max-width: 768px;
+   height: auto;
+   margin: 3rem auto;
+   padding: 2rem;
+   border: 2px solid #000;
+}
+
+.commit-msg {
+   width: 100%;
+   display: block;
+   background: #ddd;
+   padding: .5rem;
+   margin-bottom: 1rem;
+}
+
+/* Screen size: < 768px */
+@media only screen and (max-width: 768px) {
+   body {
+      padding: 0 2rem;
+   }
+
+   body .container {
+      width: 100%;
+   }
+
+   body .output {
+      width: 100%;
+   }
+}
+
+/* Screen size: < 420px */
+@media only screen and (max-width: 420px) {
+
+   body .tags,
+   body .categories {
+      width: 100%;
+      display: block;
+      float: none;
+   }
+}

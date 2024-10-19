@@ -1,0 +1,379 @@
+$darkColor: #000; // Dark color: Black
+$lightColor: #fff; // Light color: White
+$disclaimerColor: #e74c3c; // Light color: White
+$tinyShadow: -4px 4px 0px $darkColor; // Box shadow for small containers
+$bigShadow: -5px 5px 0px $darkColor; // Box shadow for bigger containers
+$hoverShadow: -7.5px 0px 0px #f1c40f; // Box shadow for bigger containers
+$activeBorder: 2px solid $darkColor; // Border
+$roundCorners: 3px;
+
+// Import regular font
+@font-face {
+   font-family: 'Metropolis-Regular';
+   src: url('fonts/Metropolis-Regular.eot');
+   src: url('fonts/Metropolis-Regular.eot?#iefix') format('embedded-opentype'),
+      url('fonts/Metropolis-Regular.woff2') format('woff2'),
+      url('fonts/Metropolis-Regular.woff') format('woff'),
+      url('fonts/Metropolis-Regular.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+}
+
+// Import bold font
+@font-face {
+   font-family: 'Metropolis-Bold';
+   src: url('fonts/Metropolis-Bold.eot');
+   src: url('fonts/Metropolis-Bold.eot?#iefix') format('embedded-opentype'),
+      url('fonts/Metropolis-Bold.woff2') format('woff2'),
+      url('fonts/Metropolis-Bold.woff') format('woff'),
+      url('fonts/Metropolis-Bold.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+}
+
+* {
+   outline: none;
+   box-sizing: border-box;
+   text-decoration: none;
+   font-family: 'Metropolis-Regular', sans-serif;
+   transition-duration: 0.25s;
+   background-color: $lightColor;
+   color: $darkColor;
+   border-radius: $roundCorners;
+   // border: .1px solid red;
+}
+
+html {
+   font-size: 90%;
+}
+
+body {
+   margin: 0;
+   padding: 0 5rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+   font-family: 'Metropolis-Bold', sans-serif;
+}
+
+.intro {
+   width: 100%;
+   text-align: center;
+
+   >* {
+      margin: 0.5rem;
+   }
+
+   img {
+      width: 75px;
+      height: 75px;
+      margin: .75rem auto .25rem auto;
+   }
+
+   h3 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      span {
+         cursor: pointer;
+         padding: .25rem .5rem;
+
+         img {
+            width: 1.5rem;
+            height: 1.5rem;
+         }
+      }
+   }
+
+   .disclaimer {
+      width: 80%;
+      max-width: 768px;
+      padding: .75rem;
+      margin: .5rem auto;
+      background-color: $disclaimerColor;
+      color: $lightColor;
+
+      a {
+         padding: .5px 3px;
+         background-color: rgba($lightColor, 0.75);
+         // background: transparent;
+         // color: $lightColor;
+      }
+   }
+
+   .hide {
+      display: none;
+   }
+
+   .show {
+      display: block;
+   }
+}
+
+.message {
+   height: auto;
+   padding: .5rem;
+   border-radius: 7.5px;
+   text-align: center;
+   color: #1c2024;
+}
+
+.message a {
+   text-decoration: underline;
+   background: transparent;
+   font-weight: bold;
+}
+
+// redirection
+.redirect-msg {
+   background-color: #f1c61b;
+}
+
+// disclaimer
+.warning-msg {
+   background-color: #fa5252;
+}
+
+// Options to filter services
+.options {
+   width: 100%;
+   height: auto;
+   margin: 2rem 0 1rem 0;
+   padding: 1rem 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   >div {
+      margin: 0 2rem;
+
+      label {
+         font-family: 'Metropolis-Bold', sans-serif;
+         font-size: 1.25rem;
+      }
+   }
+
+   select {
+      display: block;
+      width: 150px;
+      height: 35px;
+      font-size: 16px;
+      border: $activeBorder;
+      padding: 0 .5rem;
+      background: #fff;
+      box-sizing: content-box;
+      cursor: pointer;
+
+      option {
+         background: $lightColor;
+      }
+   }
+}
+
+// List of services
+.list {
+   width: 90%;
+   max-width: 1024px;
+   margin: 1rem auto;
+
+   >* {
+      margin: 2.5rem 0;
+   }
+
+   &__end {
+      width: 50%;
+      display: block;
+      margin: 3rem auto 1rem auto;
+      border: .5px solid #aaa;
+   }
+
+   &__container {
+      text-align: center;
+
+      >img {
+         width: 50%;
+         display: block;
+         margin: 0 auto;
+      }
+
+      // GitHub page icon
+      .github-page {
+         width: 40px;
+         height: 40px;
+         display: block;
+         margin: 0 auto;
+
+         img {
+            margin: 5px;
+            width: 30px;
+            height: 30px;
+         }
+      }
+   }
+
+   &__item {
+      width: 100%;
+      min-height: 150px;
+      height: auto;
+      font-size: 1.25rem;
+      padding: 10px;
+      margin: 0;
+      text-align: left;
+      display: block;
+      border: $activeBorder;
+      border-bottom: 0;
+      // box-shadow: $bigShadow;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      border-radius: 0;
+
+      >* {
+         height: 100%;
+      }
+
+      &:hover {
+         // border: $hoverBorder;
+         box-shadow: $hoverShadow;
+      }
+
+      &:first-of-type {
+         border-radius: 10px 10px 0 0 !important;
+      }
+
+      &:nth-last-of-type(2) {
+         border-radius: 0 0 10px 10px !important;
+         border: $activeBorder;
+      }
+
+      .icon {
+         width: 125px;
+         padding: 1rem;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+
+         img {
+            width: 75%;
+            height: 75%;
+         }
+      }
+
+      .info {
+         width: calc(100% - 125px);
+
+         >* {
+            padding: .25rem;
+            margin: .5rem 0;
+            height: auto;
+         }
+
+         .name {
+            font-family: 'Metropolis-Bold', sans-serif;
+         }
+
+         .desc {
+            padding-right: 1.25rem;
+
+         }
+
+         .tags {
+            width: 100%;
+            min-height: 20px;
+            height: auto;
+            border-radius: 0;
+            background: transparent;
+
+            span {
+               width: auto;
+               display: inline-block;
+               padding: .1rem .5rem;
+               margin: .25rem;
+               border-radius: 10px;
+               background: $darkColor;
+               color: $lightColor;
+            }
+
+            span.opt-in {
+               background: $disclaimerColor;
+            }
+         }
+      }
+   }
+}
+
+// Screen size: < 768px
+@media only screen and (max-width: 768px) {
+   body {
+      padding: 0 1rem;
+   }
+}
+
+// Screen size: < 640px
+@media only screen and (max-width: 640px) {
+   body {
+
+      // List of services
+      .list {
+         &__item {
+            height: auto;
+            align-items: flex-start;
+
+            .icon {
+               width: 85px;
+               padding: 1.5rem 1rem;
+
+               img {
+                  width: 95%;
+                  height: 95%;
+               }
+            }
+
+            .info {
+               width: calc(100% - 85px);
+
+               .tags {
+                  width: calc(100% + 85px);
+                  position: relative;
+                  left: -85px;
+               }
+            }
+         }
+      }
+   }
+}
+
+// Screen size: < 480px
+@media only screen and (max-width: 480px) {
+   body {
+      padding: 0 .5rem;
+
+      // Options to filter services
+      .options {
+         flex-direction: column;
+
+         >div {
+            width: 80%;
+            margin: .25rem auto;
+         }
+
+         select {
+            width: 100%;
+            height: 35px;
+            border: $activeBorder;
+            padding: 0 .5rem;
+            background: #fff;
+            box-sizing: content-box;
+            cursor: pointer;
+
+            option {
+               background: $lightColor;
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1280 1280" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(17.6682,0,0,17.6682,241.263,69.4304)">
+        <g id="protonmail">
+            <g>
+                <path d="M35.379,28.434L22.568,28.434L9.756,28.434L9.756,20.728C12.356,10.422 22.568,10.28 22.568,10.28C22.568,10.28 32.779,10.422 35.379,20.728L35.379,28.434ZM22.568,0.589C22.568,0.589 3.858,-0.026 0,20.728L0,34.863C0,34.863 0.159,36.376 4.414,39.449C8.669,42.522 19.684,51.173 22.568,51.173C25.452,51.173 36.467,42.522 40.721,39.449C44.976,36.376 45.136,34.863 45.136,34.863L45.136,20.728C41.277,-0.026 22.568,0.589 22.568,0.589Z" style="fill:rgb(79,81,100);fill-rule:nonzero;"/>
+                <path d="M22.568,54.356C22.568,54.356 19.668,54.073 17.399,52.497C15.13,50.921 0,40.111 0,40.111L0,61.511C0,61.511 0.128,64 2.87,64L42.266,64C45.008,64 45.136,61.511 45.136,61.511L45.136,40.111C45.136,40.111 30.006,50.921 27.736,52.497C25.467,54.073 22.568,54.356 22.568,54.356Z" style="fill:rgb(79,81,100);fill-rule:nonzero;"/>
+            </g>
+        </g>
+    </g>
+</svg>

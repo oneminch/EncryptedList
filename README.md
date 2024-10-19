@@ -2,7 +2,9 @@
 
 A collective list of products & services that offer zero-knowledge or end-to-end encryption.
 
-![Screenshot](https://github.com/oneminch/encrypted-list/raw/main/public/screenshot.png)
+> This branch ([v2](https://github.com/oneminch/EncryptedList/tree/v2)) contains the second version of the project.
+
+![v2 Screenshot](/public/screenshots/EncryptedList-v2-desktop.png)
 
 ## Development
 

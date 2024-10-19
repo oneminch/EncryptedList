@@ -2,7 +2,7 @@
 
 ### List of End-to-End Encrypted Services
 
-> This branch ([v1](https://github.com/oneminch/EncryptedList-3/tree/v1)) contains the first version of the project.
+> This branch ([v1](https://github.com/oneminch/EncryptedList/tree/v1)) contains the first version of the project.
 
 ![v1 Screenshot](/assets/img/screenshots/EncryptedList-v1-desktop.png)
 

@@ -20,7 +20,7 @@ interface QueryParams {
   page?: number;
   query?: string;
   sort?: string;
-  tags?: string[];
+  tag?: string[];
 }
 
 type QueryParamKeys = keyof QueryParams;

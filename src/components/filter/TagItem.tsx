@@ -1,9 +1,9 @@
 "use client";
 
-import { useTags } from "@/hooks/useTags";
+import { useTag } from "@/hooks/useTag";
 
 const Tag: React.FC<{ tag: string }> = ({ tag }) => {
-  const { handleSelectTag, isTagSelected } = useTags();
+  const { handleSelectTag, isTagSelected } = useTag();
 
   return (
     <label className="text-sm font-medium mr-2 mb-2 rounded-full min-w-16 h-6 cursor-pointer select-none">

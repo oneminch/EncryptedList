@@ -11,7 +11,7 @@ export const TAGS = [
   "Decentralized"
 ];
 
-export const useTags = () => {
+export const useTag = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { replace } = useRouter();
@@ -19,8 +19,8 @@ export const useTags = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   useEffect(() => {
-    const tagsFromUrl = searchParams.get("tags");
-    setSelectedTags(tagsFromUrl ? tagsFromUrl.split(",") : []);
+    const tagsFromUrl = searchParams.getAll("tag");
+    setSelectedTags(tagsFromUrl || []);
   }, [searchParams]);
 
   const isTagSelected = (tag: string) => selectedTags.includes(tag);
@@ -40,8 +40,8 @@ export const useTags = () => {
     setSelectedTags(tagParams);
 
     updateSearchParams({
-      key: "tags",
-      value: tagParams.join(","),
+      key: "tag",
+      value: tagParams,
       searchParams,
       pathname,
       callback: replace
@@ -52,8 +52,8 @@ export const useTags = () => {
     e.preventDefault();
 
     updateSearchParams({
-      key: "tags",
-      value: "",
+      key: "tag",
+      value: [],
       searchParams,
       pathname,
       callback: replace

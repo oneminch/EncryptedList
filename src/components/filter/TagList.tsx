@@ -1,10 +1,10 @@
 "use client";
 
 import TagItem from "./TagItem";
-import { useTags, TAGS } from "@/hooks/useTags";
+import { useTag, TAGS } from "@/hooks/useTag";
 
 export default function TagList() {
-  const { handleClearTags, areAnyTagsSelected } = useTags();
+  const { handleClearTags, areAnyTagsSelected } = useTag();
 
   return (
     <>

@@ -4,7 +4,7 @@ export const queryProducts = async (
   fetchParams: string
 ): Promise<FetchResult> => {
   const perPage = 3;
-  const baseUrl = `https://dummyjson.com/recipes`;
+  let baseUrl = `https://dummyjson.com/recipes`;
 
   const searchParams = new URLSearchParams(fetchParams);
   const page = parseInt(searchParams.get("page") || "1");
@@ -22,7 +22,8 @@ export const queryProducts = async (
   }
 
   if (query) {
-    searchParams.append("search", query);
+    baseUrl = baseUrl + "/search";
+    searchParams.append("q", query);
   }
 
   if (tags && tags.length > 0) {

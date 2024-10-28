@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Icon } from "@iconify-icon/react";
+import { Icon } from "@iconify/react";
 
 export default function TabBar() {
   return (
@@ -7,12 +7,11 @@ export default function TabBar() {
       <ul className="w-full h-full pt-4 pb-6 px-2 flex items-center justify-around">
         <li>
           <Link
-            className="w-8 h-8 flex flex-col items-center justify-center gap-y-1 rounded focus-visible:global-focus"
-            href="/"
-          >
+            className="flex flex-col items-center justify-center gap-y-1 rounded focus-visible:global-focus px-2"
+            href="/">
             <Icon
               icon="heroicons:home"
-              className="flex items-center justify-center text-xl"
+              className="flex items-center justify-center text-2xl"
             />
             <p className="text-sm text-zinc-600 dark:text-zinc-400 font-medium">
               Home
@@ -23,11 +22,10 @@ export default function TabBar() {
         <li>
           <Link
             href="/search"
-            className="w-8 h-8 flex flex-col items-center justify-center gap-y-1 rounded focus-visible:global-focus"
-          >
+            className="flex flex-col items-center justify-center gap-y-1 rounded focus-visible:global-focus px-2">
             <Icon
               icon="heroicons:magnifying-glass-20-solid"
-              className="flex items-center justify-center text-xl"
+              className="flex items-center justify-center text-2xl"
             />
             <p className="text-sm text-zinc-600 dark:text-zinc-400 font-medium">
               Search
@@ -36,53 +34,19 @@ export default function TabBar() {
         </li>
 
         <li>
-          <button
-            type="button"
-            className="w-8 h-8 flex flex-col items-center justify-center gap-y-1 rounded focus-visible:global-focus"
-          >
+          <Link
+            href="/submit"
+            className="flex flex-col items-center justify-center gap-y-1 rounded focus-visible:global-focus px-2">
             <Icon
-              icon="heroicons:hashtag-20-solid"
-              className="flex items-center justify-center text-xl"
+              icon="heroicons:plus-circle-20-solid"
+              className="flex items-center justify-center text-2xl"
             />
             <p className="text-sm text-zinc-600 dark:text-zinc-400 font-medium">
-              Tags
+              Submit
             </p>
-          </button>
-        </li>
-
-        <li>
-          <button
-            type="button"
-            className="w-8 h-8 flex flex-col items-center justify-center gap-y-1 rounded focus-visible:global-focus"
-          >
-            <Icon
-              icon="heroicons:bars-2-20-solid"
-              className="flex items-center justify-center text-xl"
-            />
-            <p className="text-sm text-zinc-600 dark:text-zinc-400 font-medium">
-              Menu
-            </p>
-          </button>
+          </Link>
         </li>
       </ul>
-
-      {/* <div className="flex items-center">
-        <ul className="flex items-center gap-x-2 *:shrink-0">
-          <li>
-            <Link className="action-item px-4 py-2" href="/submit">
-              Submit +
-            </Link>
-          </li>
-          <li>
-            <Link className="action-item px-4 py-2" href="/favorites">
-              Favorites 💛
-            </Link>
-          </li>
-          <li>
-            <button className="action-item w-10">🌓</button>
-          </li>
-        </ul>
-      </div> */}
     </nav>
   );
 }

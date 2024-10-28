@@ -2,22 +2,17 @@ export const metadata = {
   "/": {
     title: "EncryptedList · Find Secure Apps",
     minimalTitle: "EncryptedList",
-    description: "EncryptedList helps you find secure apps and services."
-  },
-  "/favorites": {
-    title: "Favorites",
-    minimalTitle: "Favorites",
-    description: "Products You Have Favorited."
+    description: "Browser & Find Secure Software."
   },
   "/search": {
     title: "Search",
     minimalTitle: "Search",
-    description: "Search over 100,000 secure services."
+    description: "Search over 100,000 secure software."
   },
   "/submit": {
     title: "Submit",
     minimalTitle: "Submit",
-    description: "Submit New Apps to the List."
+    description: "Contribute to the List."
   },
   "/not-found": {
     title: "Page Not Found",

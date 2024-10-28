@@ -41,7 +41,7 @@ export const queryProducts = async (
     const response = await fetch(apiUrl);
 
     if (!response.ok) {
-      throw new Error("Failed to Fetch Products");
+      throw new Error("Failed to Fetch Products. Refresh the Page.");
     }
 
     const data: ApiResponse = await response.json();

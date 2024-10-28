@@ -3,12 +3,12 @@ import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { updateSearchParams } from "@/lib/utils";
 
 export const TAGS = [
-  "Web App",
-  "Open-Source",
+  "Decentralized",
   "Developer Tools",
-  "Opt-In",
   "Free",
-  "Decentralized"
+  "Open-Source",
+  "Opt-In",
+  "Web App"
 ];
 
 export const useTag = () => {

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "@/app/globals.css";
-import Header from "@/components/layout/Header";
-import Hero from "@/components/layout/Hero";
 import TabBar from "@/components/layout/TabBar";
 import { ThemeProvider } from "next-themes";
 
@@ -52,21 +50,13 @@ export default function RootLayout({
         {/*  Skip Navigation Link */}
         <a
           href="#main-content"
-          className="flex items-center justify-center bg-yellow-400 h-9 absolute top-0 left-1/2 -translate-x-1/2 py-2 px-4 rounded-md mx-auto z-50 transform duration-300 -translate-y-[125%] opacity-0 focus-visible:translate-y-2 focus-visible:opacity-100 text-zinc-900 focus-visible:global-focus"
-        >
+          className="flex items-center justify-center bg-yellow-400 h-9 absolute top-0 left-1/2 -translate-x-1/2 py-2 px-4 rounded-md mx-auto z-50 transform duration-300 -translate-y-[125%] opacity-0 focus-visible:translate-y-2 focus-visible:opacity-100 text-zinc-900 focus-visible:global-focus">
           Skip to Content
         </a>
 
         <ThemeProvider attribute="class" enableSystem>
           <main className="min-w-72">
             <article className="pb-24">
-              <div className="mb-2 hidden md:block">
-                <Header />
-                <Hero withSearchBar={true} />
-              </div>
-              <div className="mb-2 block md:hidden">
-                <Hero withLogo={true} />
-              </div>
               {children}
               <TabBar />
             </article>

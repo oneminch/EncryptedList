@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useDebounce, useWindowSize } from "@uidotdev/usehooks";
-import { Icon } from "@iconify-icon/react";
+import { Icon } from "@iconify/react";
 import ProductSearchSuggestions from "./ProductSearchSuggestions";
 
 export default function ProductSearch() {
@@ -67,8 +67,7 @@ export default function ProductSearch() {
     <div className="w-full sm:w-2/3 lg:w-1/2 relative bg-white dark:bg-zinc-900">
       <form
         className="w-full p-4 sticky top-0 border-b border-zinc-200 dark:border-zinc-700 bg-white/90 dark:bg-zinc-900/90 backdrop-blur flex items-center justify-center sm:border-none sm:p-0"
-        onSubmit={handleQuerySubmit}
-      >
+        onSubmit={handleQuerySubmit}>
         <label htmlFor="search-query" className="sr-only">
           Search Products
         </label>

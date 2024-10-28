@@ -1,9 +1,9 @@
 "use client";
 
-import { Icon } from "@iconify-icon/react";
+import { Icon } from "@iconify/react";
 import { useTheme } from "next-themes";
 
-export default function ThemeToggle() {
+export default function ThemeToggle({ className }: { className?: string }) {
   const { theme, setTheme } = useTheme();
 
   const handleThemeToggle = () => {
@@ -14,10 +14,9 @@ export default function ThemeToggle() {
     <div>
       <button
         type="button"
-        className="action-item w-9"
+        className={`action-item w-9 ${className}`}
         onClick={handleThemeToggle}
-        aria-label="Toggle Theme"
-      >
+        aria-label="Toggle Theme">
         <Icon
           icon={
             theme === "dark"

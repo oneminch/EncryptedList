@@ -27,5 +27,5 @@ html {
 }
 
 body {
-  @apply w-full min-w-80 max-w-7xl mx-auto bg-zinc-50 dark:bg-zinc-950 text-zinc-800 dark:text-zinc-100 px-2 font-mono;
+  @apply w-full min-w-80 max-w-7xl mx-auto bg-zinc-50 dark:bg-zinc-950 text-zinc-800 dark:text-zinc-100 px-2;
 }

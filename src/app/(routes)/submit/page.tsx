@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
-import { metadata as pageMeta } from "@/lib/metadata";
-import Header from "@/components/layout/Header";
-import Hero from "@/components/layout/Hero";
+import Header from "@/components/layout/header";
+import Hero from "@/components/layout/hero";
+import pageMeta from "@/lib/metadata";
 
 export const metadata: Metadata = {
   title: pageMeta["/submit"].title,
-  description: pageMeta["/submit"].description
+  description: pageMeta["/submit"].description,
+  openGraph: {
+    title: pageMeta["/submit"].title,
+    description: pageMeta["/submit"].description
+  },
+  twitter: {
+    title: pageMeta["/submit"].title,
+    description: pageMeta["/submit"].description
+  }
 };
 
 export default function SubmitPage({}) {

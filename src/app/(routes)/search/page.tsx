@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
-import { metadata as pageMeta } from "@/lib/metadata";
-import ProductSearch from "@/components/search/ProductSearch";
+import Search from "@/components/search/search";
+import pageMeta from "@/lib/metadata";
 
 export const metadata: Metadata = {
   title: pageMeta["/search"].title,
-  description: pageMeta["/search"].description
+  description: pageMeta["/search"].description,
+  openGraph: {
+    title: pageMeta["/search"].title,
+    description: pageMeta["/search"].description
+  },
+  twitter: {
+    title: pageMeta["/search"].title,
+    description: pageMeta["/search"].description
+  }
 };
 
 export default function SearchPage() {
@@ -16,7 +24,7 @@ export default function SearchPage() {
         <h2 className="mt-6 mb-2 text-center font-semibold text-2xl sm:text-3xl bg-transparent">
           Search
         </h2>
-        <ProductSearch />
+        <Search focusWhenMounted />
       </div>
     </section>
   );

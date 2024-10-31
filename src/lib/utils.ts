@@ -1,5 +1,5 @@
 import { type ReadonlyURLSearchParams } from "next/navigation";
-import { QueryParamKeys, QueryParams } from "./types";
+import { QueryParamKeys, QueryParams } from "@/lib/types";
 
 const stringifySearchParams = (searchParams: QueryParams): string => {
   const urlSearchParams = new URLSearchParams();
@@ -52,4 +52,4 @@ const updateSearchParams = ({
   callback(`${pathname}?${params.toString()}`, { scroll: false });
 };
 
-export { stringifySearchParams, updateSearchParams };
+export { stringifySearchParams as stringify, updateSearchParams };

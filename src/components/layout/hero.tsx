@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import ProductSearch from "../search/ProductSearch";
 import { usePathname } from "next/navigation";
-import { metadata as pageMeta } from "@/lib/metadata";
-import ThemeToggleButton from "../shared/ThemeToggleButton";
+import Search from "@/components/search/search";
+import ThemeToggle from "@/components/shared/theme-toggle";
+import pageMeta from "@/lib/metadata";
 
 export default function Hero({
   withSearchBar,
@@ -38,9 +38,9 @@ export default function Hero({
         {pageMeta[currentPath]?.description}
       </p>
 
-      <ThemeToggleButton className="md:!hidden absolute top-2 right-2 !border-b !rounded-full" />
+      <ThemeToggle className="md:!hidden absolute top-2 right-2 !border-b !rounded-full" />
 
-      {currentPath === "/" && withSearchBar && <ProductSearch />}
+      {currentPath === "/" && withSearchBar && <Search />}
     </div>
   );
 }

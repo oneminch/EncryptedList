@@ -1,7 +1,7 @@
-import type { Product } from "@/lib/types";
 import Image from "next/image";
+import type { Product } from "@/lib/types";
 
-export default function ProductListItem({ product }: { product: Product }) {
+export default function ProductItem({ product }: { product: Product }) {
   return (
     <li className="w-full p-4 border-b last:border-none border-zinc-100 dark:border-zinc-800 bg-transparent flex flex-col gap-y-4">
       <div className="flex items-center gap-x-4">
@@ -18,8 +18,7 @@ export default function ProductListItem({ product }: { product: Product }) {
             {product.tags.map((tag: string) => (
               <span
                 className="text-xs font-medium px-3 py-0.5 rounded-full flex items-center justify-center bg-zinc-200 dark:bg-zinc-700"
-                key={tag}
-              >
+                key={tag}>
                 {tag}
               </span>
             ))}

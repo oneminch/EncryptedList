@@ -1,7 +1,7 @@
-import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
-import ThemeToggleButton from "../shared/ThemeToggleButton";
+import { Icon } from "@iconify/react";
+import ThemeToggle from "@/components/shared/theme-toggle";
 
 export default function Header() {
   return (
@@ -26,7 +26,7 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <ThemeToggleButton />
+            <ThemeToggle />
           </li>
         </ul>
       </nav>

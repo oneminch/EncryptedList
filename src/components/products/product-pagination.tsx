@@ -1,8 +1,8 @@
 "use client";
 
-import usePagination from "@/hooks/usePagination";
-import { Icon } from "@iconify/react";
 import React from "react";
+import { Icon } from "@iconify/react";
+import usePagination from "@/hooks/usePagination";
 
 export default function Pagination({
   totalPages,

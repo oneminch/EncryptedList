@@ -1,43 +1,48 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
-import "@/app/globals.css";
-import TabBar from "@/components/layout/TabBar";
+import Script from "next/script";
 import { ThemeProvider } from "next-themes";
+import "@/app/globals.css";
+import TabBar from "@/components/layout/tab-bar";
+import pageMeta from "@/lib/metadata";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
+
+const defaultDescription = pageMeta["/"].description;
 
 export const metadata: Metadata = {
   title: {
     template: "%s · EncryptedList",
-    default: "Browser Secure Apps"
+    default: defaultDescription
+  },
+  description: defaultDescription,
+  authors: [{ name: "Dawit (@oneminch)", url: "https://minch.dev" }],
+  openGraph: {
+    title: {
+      template: "%s · EncryptedList",
+      default: defaultDescription
+    },
+    description: defaultDescription,
+    url: "https://encryptedlist.xyz",
+    siteName: "EncryptedList",
+    locale: "en_US",
+    type: "website"
+  },
+  twitter: {
+    title: {
+      template: "%s · EncryptedList",
+      default: defaultDescription
+    },
+    description: defaultDescription,
+    card: "summary_large_image",
+    site: "@oneminch",
+    creator: "@oneminch"
+  },
+  robots: {
+    index: true,
+    follow: true
   }
 };
-
-// useHead({
-//   titleTemplate: "%s · EncryptedList"
-// });
-
-// const route = useRoute();
-
-// const serverMeta = {
-//   ogImage: "/og-image.png",
-//   twitterImage: "/og-image.png",
-//   ogType: "website",
-//   ogLocale: "en_US",
-//   twitterCard: "summary",
-//   twitterCreator: "@oneminch"
-// };
-
-// useSeoMeta({
-//   title: () => route.meta.title,
-//   description: () => route.meta.description,
-//   ogTitle: () => `${route.meta.title} · EncryptedList`,
-//   twitterTitle: () => `${route.meta.title} · EncryptedList`,
-//   ogDescription: () => route.meta.description,
-//   twitterDescription: () => route.meta.description,
-//   ogUrl: () => `https://encryptedlist.xyz${route.path}`,
-//   ...serverMeta
-// });
 
 export default function RootLayout({
   children
@@ -62,6 +67,12 @@ export default function RootLayout({
             </article>
           </main>
         </ThemeProvider>
+
+        {/* <Script
+          src="https://measure.oneminch.dev/minch-measure"
+          async
+          data-website-id="1e0e9daa-a25b-4943-af4e-68c91b2d3c72"
+        /> */}
       </body>
     </html>
   );

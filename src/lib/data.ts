@@ -1,9 +1,9 @@
-import type { ApiResponse, FetchResult } from "./types";
+import type { ApiResponse, FetchResult } from "@/lib/types";
 
 export const queryProducts = async (
   fetchParams: string
 ): Promise<FetchResult> => {
-  const perPage = 3;
+  const perPage = 10;
   let baseUrl = `https://dummyjson.com/recipes`;
 
   const searchParams = new URLSearchParams(fetchParams);
@@ -58,12 +58,6 @@ export const queryProducts = async (
       error: (error as Error).message
     };
   }
-};
-
-export const searchProducts = async (query: string): Promise<any> => {
-  return fetch(`https://dummyjson.com/recipes/search?q=${query}&limit=20`).then(
-    (res) => res.json()
-  );
 };
 
 export const fetcher = <T>(...args: Parameters<typeof fetch>): Promise<T> => {

@@ -3,7 +3,7 @@
 import { Icon } from "@iconify/react";
 import useSort from "@/hooks/useSort";
 
-export default function SortButton() {
+export default function Sort() {
   const { isSorted, handleSort } = useSort();
 
   return (

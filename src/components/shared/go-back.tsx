@@ -1,4 +1,5 @@
 "use client";
+
 import { useRouter } from "next/navigation";
 
 export default function GoBackButton() {
@@ -12,8 +13,7 @@ export default function GoBackButton() {
     <button
       type="button"
       className="action-item px-4 py-1"
-      onClick={handleGoBack}
-    >
+      onClick={handleGoBack}>
       ↩ Go Back
     </button>
   );

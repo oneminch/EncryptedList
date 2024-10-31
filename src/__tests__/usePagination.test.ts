@@ -1,12 +1,12 @@
-import { renderHook, act } from "@testing-library/react-hooks";
-import { vi, describe, it, expect, beforeEach } from "vitest";
-import usePagination from "../hooks/usePagination";
 import {
   usePathname,
   useSearchParams,
   useRouter,
   ReadonlyURLSearchParams
 } from "next/navigation";
+import { vi, describe, it, expect, beforeEach } from "vitest";
+import { renderHook, act } from "@testing-library/react-hooks";
+import usePagination from "@/hooks/usePagination";
 
 // Mock Next.js navigation hooks
 vi.mock("next/navigation", () => ({

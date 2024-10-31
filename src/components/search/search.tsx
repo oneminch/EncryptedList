@@ -1,22 +1,31 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { useDebounce, useWindowSize } from "@uidotdev/usehooks";
+import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
-import ProductSearchSuggestions from "./ProductSearchSuggestions";
+import { useDebounce, useWindowSize } from "@uidotdev/usehooks";
+import SearchSuggestions from "@/components/search/search-suggestions";
 
-export default function ProductSearch() {
+export default function Search({
+  focusWhenMounted
+}: {
+  focusWhenMounted?: boolean;
+}) {
   const router = useRouter();
 
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
   const [isSearching, setIsSearching] = useState<boolean>(false);
+  const [isSubmittingAllowed, setIsSubmittingAllowed] = useState<boolean>(true);
 
   const windowSize = useWindowSize();
   const debouncedQuery = useDebounce(query, 500);
 
   useEffect(() => {
+    if (focusWhenMounted) {
+      inputRef.current?.focus();
+    }
+
     const handleKeyboardShortcuts = (e: KeyboardEvent) => {
       if (e.key === "/") {
         e.preventDefault();
@@ -56,6 +65,11 @@ export default function ProductSearch() {
 
   const handleQuerySubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!isSubmittingAllowed) {
+      return;
+    }
+
     const params = new URLSearchParams();
     params.set("query", query);
 
@@ -93,7 +107,11 @@ export default function ProductSearch() {
         </div>
       </form>
       {isSearching && (
-        <ProductSearchSuggestions query={debouncedQuery.trim()} />
+        <SearchSuggestions
+          query={debouncedQuery.trim()}
+          onNoSuggestions={() => setIsSubmittingAllowed(false)}
+          onSomeSuggestions={() => setIsSubmittingAllowed(true)}
+        />
       )}
     </div>
   );

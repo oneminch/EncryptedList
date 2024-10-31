@@ -1,7 +1,7 @@
 "use client";
 
-import { Icon } from "@iconify/react";
 import { useTheme } from "next-themes";
+import { Icon } from "@iconify/react";
 
 export default function ThemeToggle({ className }: { className?: string }) {
   const { theme, setTheme } = useTheme();

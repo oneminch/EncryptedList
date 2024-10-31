@@ -1,11 +1,15 @@
 "use client";
 
-import { MouseEvent, useState } from "react";
-import SortButton from "./SortButton";
-import TagList from "./TagList";
+import { useState } from "react";
 import { Icon } from "@iconify/react";
+import TagList from "@/components/products/product-filter-tags";
+import Sort from "@/components/products/product-sort";
 
-const Filter: React.FC = () => {
+export default function Filter({
+  className
+}: {
+  className?: string;
+}): React.ReactNode {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   const toggleCollapse = () => {
@@ -14,9 +18,9 @@ const Filter: React.FC = () => {
 
   return (
     <form
-      className={`dark:border-0 md:dark:border border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 py-4 px-5 max-h-96 sticky top-2 rounded-lg flex flex-col gap-y-4 ${
+      className={`dark:border-0 md:dark:border border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 py-4 px-5 sticky top-2 rounded-lg flex flex-col gap-y-4 w-full md:w-64 h-auto min-h-12 ${
         isCollapsed && "gap-y-0 md:gap-y-4"
-      }`}>
+      } ${className}`}>
       <header className="flex items-center justify-between">
         <h2 className="hidden md:block font-medium text-xl">Tags</h2>
         <button
@@ -33,13 +37,9 @@ const Filter: React.FC = () => {
             className="flex items-center justify-center text-2xl ml-1 group-focus-visible:global-focus rounded-lg"
           />
         </button>
-        {/* <hgroup className="flex items-center gap-x-2">
-        </hgroup> */}
-        <SortButton />
+        <Sort />
       </header>
       <TagList collapse={isCollapsed} />
     </form>
   );
-};
-
-export default Filter;
+}

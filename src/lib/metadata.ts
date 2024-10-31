@@ -1,8 +1,8 @@
-export const metadata = {
+const metadata = {
   "/": {
     title: "EncryptedList · Find Secure Apps",
     minimalTitle: "EncryptedList",
-    description: "Browser & Find Secure Software."
+    description: "Browse & Find Secure Software."
   },
   "/search": {
     title: "Search",
@@ -20,3 +20,5 @@ export const metadata = {
     description: "This Page Doesn't Exist."
   }
 };
+
+export default metadata;

@@ -1,16 +1,26 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
-import { metadata as pageMeta } from "@/lib/metadata";
+import Header from "@/components/layout/header";
+import Hero from "@/components/layout/hero";
+import Filter from "@/components/products/product-filter";
+import ProductList from "@/components/products/product-list";
+import Pagination from "@/components/products/product-pagination";
+import GenericError from "@/components/shared/generic-error";
+import { queryProducts } from "@/lib/data";
+import pageMeta from "@/lib/metadata";
 import type { QueryParams } from "@/lib/types";
-import { stringifySearchParams } from "@/lib/utils";
-import Header from "@/components/layout/Header";
-import Hero from "@/components/layout/Hero";
-import Filter from "@/components/filter/Filter";
-import ProductListWrapper from "@/components/products/ProductListWrapper";
+import { stringify } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: { absolute: pageMeta["/"].title },
-  description: pageMeta["/"].description
+  description: pageMeta["/"].description,
+  openGraph: {
+    title: pageMeta["/"].minimalTitle,
+    description: pageMeta["/"].description
+  },
+  twitter: {
+    title: pageMeta["/"].minimalTitle,
+    description: pageMeta["/"].description
+  }
 };
 
 export default async function HomePage({
@@ -18,7 +28,12 @@ export default async function HomePage({
 }: {
   searchParams: QueryParams;
 }) {
-  const urlSearchParams = stringifySearchParams(searchParams);
+  // const [, ,] = await Promise.all([])
+  // await new Promise((resolve) => setTimeout(resolve, 60000));
+
+  const { products, total, error } = await queryProducts(
+    stringify(searchParams)
+  );
 
   return (
     <>
@@ -31,12 +46,21 @@ export default async function HomePage({
       </section>
       <section
         id="main-content"
-        className="md:grid md:grid-cols-[16rem_minmax(240px,_1fr)] lg:grid-cols-[16rem_minmax(360px,_1fr)] md:gap-2 space-y-2 md:space-y-0">
-        <Filter />
+        className="flex flex-col md:flex-row items-start gap-2">
+        <Filter className="shrink-0" />
 
-        <Suspense>
-          <ProductListWrapper urlSearchParams={urlSearchParams} />
-        </Suspense>
+        <section className="min-w-60 flex-[1]">
+          {error || products === null ? (
+            <GenericError message={error} />
+          ) : (
+            <>
+              <ProductList products={products} />
+              {total !== null && products.length > 0 && (
+                <Pagination totalPages={total} disabled={false} />
+              )}
+            </>
+          )}
+        </section>
       </section>
     </>
   );

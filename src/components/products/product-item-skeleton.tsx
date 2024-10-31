@@ -1,4 +1,4 @@
-export default function ProductListItemSkeleton() {
+export default function ProductItemSkeleton() {
   return (
     <li className="w-full p-4 border-b last:border-none border-zinc-100 dark:border-zinc-800 flex flex-col justify-center gap-y-4 animate-pulse">
       <div className="flex items-center gap-x-4">

@@ -24,6 +24,7 @@ export default function SearchPage() {
         <h2 className="mt-6 mb-2 text-center font-semibold text-2xl sm:text-3xl bg-transparent">
           Search
         </h2>
+
         <Search focusWhenMounted />
       </div>
     </section>

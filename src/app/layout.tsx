@@ -6,6 +6,8 @@ import "@/app/globals.css";
 import TabBar from "@/components/layout/tab-bar";
 import pageMeta from "@/lib/metadata";
 
+export const dynamic = "force-dynamic";
+
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 const defaultDescription = pageMeta["/"].description;

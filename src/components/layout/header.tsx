@@ -8,6 +8,12 @@ export default function Header() {
       <nav className="flex items-center justify-between">
         <ul className="flex items-center justify-between gap-x-2 *:shrink-0">
           <li>
+            <Link className="action-item px-4 py-1" href="/">
+              Home
+              <Icon icon="heroicons:home-20-solid" className="ml-2" />
+            </Link>
+          </li>
+          <li>
             <Link className="action-item px-4 py-1" href="/submit">
               Submit
               <Icon icon="heroicons:plus-circle-20-solid" className="ml-2" />

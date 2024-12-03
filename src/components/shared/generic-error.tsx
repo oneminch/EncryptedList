@@ -2,7 +2,7 @@ export default function GenericError({
   message,
   classes
 }: {
-  message: string | undefined;
+  message: string;
   classes?: string;
 }) {
   return (

@@ -34,6 +34,7 @@ export default async function HomePage({
       await getProducts(dbClient, stringify(searchParams)),
       await getTags(dbClient)
     ]);
+
   // await new Promise((resolve) => setTimeout(resolve, 60000));
 
   return (
@@ -48,7 +49,7 @@ export default async function HomePage({
       <section
         id="main-content"
         className="flex flex-col md:flex-row items-start gap-2">
-        {products !== null || !tagError ? (
+        {tags !== undefined || tagError !== null ? (
           <Filter className="shrink-0" tags={tags} />
         ) : (
           <GenericError message={tagError!} />

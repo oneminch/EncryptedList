@@ -7,7 +7,7 @@ export default function ProductItem({ product }: { product: Product }) {
       <div className="flex items-center gap-x-4">
         <Image
           className="bg-zinc-200 rounded-full h-12 w-12 shrink-0 overflow-hidden text-xs text-center"
-          src={product.image}
+          src={product.icon || "https://cdn.dummyjson.com/recipe-images/1.webp"}
           width={48}
           height={48}
           alt={`Logo for ${product.name}`}
@@ -15,7 +15,7 @@ export default function ProductItem({ product }: { product: Product }) {
         <div className="flex flex-col gap-y-2">
           <div className="font-medium">{product.name}</div>
           <div className="flex items-center gap-x-1">
-            {product.tags.map((tag: string) => (
+            {product.tags.split(",").map((tag: string) => (
               <span
                 className="text-xs font-medium px-3 py-0.5 rounded-full flex items-center justify-center bg-zinc-200 dark:bg-zinc-700"
                 key={tag}>
@@ -26,7 +26,9 @@ export default function ProductItem({ product }: { product: Product }) {
         </div>
       </div>
       <div>
-        <div className="rounded-lg text-zinc-600 dark:text-zinc-400">{`${product.instructions[0]} ${product.instructions[1]}`}</div>
+        <div className="rounded-lg text-zinc-600 dark:text-zinc-400">
+          {product.description}
+        </div>
       </div>
     </li>
   );

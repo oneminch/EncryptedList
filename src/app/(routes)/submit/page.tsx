@@ -24,7 +24,7 @@ export default function SubmitPage({}) {
         <Hero withSearchBar />
       </section>
       <section className="mb-2 block md:hidden">
-        <Hero withLogo />
+        <Hero />
       </section>
       <section>This is where you submit new items.</section>
       <section>

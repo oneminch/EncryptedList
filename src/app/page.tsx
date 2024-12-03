@@ -5,10 +5,11 @@ import Filter from "@/components/products/product-filter";
 import ProductList from "@/components/products/product-list";
 import Pagination from "@/components/products/product-pagination";
 import GenericError from "@/components/shared/generic-error";
-import { queryProducts } from "@/lib/data";
 import pageMeta from "@/lib/metadata";
 import type { QueryParams } from "@/lib/types";
 import { stringify } from "@/lib/utils";
+import { db as dbClient } from "@/lib/db";
+import { getProducts, getTags } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: { absolute: pageMeta["/"].title },
@@ -28,12 +29,13 @@ export default async function HomePage({
 }: {
   searchParams: QueryParams;
 }) {
-  // const [, ,] = await Promise.all([])
-  // await new Promise((resolve) => setTimeout(resolve, 60000));
+  const [{ products, total, error: productError }, { tags, error: tagError }] =
+    await Promise.all([
+      await getProducts(dbClient, stringify(searchParams)),
+      await getTags(dbClient)
+    ]);
 
-  const { products, total, error } = await queryProducts(
-    stringify(searchParams)
-  );
+  // await new Promise((resolve) => setTimeout(resolve, 60000));
 
   return (
     <>
@@ -42,23 +44,27 @@ export default async function HomePage({
         <Hero withSearchBar />
       </section>
       <section className="mb-2 block md:hidden">
-        <Hero withLogo />
+        <Hero />
       </section>
       <section
         id="main-content"
         className="flex flex-col md:flex-row items-start gap-2">
-        <Filter className="shrink-0" />
+        {tags !== undefined || tagError !== null ? (
+          <Filter className="shrink-0" tags={tags} />
+        ) : (
+          <GenericError message={tagError!} />
+        )}
 
-        <section className="min-w-60 flex-[1]">
-          {error || products === null ? (
-            <GenericError message={error} />
-          ) : (
+        <section className="w-full min-w-60 flex-[1]">
+          {products !== null || productError === undefined ? (
             <>
               <ProductList products={products} />
               {total !== null && products.length > 0 && (
-                <Pagination totalPages={total} disabled={false} />
+                <Pagination totalPages={total!} disabled={false} />
               )}
             </>
+          ) : (
+            <GenericError message={productError} />
           )}
         </section>
       </section>

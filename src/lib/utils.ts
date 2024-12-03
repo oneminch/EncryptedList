@@ -1,5 +1,25 @@
 import { type ReadonlyURLSearchParams } from "next/navigation";
-import { QueryParamKeys, QueryParams } from "@/lib/types";
+import { DBArgTypes, QueryParamKeys, QueryParams } from "@/lib/types";
+
+const createDBArgs = (fetchParams: string) => {
+  const searchParams = new URLSearchParams(fetchParams);
+
+  const limit = 10;
+  const page = parseInt(searchParams.get("page") || "1");
+  const query = searchParams.get("query");
+  const sort = searchParams.get("sort");
+  const tags = searchParams.getAll("tag");
+
+  const args: DBArgTypes = {
+    limit,
+    offset: (page - 1) * limit,
+    sort: sort?.toLocaleLowerCase() || null,
+    query: query?.toLocaleLowerCase() || null,
+    tags: tags && tags.length > 0 ? JSON.stringify(tags) : null
+  };
+
+  return args;
+};
 
 const stringifySearchParams = (searchParams: QueryParams): string => {
   const urlSearchParams = new URLSearchParams();
@@ -52,4 +72,4 @@ const updateSearchParams = ({
   callback(`${pathname}?${params.toString()}`, { scroll: false });
 };
 
-export { stringifySearchParams as stringify, updateSearchParams };
+export { createDBArgs, stringifySearchParams as stringify, updateSearchParams };

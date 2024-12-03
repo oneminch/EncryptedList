@@ -26,6 +26,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
 .env*.local
 
 # vercel
@@ -39,3 +40,4 @@ next-env.d.ts
 *.code-workspace
 *.hintrc
 changes.md
+db.sql

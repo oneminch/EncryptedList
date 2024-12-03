@@ -2,14 +2,18 @@
 
 import { useState } from "react";
 import { Icon } from "@iconify/react";
-import TagList from "@/components/products/product-filter-tags";
 import Sort from "@/components/products/product-sort";
+import { useTag } from "@/hooks/useTag";
 
 export default function Filter({
+  tags,
   className
 }: {
+  tags: string[];
   className?: string;
 }): React.ReactNode {
+  const { handleClearTags, areAnyTagsSelected } = useTag();
+
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   const toggleCollapse = () => {
@@ -18,7 +22,7 @@ export default function Filter({
 
   return (
     <form
-      className={`dark:border-0 md:dark:border border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 py-4 px-5 sticky top-2 rounded-lg flex flex-col gap-y-4 w-full md:w-64 h-auto min-h-12 ${
+      className={`border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 py-4 px-5 md:sticky md:top-2 rounded-lg flex flex-col gap-y-4 w-full md:w-64 h-auto min-h-12 ${
         isCollapsed && "gap-y-0 md:gap-y-4"
       } ${className}`}>
       <header className="flex items-center justify-between">
@@ -39,7 +43,46 @@ export default function Filter({
         </button>
         <Sort />
       </header>
-      <TagList collapse={isCollapsed} />
+      {/* <TagList collapse={isCollapsed} tags={tags} /> */}
+      <div
+        className={`${
+          isCollapsed ? "max-h-0 md:max-h-96 hidden md:block" : "block max-h-96"
+        } overflow-hidden md:overflow-visible transition-all duration-100 ease-linear space-y-4`}>
+        <div className="flex md:flex-col flex-row md:items-start items-center flex-wrap p-1 md:p-0">
+          {tags && tags.map((item) => <TagItem key={item} tag={item} />)}
+        </div>
+        <button
+          className="w-full px-4 py-2 mt-auto h-9 font-medium flex items-center justify-center rounded-md border border-b-2 focus-visible:global-focus bg-yellow-500 text-zinc-800 border-zinc-800 dark:border-yellow-500 disabled:cursor-not-allowed disabled:bg-zinc-50 dark:disabled:bg-zinc-800 disabled:text-zinc-400 dark:disabled:text-zinc-500 disabled:border-zinc-200 dark:disabled:border-zinc-700 disabled:focus-visible:ring-0"
+          type="submit"
+          onClick={handleClearTags}
+          disabled={areAnyTagsSelected()}>
+          Clear Tags
+        </button>
+      </div>
     </form>
+  );
+}
+
+function TagItem({ tag }: { tag: string }): React.ReactNode {
+  const { handleSelectTag, isTagSelected } = useTag();
+
+  return (
+    <label className="text-sm font-medium mr-2 mb-2 rounded-full min-w-16 h-8 md:h-6 cursor-pointer select-none">
+      <input
+        type="checkbox"
+        className="peer sr-only"
+        name={tag.toLocaleLowerCase()}
+        checked={isTagSelected(tag.toLocaleLowerCase())}
+        onChange={handleSelectTag}
+      />
+      <span
+        className="w-full h-full px-4
+py-1 md:px-3 md:py-1 flex items-center justify-center rounded-full peer-checked:bg-yellow-500 dark:peer-checked:bg-yellow-500 peer-checked:text-zinc-800 bg-zinc-200 dark:bg-zinc-700 peer-focus-visible:global-focus">
+        <span>{tag}</span>
+        {isTagSelected(tag.toLocaleLowerCase()) && (
+          <span className="ml-1">&#10004;</span>
+        )}
+      </span>
+    </label>
   );
 }

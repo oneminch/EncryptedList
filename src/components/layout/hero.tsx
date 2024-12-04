@@ -18,7 +18,9 @@ export default function Hero({ withSearchBar }: { withSearchBar?: boolean }) {
         }`}>
         <Link
           className="flex items-center justify-center rounded-full focus-visible:global-focus"
-          href="/">
+          href="/"
+          aria-label="Home"
+          title="Home">
           <Image
             src="/logo.svg"
             alt="EncryptedList's Logo"

@@ -43,7 +43,6 @@ export const getProducts = async (
   fetchParams: string
 ): Promise<ProductResultSet> => {
   const dbArgs = createDBArgs(fetchParams);
-  console.log(dbArgs);
 
   try {
     const res = await db.execute({

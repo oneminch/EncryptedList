@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import Sort from "@/components/products/product-sort";
 import { useTag } from "@/hooks/useTag";
+import useArrowNavigation from "@/hooks/useArrowNavigation";
 
 export default function Filter({
   tags,
@@ -43,13 +44,13 @@ export default function Filter({
         </button>
         <Sort />
       </header>
-      {/* <TagList collapse={isCollapsed} tags={tags} /> */}
+
       <div
         className={`${
           isCollapsed ? "max-h-0 md:max-h-96 hidden md:block" : "block max-h-96"
         } overflow-hidden md:overflow-visible transition-all duration-100 ease-linear space-y-4`}>
         <div className="flex md:flex-col flex-row md:items-start items-center flex-wrap p-1 md:p-0">
-          {tags && tags.map((item) => <TagItem key={item} tag={item} />)}
+          {tags && <TagList tags={tags} />}
         </div>
         <button
           className="w-full px-4 py-2 mt-auto h-9 font-medium flex items-center justify-center rounded-md border border-b-2 focus-visible:global-focus bg-yellow-500 text-zinc-800 border-zinc-800 dark:border-yellow-500 disabled:cursor-not-allowed disabled:bg-zinc-50 dark:disabled:bg-zinc-800 disabled:text-zinc-400 dark:disabled:text-zinc-500 disabled:border-zinc-200 dark:disabled:border-zinc-700 disabled:focus-visible:ring-0"
@@ -63,17 +64,58 @@ export default function Filter({
   );
 }
 
-function TagItem({ tag }: { tag: string }): React.ReactNode {
+function TagList({ tags }: { tags: string[] }): React.ReactNode {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { currentIndex, setCurrentIndex } = useArrowNavigation(
+    tags.length,
+    containerRef
+  );
+
+  return (
+    <div
+      ref={containerRef}
+      tabIndex={-1}
+      className="flex md:flex-col flex-row md:items-start items-center flex-wrap p-1 md:p-0">
+      {tags.map((item, index) => (
+        <TagItem
+          key={item}
+          tag={item}
+          isFocused={index === currentIndex}
+          onFocus={() => setCurrentIndex(index)}
+        />
+      ))}
+    </div>
+  );
+}
+
+function TagItem({
+  isFocused,
+  onFocus,
+  tag
+}: {
+  isFocused: boolean;
+  onFocus: () => void;
+  tag: string;
+}): React.ReactNode {
   const { handleSelectTag, isTagSelected } = useTag();
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isFocused && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isFocused]);
 
   return (
     <label className="text-sm font-medium mr-2 mb-2 rounded-full min-w-16 h-8 md:h-6 cursor-pointer select-none">
       <input
         type="checkbox"
+        ref={inputRef}
         className="peer sr-only"
         name={tag.toLocaleLowerCase()}
         checked={isTagSelected(tag.toLocaleLowerCase())}
         onChange={handleSelectTag}
+        onFocus={onFocus}
       />
       <span
         className="w-full h-full px-4

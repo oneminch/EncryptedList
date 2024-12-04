@@ -12,8 +12,7 @@ export default function SearchSuggestions({
   onNoSuggestions: () => void;
   onSomeSuggestions: () => void;
 }) {
-  const { products, totalCount, isEmpty, isError, isLoading } =
-    useSearchSuggest(query);
+  const { products, isEmpty, isError, isLoading } = useSearchSuggest(query);
 
   let searchSuggestions: React.ReactNode;
 

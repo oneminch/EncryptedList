@@ -15,13 +15,14 @@ export default function ProductItem({ product }: { product: Product }) {
         <div className="flex flex-col gap-y-2">
           <div className="font-medium">{product.name}</div>
           <div className="flex items-center gap-x-1">
-            {product.tags.split(",").map((tag: string) => (
-              <span
-                className="text-xs font-medium px-3 py-0.5 rounded-full flex items-center justify-center bg-zinc-200 dark:bg-zinc-700"
-                key={tag}>
-                {tag}
-              </span>
-            ))}
+            {product.tags &&
+              product.tags.split(",").map((tag: string) => (
+                <span
+                  className="text-xs font-medium px-3 py-0.5 rounded-full flex items-center justify-center bg-zinc-200 dark:bg-zinc-700"
+                  key={tag}>
+                  {tag}
+                </span>
+              ))}
           </div>
         </div>
       </div>

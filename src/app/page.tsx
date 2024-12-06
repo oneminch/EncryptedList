@@ -8,7 +8,6 @@ import GenericError from "@/components/shared/generic-error";
 import pageMeta from "@/lib/metadata";
 import type { QueryParams } from "@/lib/types";
 import { stringifySearchParams as stringify } from "@/lib/utils";
-import { db as dbClient } from "@/lib/db";
 import { getProducts, getTags } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -32,10 +31,7 @@ export default async function HomePage({
   const [
     { products, totalPages, error: productError },
     { tags, error: tagError }
-  ] = await Promise.all([
-    getProducts(dbClient, stringify(searchParams)),
-    getTags(dbClient)
-  ]);
+  ] = await Promise.all([getProducts(stringify(searchParams)), getTags()]);
 
   return (
     <>

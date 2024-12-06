@@ -38,7 +38,7 @@ export default function TabBar() {
             href="/submit"
             className="flex flex-col items-center justify-center gap-y-1 rounded focus-visible:global-focus px-2">
             <Icon
-              icon="heroicons:plus-circle-20-solid"
+              icon="heroicons:plus-circle"
               className="flex items-center justify-center text-2xl"
             />
             <p className="text-sm text-zinc-600 dark:text-zinc-400 font-medium">

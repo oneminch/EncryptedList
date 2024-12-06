@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import GoBackButton from "@/components/shared/go-back";
 import pageMeta from "@/lib/metadata";
+import { Icon } from "@iconify/react";
 
 export const metadata: Metadata = {
   title: pageMeta["/not-found"].title,
@@ -28,8 +29,9 @@ export default function NotFound() {
             <GoBackButton />
           </li>
           <li>
-            <Link className="action-item px-4 py-1" href="/">
-              Go Home 🏠
+            <Link className="action-item px-4 py-1 gap-x-2" href="/">
+              <Icon icon="heroicons:home" />
+              Go Home
             </Link>
           </li>
         </ul>

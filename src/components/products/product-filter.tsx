@@ -74,7 +74,7 @@ function TagList({ tags }: { tags: string[] }): React.ReactNode {
     <div
       ref={containerRef}
       tabIndex={-1}
-      className="flex md:flex-col flex-row md:items-start items-center flex-wrap">
+      className="flex md:flex-col flex-row md:items-start items-center gap-x-2 gap-y-2 flex-wrap">
       {tags.map((item, index) => (
         <TagItem
           key={item}
@@ -106,7 +106,7 @@ function TagItem({
   }, [isFocused]);
 
   return (
-    <label className="text-sm font-medium mr-2 mb-2 rounded-full min-w-16 h-8 md:h-6 cursor-pointer select-none">
+    <label className="text-sm font-medium rounded-full min-w-16 h-8 md:h-6 cursor-pointer select-none">
       <input
         type="checkbox"
         ref={inputRef}

@@ -7,7 +7,7 @@ const metadata = {
   "/search": {
     title: "Search",
     minimalTitle: "Search",
-    description: "Search over 100,000 secure software."
+    description: "Search Over 250 Secure Apps."
   },
   "/submit": {
     title: "Submit",

@@ -1,6 +1,7 @@
 import ProductItem from "@/components/products/product-item";
 import SearchStatus from "@/components/search/search-status";
 import type { Product } from "@/lib/types";
+import { Icon } from "@iconify/react";
 
 export default function ProductList({ products }: { products: Product[] }) {
   return (
@@ -13,7 +14,9 @@ export default function ProductList({ products }: { products: Product[] }) {
         ))
       ) : (
         <li className="w-full p-8 bg-transparent flex flex-col gap-y-4 text-center text-zinc-600 dark:text-zinc-400">
-          <h2 className="text-5xl">🔍</h2>
+          <h2 className="text-5xl">
+            <Icon icon="heroicons:magnifying-glass-20-solid" />
+          </h2>
           <h3 className="text-2xl font-bold">No Products Found.</h3>
           <p className="text-lg">Try refining your search or selected tags.</p>
         </li>

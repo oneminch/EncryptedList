@@ -5,7 +5,7 @@ import type {
   Product
 } from "@/lib/types";
 import { Client } from "@libsql/client";
-import { createDBArgs, limit } from "./utils";
+import { createDBArgs, limit as itemsPerPage } from "./utils";
 
 const productQuerySql = `
   WITH filtered_apps AS (
@@ -57,13 +57,15 @@ export const getProducts = async (
       args: { ...dbArgs }
     });
 
-    const filteredCount =
+    const totalFilteredItems =
       res.rows.length > 0 ? (res.rows[0].total as number) : 0;
 
     return {
       products: res.rows as unknown as Product[],
       totalPages:
-        filteredCount > limit ? Math.floor(filteredCount / limit) : null
+        totalFilteredItems > itemsPerPage
+          ? Math.ceil(totalFilteredItems / itemsPerPage)
+          : null
     };
   } catch (error: any) {
     console.error(error);

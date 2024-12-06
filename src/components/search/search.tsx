@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { useDebounce, useWindowSize } from "@uidotdev/usehooks";
@@ -63,7 +63,9 @@ export default function Search({
     setQuery(e.target.value);
   };
 
-  const handleQuerySubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleQuerySubmit = (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>
+  ) => {
     e.preventDefault();
 
     if (!isSubmittingAllowed) {

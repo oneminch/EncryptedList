@@ -2,6 +2,7 @@ import React from "react";
 import SearchItem from "@/components/search/search-item";
 import SearchSkeleton from "@/components/search/search-skeleton";
 import useSearchSuggest from "@/hooks/useSearchSuggest";
+import { Product } from "@/lib/types";
 
 export default function SearchSuggestions({
   query,
@@ -12,12 +13,15 @@ export default function SearchSuggestions({
   onNoSuggestions: () => void;
   onSomeSuggestions: () => void;
 }) {
-  const { products, isEmpty, isError, isLoading } = useSearchSuggest(query);
+  const { products, totalCount, isEmpty, isError, isLoading } =
+    useSearchSuggest(query);
 
   let searchSuggestions: React.ReactNode;
 
   if (isError) {
-    searchSuggestions = <SuggestionItem content="An Error Has Occurred." />;
+    searchSuggestions = (
+      <SuggestionItem content={<p>An Error Has Occurred. Try Again.</p>} />
+    );
 
     // Disable Submission Handler for <Search />
     onNoSuggestions();
@@ -28,20 +32,26 @@ export default function SearchSuggestions({
     onSomeSuggestions();
   } else if (isEmpty) {
     searchSuggestions = (
-      <SuggestionItem content="No Matching Products Found." />
+      <SuggestionItem content={<p>No Matching Products Found.</p>} />
     );
 
     // Disable Submission Handler for <Search />
     onNoSuggestions();
   } else {
     searchSuggestions = [
-      products.map((item: any) => (
-        <SearchItem product={item} key={item.name} />
+      products.map((item: Omit<Product, "tags">) => (
+        <SearchItem product={item} key={item.id} />
       )),
-      <SuggestionItem
-        key={"view-all"}
-        content="Press 'Enter' for All Results"
-      />
+      totalCount > 3 && (
+        <SuggestionItem
+          key={"view-all"}
+          content={
+            <p className="hidden md:inline-block">
+              Press &apos;Enter&apos; for All Results
+            </p>
+          }
+        />
+      )
     ];
 
     // Re-enable Submission for <Search />
@@ -57,10 +67,14 @@ export default function SearchSuggestions({
   );
 }
 
-function SuggestionItem({ content }: { content: string }): React.ReactNode {
+function SuggestionItem({
+  content
+}: {
+  content: React.ReactNode;
+}): React.ReactNode {
   return (
     <li className="w-full py-4 text-center bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 text-sm">
-      <p>{content}</p>
+      {content}
     </li>
   );
 }

@@ -1,10 +1,11 @@
 import { type ReadonlyURLSearchParams } from "next/navigation";
 import { DBArgTypes, QueryParamKeys, QueryParams } from "@/lib/types";
 
-const createDBArgs = (fetchParams: string) => {
+export const limit = 10;
+
+export const createDBArgs = (fetchParams: string) => {
   const searchParams = new URLSearchParams(fetchParams);
 
-  const limit = 10;
   const page = parseInt(searchParams.get("page") || "1");
   const query = searchParams.get("query");
   const sort = searchParams.get("sort");
@@ -21,7 +22,7 @@ const createDBArgs = (fetchParams: string) => {
   return args;
 };
 
-const stringifySearchParams = (searchParams: QueryParams): string => {
+export const stringifySearchParams = (searchParams: QueryParams): string => {
   const urlSearchParams = new URLSearchParams();
 
   Object.entries(searchParams).forEach(([key, value]) => {
@@ -35,7 +36,7 @@ const stringifySearchParams = (searchParams: QueryParams): string => {
   return urlSearchParams.toString();
 };
 
-const updateSearchParams = ({
+export const updateSearchParams = ({
   key,
   value,
   searchParams,
@@ -72,4 +73,5 @@ const updateSearchParams = ({
   callback(`${pathname}?${params.toString()}`, { scroll: false });
 };
 
-export { createDBArgs, stringifySearchParams as stringify, updateSearchParams };
+export const sleep = async () =>
+  await new Promise((resolve) => setTimeout(resolve, 60000));

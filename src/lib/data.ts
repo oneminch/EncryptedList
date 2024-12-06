@@ -5,7 +5,7 @@ import type {
   Product
 } from "@/lib/types";
 import { Client } from "@libsql/client";
-import { createDBArgs } from "./utils";
+import { createDBArgs, limit } from "./utils";
 
 const productQuerySql = `
   WITH filtered_apps AS (
@@ -16,18 +16,25 @@ const productQuerySql = `
     LEFT JOIN tags t ON at.tag_id = t.id
     WHERE (((:query) IS NULL) OR (LOWER(a.name) LIKE '%' || LOWER((:query)) || '%') OR (LOWER(a.description) LIKE '%' || LOWER((:query)) || '%'))
     GROUP BY a.id, a.name, a.icon, a.description
+  ),
+  filtered_and_tagged AS (
+    SELECT id, name, icon, description, all_tags AS tags
+    FROM filtered_apps
+    WHERE (:tags) IS NULL OR id IN (
+      SELECT a.id
+      FROM apps a
+      JOIN app_tags at ON a.id = at.app_id
+      JOIN tags t ON at.tag_id = t.id
+      WHERE LOWER(t.name) IN (SELECT value FROM json_each((:tags)))
+      GROUP BY a.id
+      HAVING COUNT(DISTINCT t.name) = (SELECT COUNT(value) FROM json_each((:tags)))
+    )
+  ),
+  total_count AS (
+    SELECT COUNT(*) AS total FROM filtered_and_tagged
   )
-  SELECT id, name, icon, description, all_tags AS tags
-  FROM filtered_apps
-  WHERE (:tags) IS NULL OR id IN (
-    SELECT a.id
-    FROM apps a
-    JOIN app_tags at ON a.id = at.app_id
-    JOIN tags t ON at.tag_id = t.id
-    WHERE LOWER(t.name) IN (SELECT value FROM json_each((:tags)))
-    GROUP BY a.id
-    HAVING COUNT(DISTINCT t.name) = (SELECT COUNT(value) FROM json_each((:tags)))
-  )
+  SELECT fat.*, tc.total
+  FROM filtered_and_tagged fat, total_count tc
   ORDER BY
     CASE
       WHEN (:sort) = 'asc' THEN name
@@ -49,16 +56,20 @@ export const getProducts = async (
       sql: productQuerySql,
       args: { ...dbArgs }
     });
+
+    const filteredCount =
+      res.rows.length > 0 ? (res.rows[0].total as number) : 0;
+
     return {
       products: res.rows as unknown as Product[],
-      total: res.rows.length
-      // error: null
+      totalPages:
+        filteredCount > limit ? Math.floor(filteredCount / limit) : null
     };
   } catch (error: any) {
     console.error(error);
     return {
       products: [],
-      // total: null,
+      totalPages: null,
       error: error.message as string
     };
   }

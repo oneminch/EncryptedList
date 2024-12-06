@@ -11,7 +11,7 @@ interface FetchResult {
 
 interface ProductResultSet {
   products: Product[];
-  total?: number | null;
+  totalPages: number | null;
   error?: string;
 }
 

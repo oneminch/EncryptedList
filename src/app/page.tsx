@@ -7,7 +7,7 @@ import Pagination from "@/components/products/product-pagination";
 import GenericError from "@/components/shared/generic-error";
 import pageMeta from "@/lib/metadata";
 import type { QueryParams } from "@/lib/types";
-import { stringify } from "@/lib/utils";
+import { stringifySearchParams as stringify } from "@/lib/utils";
 import { db as dbClient } from "@/lib/db";
 import { getProducts, getTags } from "@/lib/data";
 
@@ -29,13 +29,13 @@ export default async function HomePage({
 }: {
   searchParams: QueryParams;
 }) {
-  const [{ products, total, error: productError }, { tags, error: tagError }] =
-    await Promise.all([
-      await getProducts(dbClient, stringify(searchParams)),
-      await getTags(dbClient)
-    ]);
-
-  // await new Promise((resolve) => setTimeout(resolve, 60000));
+  const [
+    { products, totalPages, error: productError },
+    { tags, error: tagError }
+  ] = await Promise.all([
+    getProducts(dbClient, stringify(searchParams)),
+    getTags(dbClient)
+  ]);
 
   return (
     <>
@@ -49,18 +49,18 @@ export default async function HomePage({
       <section
         id="main-content"
         className="flex flex-col md:flex-row items-start gap-2">
-        {tags !== undefined || tagError !== null ? (
+        {tags.length > 0 || tagError !== null ? (
           <Filter className="shrink-0" tags={tags} />
         ) : (
-          <GenericError message={tagError!} />
+          <GenericError message="Error Fetching Tags." />
         )}
 
         <section className="w-full min-w-60 flex-[1]">
           {products !== null || productError === undefined ? (
             <>
               <ProductList products={products} />
-              {total !== null && products.length > 0 && (
-                <Pagination totalPages={total!} disabled={false} />
+              {totalPages !== null && (
+                <Pagination totalPages={totalPages} disabled={false} />
               )}
             </>
           ) : (

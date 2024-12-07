@@ -6,7 +6,7 @@ import TabBar from "@/components/layout/tab-bar";
 import pageMeta from "@/lib/metadata";
 // import Script from "next/script";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-static";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 

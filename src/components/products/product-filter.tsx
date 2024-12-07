@@ -1,10 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { Icon } from "@iconify/react";
 import Sort from "@/components/products/product-sort";
 import useTag from "@/hooks/useTag";
-import TagList from "./product-filter-taglist";
+
+const TagList = dynamic(() => import("./product-filter-taglist"), {
+  ssr: false
+});
 
 export default function Filter({
   tags,

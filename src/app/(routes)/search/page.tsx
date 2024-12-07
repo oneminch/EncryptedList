@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
-import Search from "@/components/search/search";
+import dynamic from "next/dynamic";
 import pageMeta from "@/lib/metadata";
+
+const Search = dynamic(() => import("@/components/search/search"), {
+  ssr: false
+});
 
 export const metadata: Metadata = {
   title: pageMeta["/search"].title,

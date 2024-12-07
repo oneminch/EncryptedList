@@ -7,7 +7,11 @@ import Search from "@/components/search/search";
 import ThemeToggle from "@/components/shared/theme-toggle";
 import pageMeta from "@/lib/metadata";
 
-export default function Hero({ withSearchBar }: { withSearchBar?: boolean }) {
+export default function Hero({
+  withSearchBar
+}: {
+  withSearchBar?: boolean;
+}): React.ReactNode {
   const currentPath = usePathname() as keyof typeof pageMeta;
 
   return (

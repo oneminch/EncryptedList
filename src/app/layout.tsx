@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
-import Script from "next/script";
 import { ThemeProvider } from "next-themes";
-import "@/app/globals.css";
+import "./globals.css";
 import TabBar from "@/components/layout/tab-bar";
 import pageMeta from "@/lib/metadata";
+// import Script from "next/script";
 
-// export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
@@ -50,7 +50,7 @@ export default function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>): React.ReactNode {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={spaceGrotesk.className}>

@@ -27,7 +27,7 @@ export default async function HomePage({
   searchParams
 }: {
   searchParams: QueryParams;
-}) {
+}): Promise<React.ReactNode> {
   const [
     { products, totalPages, error: productError },
     { tags, error: tagError }

@@ -8,7 +8,7 @@ export default function ErrorPage({
 }: {
   error: Error & { digest?: string };
   reset: () => void;
-}) {
+}): React.ReactNode {
   return (
     <section className="absolute inset-0 flex flex-col items-center justify-center">
       <GenericError

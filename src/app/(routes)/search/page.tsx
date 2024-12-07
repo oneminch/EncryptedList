@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   }
 };
 
-export default function SearchPage() {
+export default function SearchPage(): React.ReactNode {
   return (
     <section
       id="main-content"

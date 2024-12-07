@@ -1,11 +1,11 @@
-import { Product } from "@/lib/types";
+import type { SearchProduct } from "@/lib/types";
 import Image from "next/image";
 
 export default function SearchItem({
   product
 }: {
-  product: Omit<Product, "tags">;
-}) {
+  product: SearchProduct;
+}): React.ReactNode {
   return (
     <li
       className="w-full px-4 py-3 border-b last:border-none border-zinc-100 dark:border-zinc-800 flex flex-col gap-y-4 focus:outline-none group"

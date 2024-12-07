@@ -3,7 +3,7 @@
 import { Icon } from "@iconify/react";
 import useSort from "@/hooks/useSort";
 
-export default function Sort() {
+export default function Sort(): React.ReactNode {
   const { isSorted, handleSort } = useSort();
 
   return (

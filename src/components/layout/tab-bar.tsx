@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 
-export default function TabBar() {
+export default function TabBar(): React.ReactNode {
   return (
     <nav className="md:hidden min-w-80 shadow-xl min-h-20 border-y border-zinc-200 dark:border-zinc-700 bg-white/95 dark:bg-zinc-900/95 backdrop-blur fixed right-0 left-0 bottom-0">
       <ul className="w-full h-full pt-4 pb-6 px-2 flex items-center justify-around">

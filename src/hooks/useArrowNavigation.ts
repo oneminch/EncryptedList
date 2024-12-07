@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+"use client";
 
-const useArrowNavigation = (
+import { useState, useEffect } from "react";
+
+export default function useArrowNavigation(
   listLength: number,
   containerRef: React.RefObject<HTMLDivElement>
-) => {
+) {
   const [currentIndex, setCurrentIndex] = useState(-1);
 
   useEffect(() => {
@@ -29,9 +31,7 @@ const useArrowNavigation = (
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [listLength]);
+  }, [listLength, containerRef]);
 
   return { currentIndex, setCurrentIndex };
-};
-
-export default useArrowNavigation;
+}

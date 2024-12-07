@@ -1,6 +1,7 @@
-import type { ProductResultSet, Product } from "@/lib/types";
-import { createDBArgs, limit as itemsPerPage } from "./utils";
-import { getDBClient } from "./db";
+import type { ProductResultSet, Product, SearchProduct } from "@/lib/types";
+import { createDBArgs, limit as itemsPerPage } from "@/lib/utils";
+import getDBClient from "@/lib/db";
+import { LibsqlError } from "@libsql/client";
 
 const filterProductsSql = `
   WITH filtered_apps AS (
@@ -46,7 +47,7 @@ const queryTagsSql = `
   ORDER BY name ASC;
 `;
 
-export const searchProductsSql = `
+const searchProductsSql = `
   SELECT id, name, icon, description
   FROM apps
   WHERE ((:query) IS NULL) OR (LOWER(name) LIKE '%' || LOWER((:query)) || '%') OR (LOWER(description) LIKE '%' || LOWER((:query)) || '%')
@@ -54,9 +55,7 @@ export const searchProductsSql = `
   LIMIT 4;
 `;
 
-export const getProducts = async (
-  fetchParams: string
-): Promise<ProductResultSet> => {
+const getProducts = async (fetchParams: string): Promise<ProductResultSet> => {
   const db = getDBClient();
   const dbArgs = createDBArgs(fetchParams);
 
@@ -86,7 +85,7 @@ export const getProducts = async (
   }
 };
 
-export const getTags = async (): Promise<{
+const getTags = async (): Promise<{
   tags: string[];
   error: string | null;
 }> => {
@@ -107,26 +106,31 @@ export const getTags = async (): Promise<{
   }
 };
 
-export const searchProducts = async (
-  query: string
-): Promise<Omit<Product, "tags">[]> => {
+const searchProducts = async (query: string): Promise<SearchProduct[]> => {
   const db = getDBClient();
 
-  const result = await db.execute({
-    sql: searchProductsSql,
-    args: {
-      query
+  try {
+    const result = await db.execute({
+      sql: searchProductsSql,
+      args: {
+        query
+      }
+    });
+    return result.rows as unknown as SearchProduct[];
+  } catch (e) {
+    if (e instanceof LibsqlError) {
+      console.error(e);
     }
-  });
-
-  return result.rows as unknown as Omit<Product, "tags">[];
+    throw e;
+  }
 };
 
-export const fetcher = async (query: string): Promise<any> => {
+const fetcher = async (query: string): Promise<any> => {
   const response = await fetch("/api/search", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ query })
+    body: JSON.stringify({ query }),
+    cache: "no-store"
   });
 
   if (!response.ok) {
@@ -135,3 +139,5 @@ export const fetcher = async (query: string): Promise<any> => {
 
   return response.json();
 };
+
+export { searchProductsSql, getProducts, getTags, searchProducts, fetcher };

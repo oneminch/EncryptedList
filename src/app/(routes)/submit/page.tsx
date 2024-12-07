@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   }
 };
 
-export default function SubmitPage({}) {
+export default function SubmitPage(): React.ReactNode {
   return (
     <>
       <section className="mb-2 hidden md:block">

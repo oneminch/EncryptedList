@@ -2,16 +2,7 @@ import { useState, useEffect } from "react";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { updateSearchParams } from "@/lib/utils";
 
-export const TAGS = [
-  "Decentralized",
-  "Developer Tools",
-  "Free",
-  "Open-Source",
-  "Opt-In",
-  "Web App"
-];
-
-export const useTag = () => {
+export default function useTag() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { replace } = useRouter();
@@ -66,4 +57,4 @@ export const useTag = () => {
     handleSelectTag,
     handleClearTags
   };
-};
+}

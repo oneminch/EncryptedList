@@ -6,7 +6,7 @@ export default function GenericError({
 }: {
   message: string;
   classes?: string;
-}) {
+}): React.ReactNode {
   return (
     <div
       className={`flex flex-col gap-y-4 items-center justify-center border border-zinc-200 dark:border-transparent md:dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 p-8 rounded-lg ${classes}`}>

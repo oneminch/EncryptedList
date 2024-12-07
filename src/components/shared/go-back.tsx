@@ -3,7 +3,7 @@
 import { Icon } from "@iconify/react";
 import { useRouter } from "next/navigation";
 
-export default function GoBackButton() {
+export default function GoBackButton(): React.ReactNode {
   const router = useRouter();
 
   const handleGoBack = () => {

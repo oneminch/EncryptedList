@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { Icon } from "@iconify/react";
 import usePagination from "@/hooks/usePagination";
 
@@ -10,7 +9,7 @@ export default function Pagination({
 }: {
   totalPages: number;
   disabled: boolean;
-}) {
+}): React.ReactNode {
   const { currentPage, isOnFirstPage, isOnLastPage, toPrevPage, toNextPage } =
     usePagination(totalPages);
 

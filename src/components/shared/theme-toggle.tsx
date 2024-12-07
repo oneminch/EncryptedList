@@ -3,7 +3,11 @@
 import { useTheme } from "next-themes";
 import { Icon } from "@iconify/react";
 
-export default function ThemeToggle({ className }: { className?: string }) {
+export default function ThemeToggle({
+  className
+}: {
+  className?: string;
+}): React.ReactNode {
   const { theme, setTheme } = useTheme();
 
   const handleThemeToggle = () => {

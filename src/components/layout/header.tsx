@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import ThemeToggle from "@/components/shared/theme-toggle";
 
-export default function Header() {
+export default function Header(): React.ReactNode {
   return (
     <header className="w-full py-2 px-6 flex items-center justify-end border border-y-0 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900">
       <nav className="flex items-center justify-between">

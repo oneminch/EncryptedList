@@ -1,9 +1,9 @@
 import useSWR from "swr";
 import { fetcher } from "@/lib/data";
-import { Product } from "@/lib/types";
+import type { SearchProduct } from "@/lib/types";
 
 export default function useSearchSuggest(query: string) {
-  const { data, error, isLoading } = useSWR<Omit<Product, "tags">[], Error>(
+  const { data, error, isLoading } = useSWR<SearchProduct[], Error>(
     query,
     fetcher
   );

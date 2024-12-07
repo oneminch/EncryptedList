@@ -23,6 +23,8 @@ interface Product {
   description: string;
 }
 
+type SearchProduct = Omit<Product, "tags" | "description">;
+
 interface QueryParams {
   page?: number;
   query?: string;
@@ -47,5 +49,6 @@ export type {
   FetchResult,
   Product,
   QueryParams,
-  QueryParamKeys
+  QueryParamKeys,
+  SearchProduct
 };

@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Icon } from "@iconify/react";
 import Sort from "@/components/products/product-sort";
-import { useTag } from "@/hooks/useTag";
-import useArrowNavigation from "@/hooks/useArrowNavigation";
+import useTag from "@/hooks/useTag";
+import TagList from "./product-filter-taglist";
 
 export default function Filter({
   tags,
@@ -60,70 +60,5 @@ export default function Filter({
         </button>
       </div>
     </form>
-  );
-}
-
-function TagList({ tags }: { tags: string[] }): React.ReactNode {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { currentIndex, setCurrentIndex } = useArrowNavigation(
-    tags.length,
-    containerRef
-  );
-
-  return (
-    <div
-      ref={containerRef}
-      tabIndex={-1}
-      className="flex md:flex-col flex-row md:items-start items-center gap-x-2 gap-y-2 flex-wrap">
-      {tags.map((item, index) => (
-        <TagItem
-          key={item}
-          tag={item}
-          isFocused={index === currentIndex}
-          onFocus={() => setCurrentIndex(index)}
-        />
-      ))}
-    </div>
-  );
-}
-
-function TagItem({
-  isFocused,
-  onFocus,
-  tag
-}: {
-  isFocused: boolean;
-  onFocus: () => void;
-  tag: string;
-}): React.ReactNode {
-  const { handleSelectTag, isTagSelected } = useTag();
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (isFocused && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [isFocused]);
-
-  return (
-    <label className="text-sm font-medium rounded-full min-w-16 h-8 md:h-6 cursor-pointer select-none">
-      <input
-        type="checkbox"
-        ref={inputRef}
-        className="peer sr-only"
-        name={tag.toLocaleLowerCase()}
-        checked={isTagSelected(tag.toLocaleLowerCase())}
-        onChange={handleSelectTag}
-        onFocus={onFocus}
-      />
-      <span
-        className="w-full h-full px-4
-py-1 md:px-3 md:py-1 flex items-center justify-center rounded-full peer-checked:bg-yellow-500 dark:peer-checked:bg-yellow-500 peer-checked:text-zinc-800 bg-zinc-200 dark:bg-zinc-700 peer-focus-visible:global-focus">
-        <span>{tag}</span>
-        {isTagSelected(tag.toLocaleLowerCase()) && (
-          <span className="ml-1">&#10004;</span>
-        )}
-      </span>
-    </label>
   );
 }

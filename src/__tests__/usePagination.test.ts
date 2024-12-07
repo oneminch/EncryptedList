@@ -2,7 +2,7 @@ import {
   usePathname,
   useSearchParams,
   useRouter,
-  ReadonlyURLSearchParams
+  type ReadonlyURLSearchParams
 } from "next/navigation";
 import { vi, describe, it, expect, beforeEach } from "vitest";
 import { renderHook, act } from "@testing-library/react-hooks";

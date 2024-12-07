@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { useDebounce, useWindowSize } from "@uidotdev/usehooks";
@@ -10,7 +10,7 @@ export default function Search({
   focusWhenMounted
 }: {
   focusWhenMounted?: boolean;
-}) {
+}): React.ReactNode {
   const router = useRouter();
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -22,10 +22,6 @@ export default function Search({
   const debouncedQuery = useDebounce(query, 500);
 
   useEffect(() => {
-    if (focusWhenMounted) {
-      inputRef.current?.focus();
-    }
-
     const handleKeyboardShortcuts = (e: KeyboardEvent) => {
       if (e.key === "/") {
         e.preventDefault();
@@ -63,9 +59,7 @@ export default function Search({
     setQuery(e.target.value);
   };
 
-  const handleQuerySubmit = (
-    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>
-  ) => {
+  const handleQuerySubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!isSubmittingAllowed) {
@@ -101,6 +95,7 @@ export default function Search({
             onFocus={showSuggestions}
             onChange={handleQueryChange}
             type="text"
+            autoFocus={focusWhenMounted}
             placeholder="Search Over 250 Apps"
           />
           <span className="hidden sm:flex items-center justify-center w-6 h-6 bg-white dark:bg-zinc-900 border-[0.5px] border-b-2 border-zinc-300 dark:border-zinc-600 text-sm rounded-md absolute right-2 text-zinc-400 dark:text-zinc-600">

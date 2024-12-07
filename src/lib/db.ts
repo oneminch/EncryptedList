@@ -1,8 +1,8 @@
-import { Client, createClient } from "@libsql/client";
+import { type Client, createClient } from "@libsql/client";
 
 let client: Client | null = null;
 
-export function getDBClient() {
+const getDBClient = () => {
   if (!client) {
     client = createClient({
       url: process.env.TURSO_DATABASE_URL!,
@@ -10,4 +10,6 @@ export function getDBClient() {
     });
   }
   return client;
-}
+};
+
+export default getDBClient;

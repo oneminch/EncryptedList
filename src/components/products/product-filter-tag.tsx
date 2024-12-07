@@ -1,5 +1,6 @@
 "use client";
 
+import { Icon } from "@iconify/react";
 import useTag from "@/hooks/useTag";
 
 export default function TagItem({ tag }: { tag: string }): React.ReactNode {
@@ -19,7 +20,7 @@ export default function TagItem({ tag }: { tag: string }): React.ReactNode {
 py-1 md:px-3 md:py-1 flex items-center justify-center rounded-full peer-checked:bg-yellow-500 dark:peer-checked:bg-yellow-500 peer-checked:text-zinc-800 bg-zinc-200 dark:bg-zinc-700 peer-focus-visible:global-focus">
         <span>{tag}</span>
         {isTagSelected(tag.toLocaleLowerCase()) && (
-          <span className="ml-1">&#10004;</span>
+          <Icon icon="heroicons:check-16-solid" className="ml-1" />
         )}
       </span>
     </label>

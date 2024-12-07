@@ -70,7 +70,7 @@ const updateSearchParams = ({
     }
   }
 
-  callback(`${pathname}?${params.toString()}`, { scroll: false });
+  callback(`${pathname}?${params.toString()}`, { scroll: true });
 };
 
 const sleep = async () =>

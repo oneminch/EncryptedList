@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { useDebounce, useWindowSize } from "@uidotdev/usehooks";
@@ -27,11 +27,6 @@ export default function Search({
         e.preventDefault();
         inputRef.current?.focus();
       }
-
-      if (inputRef.current === document.activeElement && e.key === "Escape") {
-        e.preventDefault();
-        inputRef.current?.blur();
-      }
     };
 
     window.addEventListener("keydown", handleKeyboardShortcuts);
@@ -44,6 +39,13 @@ export default function Search({
   useEffect(() => {
     setIsSearching(debouncedQuery.trim().length >= 3);
   }, [debouncedQuery]);
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      inputRef.current?.blur();
+    }
+  };
 
   const hideSuggestions = (e: React.FocusEvent<HTMLInputElement>) => {
     if (windowSize.width && windowSize.width >= 640) {
@@ -69,7 +71,9 @@ export default function Search({
     const params = new URLSearchParams();
     params.set("query", query);
 
-    router.push(`/?${params.toString()}`);
+    router.push(`/?${params.toString()}`, {
+      scroll: true
+    });
     setQuery("");
   };
 
@@ -94,6 +98,7 @@ export default function Search({
             onBlur={hideSuggestions}
             onFocus={showSuggestions}
             onChange={handleQueryChange}
+            onKeyDown={handleKeyDown}
             type="text"
             autoFocus={focusWhenMounted}
             placeholder="Search Over 250 Apps"

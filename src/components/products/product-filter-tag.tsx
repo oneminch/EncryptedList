@@ -1,36 +1,18 @@
 "use client";
 
 import useTag from "@/hooks/useTag";
-import { useEffect, useRef } from "react";
 
-export default function TagItem({
-  isFocused,
-  onFocus,
-  tag
-}: {
-  isFocused: boolean;
-  onFocus: () => void;
-  tag: string;
-}): React.ReactNode {
+export default function TagItem({ tag }: { tag: string }): React.ReactNode {
   const { handleSelectTag, isTagSelected } = useTag();
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (isFocused && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [isFocused]);
 
   return (
     <label className="text-sm font-medium rounded-full min-w-16 h-8 md:h-6 cursor-pointer select-none">
       <input
         type="checkbox"
-        ref={inputRef}
         className="peer sr-only"
         name={tag.toLocaleLowerCase()}
         checked={isTagSelected(tag.toLocaleLowerCase())}
         onChange={handleSelectTag}
-        onFocus={onFocus}
       />
       <span
         className="w-full h-full px-4

@@ -11,6 +11,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@fontsource/space-grotesk": "^5.1.0",
     "@libsql/client": "^0.14.0",
     "@uidotdev/usehooks": "^2.4.1",
     "next": "14.2.10",

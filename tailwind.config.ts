@@ -1,3 +1,4 @@
+import defaultTheme from "tailwindcss/defaultTheme";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -9,7 +10,11 @@ const config: Config = {
   darkMode: "class",
   mode: "jit",
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        sans: ["Space Grotesk", ...defaultTheme.fontFamily.sans]
+      }
+    }
   },
   plugins: []
 };

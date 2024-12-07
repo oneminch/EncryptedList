@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import TabBar from "@/components/layout/tab-bar";
 import pageMeta from "@/lib/metadata";
+import "@fontsource/space-grotesk/400.css";
+import "@fontsource/space-grotesk/500.css";
+import "@fontsource/space-grotesk/600.css";
+import "@fontsource/space-grotesk/700.css";
 // import Script from "next/script";
-
-// export const dynamic = "force-static";
-
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 const defaultDescription = pageMeta["/"].description;
 
@@ -53,7 +52,7 @@ export default function RootLayout({
 }>): React.ReactNode {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={spaceGrotesk.className}>
+      <body>
         {/*  Skip Navigation Link */}
         <a
           href="#main-content"

@@ -40,4 +40,5 @@ next-env.d.ts
 *.code-workspace
 *.hintrc
 changes.md
-db.sql
+*.sql
+temp/

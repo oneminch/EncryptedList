@@ -5,9 +5,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "cdn.dummyjson.com",
+        hostname: "blob.encryptedlist.xyz",
         port: "",
-        pathname: "/**"
+        pathname: "/icons/apps/**"
       }
     ]
   }

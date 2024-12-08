@@ -1,5 +1,7 @@
 import Image from "next/image";
 import type { Product } from "@/lib/types";
+import Link from "next/link";
+import { Icon } from "@iconify/react";
 
 export default function ProductItem({
   product
@@ -7,17 +9,28 @@ export default function ProductItem({
   product: Product;
 }): React.ReactNode {
   return (
-    <li className="w-full p-4 border-b last:border-none border-zinc-100 dark:border-zinc-800 bg-transparent flex flex-col gap-y-4">
+    <li className="w-full p-4 border-b last:border-none border-zinc-100 dark:border-zinc-800 bg-transparent flex flex-col gap-y-4 group">
       <div className="flex items-center gap-x-4">
         <Image
           className="bg-zinc-200 rounded-full h-12 w-12 shrink-0 overflow-hidden text-xs text-center"
-          src={product.icon || "https://cdn.dummyjson.com/recipe-images/1.webp"}
+          src={
+            product.icon || "https://blob.encryptedlist.xyz/icons/apps/mega.png"
+          }
           width={48}
           height={48}
           alt={`Logo for ${product.name}`}
         />
-        <div className="flex flex-col gap-y-2">
-          <div className="font-medium">{product.name}</div>
+        <div className="flex flex-col items-start gap-y-2">
+          <Link
+            href={product.url}
+            className="flex items-center gap-x-2 font-medium group focus-visible:underline group-hover:underline underline-offset-2 decoration-dashed decoration-yellow-500 rounded-sm focus-visible:global-focus">
+            {product.name}
+            <Icon
+              icon="heroicons:link-20-solid"
+              className="hidden text-lg group-focus-visible:inline-block group-hover:inline-block text-zinc-500 dark:text-zinc-500"
+            />
+          </Link>
+
           <div className="flex items-center gap-x-1">
             {product.tags.split(",").map((tag: string) => (
               <span

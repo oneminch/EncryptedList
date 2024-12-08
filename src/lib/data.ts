@@ -5,16 +5,16 @@ import { LibsqlError } from "@libsql/client";
 
 const filterProductsSql = `
   WITH filtered_apps AS (
-    SELECT a.id, a.name, a.icon, a.description,
+    SELECT a.id, a.name, a.icon, a.description, a.url,
       GROUP_CONCAT(t.name, ',') AS all_tags
     FROM apps a
     LEFT JOIN app_tags at ON a.id = at.app_id
     LEFT JOIN tags t ON at.tag_id = t.id
     WHERE (((:query) IS NULL) OR (LOWER(a.name) LIKE '%' || LOWER((:query)) || '%') OR (LOWER(a.description) LIKE '%' || LOWER((:query)) || '%'))
-    GROUP BY a.id, a.name, a.icon, a.description
+    GROUP BY a.id, a.name, a.icon, a.description, a.url
   ),
   filtered_and_tagged AS (
-    SELECT id, name, icon, description, all_tags AS tags
+    SELECT id, name, icon, description, url, all_tags AS tags
     FROM filtered_apps
     WHERE (:tags) IS NULL OR id IN (
       SELECT a.id
@@ -48,7 +48,7 @@ const queryTagsSql = `
 `;
 
 const searchProductsSql = `
-  SELECT id, name, icon, description
+  SELECT id, name, icon, description, url
   FROM apps
   WHERE ((:query) IS NULL) OR (LOWER(name) LIKE '%' || LOWER((:query)) || '%') OR (LOWER(description) LIKE '%' || LOWER((:query)) || '%')
   ORDER BY name ASC

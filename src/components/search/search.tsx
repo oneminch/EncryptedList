@@ -91,7 +91,7 @@ export default function Search({
             className="flex items-center justify-center w-6 h-6 absolute left-2 text-zinc-400 dark:text-zinc-600"
           />
           <input
-            className="w-full h-10 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900 py-2 px-10 focus-visible:global-focus"
+            className="w-full h-10 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900 py-2 px-10 focus-visible:global-focus"
             id="search-query"
             value={query}
             ref={inputRef}

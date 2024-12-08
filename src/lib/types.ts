@@ -21,6 +21,7 @@ interface Product {
   name: string;
   tags: string;
   description: string;
+  url: string;
 }
 
 type SearchProduct = Omit<Product, "tags" | "description">;

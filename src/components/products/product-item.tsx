@@ -1,6 +1,5 @@
 import Image from "next/image";
 import type { Product } from "@/lib/types";
-import Link from "next/link";
 import { Icon } from "@iconify/react";
 
 export default function ProductItem({
@@ -14,22 +13,24 @@ export default function ProductItem({
         <Image
           className="bg-zinc-200 rounded-full h-12 w-12 shrink-0 overflow-hidden text-xs text-center"
           src={
-            product.icon || "https://blob.encryptedlist.xyz/icons/apps/mega.png"
+            product.icon || "https://icons.encryptedlist.xyz/icons/apps/mega.png"
           }
           width={48}
           height={48}
           alt={`Logo for ${product.name}`}
         />
         <div className="flex flex-col items-start gap-y-2">
-          <Link
+          <a
             href={product.url}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-x-2 font-medium group focus-visible:underline group-hover:underline underline-offset-2 decoration-dashed decoration-yellow-500 rounded-sm focus-visible:global-focus">
             {product.name}
             <Icon
               icon="heroicons:link-20-solid"
               className="hidden text-lg group-focus-visible:inline-block group-hover:inline-block text-zinc-500 dark:text-zinc-500"
             />
-          </Link>
+          </a>
 
           <div className="flex items-center gap-x-1">
             {product.tags.split(",").map((tag: string) => (

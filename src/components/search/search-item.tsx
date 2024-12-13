@@ -14,7 +14,7 @@ export default function SearchItem({
         <Image
           className="bg-zinc-200 dark:bg-zinc-700 rounded-full h-8 w-8 shrink-0 overflow-hidden group-focus:outline group-focus:outline-red-300"
           src={
-            product.icon || "https://blob.encryptedlist.xyz/icons/apps/mega.png"
+            product.icon || "https://icons.encryptedlist.xyz/icons/apps/mega.png"
           }
           width={32}
           height={32}

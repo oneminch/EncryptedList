@@ -11,9 +11,10 @@ export default function ProductItem({
     <li className="w-full p-4 border-b last:border-none border-zinc-100 dark:border-zinc-800 bg-transparent flex flex-col gap-y-4 group">
       <div className="flex items-center gap-x-4">
         <Image
-          className="bg-zinc-200 rounded-full h-12 w-12 shrink-0 overflow-hidden text-xs text-center"
+          className="bg-zinc-200 rounded-lg h-12 w-12 shrink-0 overflow-hidden text-xs text-center"
           src={
-            product.icon || "https://icons.encryptedlist.xyz/icons/apps/mega.png"
+            product.icon ||
+            "https://icons.encryptedlist.xyz/icons/apps/signal.png"
           }
           width={48}
           height={48}
@@ -21,9 +22,9 @@ export default function ProductItem({
         />
         <div className="flex flex-col items-start gap-y-2">
           <a
-            href={product.url}
+            href={`${product.url}?ref=encryptedlist.xyz`}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
             className="flex items-center gap-x-2 font-medium group focus-visible:underline group-hover:underline underline-offset-2 decoration-dashed decoration-yellow-500 rounded-sm focus-visible:global-focus">
             {product.name}
             <Icon

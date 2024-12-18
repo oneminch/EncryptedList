@@ -73,6 +73,15 @@ const updateSearchParams = ({
   callback(`${pathname}?${params.toString()}`, { scroll: true });
 };
 
+const slugify = (s: string) => {
+  return s
+    .toLocaleLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+};
+
 const sleep = async () =>
   await new Promise((resolve) => setTimeout(resolve, 60000));
 
@@ -80,6 +89,7 @@ export {
   limit,
   createDBArgs,
   sleep,
+  slugify,
   stringifySearchParams,
   updateSearchParams
 };

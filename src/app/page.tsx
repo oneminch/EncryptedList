@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
 import Hero from "@/components/layout/hero";
 import Filter from "@/components/products/product-filter";
 import ProductList from "@/components/products/product-list";
 import Pagination from "@/components/products/product-pagination";
 import GenericError from "@/components/shared/generic-error";
+import Disclaimer from "@/components/shared/disclaimer";
 import pageMeta from "@/lib/metadata";
 import type { QueryParams } from "@/lib/types";
 import { stringifySearchParams as stringify } from "@/lib/utils";
@@ -64,6 +66,8 @@ export default async function HomePage({
           )}
         </section>
       </section>
+
+      <Footer />
     </>
   );
 }

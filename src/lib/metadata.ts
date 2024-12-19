@@ -14,6 +14,11 @@ const metadata = {
     minimalTitle: "Submit",
     description: "Add New Products to the List."
   },
+  "/disclaimer": {
+    title: "Disclaimers",
+    minimalTitle: "Disclaimers",
+    description: "Things you should know about listings."
+  },
   "/not-found": {
     title: "Page Not Found",
     minimalTitle: "Page Not Found",

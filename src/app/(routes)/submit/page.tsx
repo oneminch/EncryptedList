@@ -27,7 +27,7 @@ export default function SubmitPage(): React.ReactNode {
         <Hero />
       </section>
       <section>This is where you submit new items.</section>
-      <section>
+      <section id="main-content">
         <form>
           <label>
             <p>Product Name</p>

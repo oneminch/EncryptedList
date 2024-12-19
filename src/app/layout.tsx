@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
+import Footer from "@/components/layout/footer";
 import TabBar from "@/components/layout/tab-bar";
 import pageMeta from "@/lib/metadata";
 import "@fontsource/space-grotesk/400.css";
@@ -62,11 +63,13 @@ export default function RootLayout({
 
         <ThemeProvider attribute="class" enableSystem>
           <main className="min-w-72">
-            <article className="pb-24">
+            <article className="pb-24 md:pb-4">
               {children}
               <TabBar />
             </article>
           </main>
+
+          {/* <Footer /> */}
         </ThemeProvider>
 
         {/* <Script

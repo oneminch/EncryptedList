@@ -77,7 +77,7 @@ const slugify = (s: string) => {
   return s
     .toLocaleLowerCase()
     .trim()
-    .replace(/[^\w\s-]/g, "")
+    .replace(/[^\w\s.-]/g, "")
     .replace(/[\s_-]+/g, "-")
     .replace(/^-+|-+$/g, "");
 };

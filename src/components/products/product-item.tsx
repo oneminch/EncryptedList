@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Product } from "@/lib/types";
 import { Icon } from "@iconify/react";
+import { slugify } from "@/lib/utils";
 
 export default function ProductItem({
   product
@@ -12,10 +13,9 @@ export default function ProductItem({
       <div className="flex items-center gap-x-4">
         <Image
           className="bg-zinc-200 rounded-lg h-12 w-12 shrink-0 overflow-hidden text-xs text-center"
-          src={
-            product.icon ||
-            "https://icons.encryptedlist.xyz/icons/apps/signal.png"
-          }
+          src={`https://icons.encryptedlist.xyz/icons/apps/${slugify(
+            product.name
+          )}.png`}
           width={48}
           height={48}
           alt={`Logo for ${product.name}`}

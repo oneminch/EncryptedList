@@ -1,33 +1,46 @@
-import Link from "next/link";
 import { Icon } from "@iconify/react";
 
 export default function Disclaimer(): React.ReactNode {
   return (
-    <section className="w-full relative mx-auto mb-2 py-4 px-8 text-center rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400 overflow-hidden">
-      <div className="absolute top-0 left-0 w-10 h-10 bg-yellow-400 rounded-br-full">
+    <section>
+      <div className="absolute top-0 right-0 w-10 h-10 bg-yellow-400 rounded-bl-full">
         <Icon
           icon="heroicons:exclamation-circle-20-solid"
-          className="absolute top-2 left-2 text-lg text-zinc-800"
+          className="absolute top-2 right-2 text-lg text-zinc-800"
         />
       </div>
-      <div className="absolute top-0 right-0 w-12 h-12">
-        <Icon
-          icon="heroicons:close"
-          className="absolute top-2.5 left-2.5 text-lg text-zinc-800"
-        />
-      </div>
-      <div className="w-full mx-auto space-y-2">
-        <p>
-          Remember to do your research before trusting a service.
-          {/* <Link
-            href="/disclaimer"
-            className="text-zinc-600 dark:text-zinc-400 underline decoration-dashed decoration-yellow-400">
-            <strong>Disclaimer</strong>
-          </Link>
-          <br /> */}
-          {/* Use of these apps is at your own risk. */}
-        </p>
-      </div>
+
+      <ul className="[&>li]:list-disc">
+        <li>
+          EncryptedList provides a list of third-party apps claiming a form of{" "}
+          <a
+            href="https://tresorit.com/blog/zero-knowledge-encryption?ref=encryptedlist"
+            className="underline decoration-dashed decoration-yellow-400"
+            target="_blank"
+            rel="noopener">
+            zero-knowledge encryption
+          </a>{" "}
+          <Icon
+            icon="heroicons:arrow-top-right-on-square-20-solid"
+            className="inline-block text-zinc-900 dark:text-yellow-400"
+          />{" "}
+          as a feature. This can include services that have opt-in encryption,
+          or encryption on a subset of their features.
+        </li>
+        <li>
+          Data provided is for informational purposes only. Use of any of the
+          services listed is at your own risk, and please do your research
+          before trusting a service with your data.
+        </li>
+        <li>
+          App information may change without notice. I strive to provide
+          up-to-date information but cannot guarantee its currentness.
+        </li>
+        <li>
+          Trademarks used on this website are the property of their respective
+          owners.
+        </li>
+      </ul>
     </section>
   );
 }

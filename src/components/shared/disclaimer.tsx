@@ -36,10 +36,6 @@ export default function Disclaimer(): React.ReactNode {
           App information may change without notice. I strive to provide
           up-to-date information but cannot guarantee its currentness.
         </li>
-        <li>
-          Trademarks used on this website are the property of their respective
-          owners.
-        </li>
       </ul>
     </section>
   );

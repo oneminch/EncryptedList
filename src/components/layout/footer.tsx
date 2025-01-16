@@ -14,6 +14,10 @@ export default function Footer(): React.ReactNode {
         <span>&bull;</span>
         <span>&copy; 2024</span>
       </p>
+      <p>
+        Trademarks used on this website are the property of their respective
+        owners.
+      </p>
     </footer>
   );
 }

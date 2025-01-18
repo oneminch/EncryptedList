@@ -62,7 +62,7 @@ export default function RootLayout({
         </a>
 
         <ThemeProvider attribute="class" enableSystem>
-          <main className="min-w-72">
+          <main className="max-w-7xl mx-auto px-2 min-w-72 w-full">
             <article className="pb-24 md:pb-4">
               {children}
               <TabBar />

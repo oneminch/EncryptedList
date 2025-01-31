@@ -29,7 +29,7 @@ export default function SearchSuggestions({
   return (
     <ul
       id="search-suggestions"
-      className="w-full sm:mt-2 sm:max-h-72 bg-white dark:bg-zinc-900 z-50 sm:absolute sm:top-full sm:border sm:border-zinc-200 sm:dark:border-zinc-700 sm:rounded-md sm:shadow-xl overflow-y-auto overflow-x-hidden">
+      className="w-full sm:mt-2 sm:max-h-72 bg-white dark:bg-zinc-900 z-50 sm:absolute sm:top-full border-t sm:border border-zinc-200 dark:border-zinc-700 sm:rounded-md sm:shadow-xl overflow-y-auto overflow-x-hidden">
       {isError && (
         <SuggestionItem content={"An Error Has Occurred. Try Again."} />
       )}

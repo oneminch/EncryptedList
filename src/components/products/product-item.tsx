@@ -9,7 +9,7 @@ export default function ProductItem({
   product: Product;
 }): React.ReactNode {
   return (
-    <li className="w-full p-4 border-b last:border-none border-zinc-100 dark:border-zinc-800 bg-transparent flex flex-col gap-y-4 group">
+    <li className="w-full px-2 py-4 border-b last:border-none border-zinc-100 dark:border-zinc-800 bg-transparent flex flex-col gap-y-4 group">
       <div className="flex items-center gap-x-4">
         <Image
           className="bg-zinc-200 rounded-lg h-12 w-12 shrink-0 overflow-hidden text-xs text-center"

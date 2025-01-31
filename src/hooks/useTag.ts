@@ -16,6 +16,7 @@ export default function useTag() {
 
   const isTagSelected = (tag: string) => selectedTags.includes(tag);
   const areAnyTagsSelected = (): boolean => selectedTags.length <= 0;
+  const totalSelectedTags = (): number => selectedTags.length;
 
   const handleSelectTag = (e: React.ChangeEvent<HTMLInputElement>) => {
     const updatedTags = new Set(selectedTags);
@@ -55,6 +56,7 @@ export default function useTag() {
     isTagSelected,
     areAnyTagsSelected,
     handleSelectTag,
-    handleClearTags
+    handleClearTags,
+    totalSelectedTags
   };
 }

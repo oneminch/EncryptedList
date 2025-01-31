@@ -13,7 +13,7 @@ export default function Filter({
   tags: string[];
   className?: string;
 }): React.ReactNode {
-  const { handleClearTags, areAnyTagsSelected } = useTag();
+  const { handleClearTags, areAnyTagsSelected, totalSelectedTags } = useTag();
 
   const [isCollapsed, setIsCollapsed] = useState(true);
 
@@ -29,7 +29,7 @@ export default function Filter({
       <header className="flex items-center justify-between">
         <h2 className="hidden md:block font-medium text-xl">Tags</h2>
         <button
-          className="flex items-center md:hidden w-full font-medium text-xl outline-none group"
+          className="flex items-center md:hidden gap-x-1 pl-1 pr-2 w-full font-medium text-xl outline-none group"
           type="button"
           onClick={toggleCollapse}>
           <span>Tags</span>
@@ -39,8 +39,15 @@ export default function Filter({
                 ? "heroicons:chevron-right-20-solid"
                 : "heroicons:chevron-down-20-solid"
             }
-            className="flex items-center justify-center text-2xl ml-1 group-focus-visible:global-focus rounded-lg"
+            className="flex items-center justify-center text-2xl group-focus-visible:global-focus rounded-lg"
           />
+          {totalSelectedTags() > 0 && (
+            <span
+              className="ml-auto bg-yellow-400 text-zinc-900 rounded-full text-base w-6 h-6"
+              title={`${totalSelectedTags()} Tags Selected`}>
+              {totalSelectedTags()}
+            </span>
+          )}
         </button>
         <Sort />
       </header>

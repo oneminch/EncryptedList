@@ -29,7 +29,7 @@ export default function Filter({
       <header className="flex items-center justify-between">
         <h2 className="hidden md:block font-medium text-xl">Tags</h2>
         <button
-          className="flex items-center md:hidden gap-x-1 pl-1 pr-2 w-full font-medium text-xl outline-none group"
+          className="flex items-center md:hidden gap-x-1 pl-1 pr-2 w-full font-medium text-xl outline-hidden group"
           type="button"
           onClick={toggleCollapse}>
           <span>Tags</span>

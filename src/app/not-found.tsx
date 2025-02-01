@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function NotFound(): React.ReactNode {
   return (
-    <div className="absolute inset-0 bg-zinc-50 dark:bg-zinc-950 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-transparent before:from-85% before:to-yellow-400 z-50">
+    <div className="absolute inset-0 bg-zinc-50 dark:bg-zinc-950 before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-transparent before:from-85% before:to-yellow-400 z-50">
       <div className="w-full h-full flex flex-col items-center justify-center gap-y-8 bg-white/50 dark:bg-zinc-800/50 backdrop-blur-lg">
         <Image
           src="/logo.svg"

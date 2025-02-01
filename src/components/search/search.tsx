@@ -80,7 +80,7 @@ export default function Search({
   return (
     <div className="w-full sm:w-2/3 lg:w-1/2 relative bg-transparent rounded-lg">
       <form
-        className="w-full p-4 sticky top-0 sm:border-b border-zinc-200 dark:border-zinc-700 bg-transparent backdrop-blur flex items-center justify-center sm:border-none sm:p-0 rounded-lg"
+        className="w-full p-4 sticky top-0 sm:border-b border-zinc-200 dark:border-zinc-700 bg-transparent backdrop-blur-sm flex items-center justify-center sm:border-none sm:p-0 rounded-lg"
         onSubmit={handleQuerySubmit}>
         <label htmlFor="search-query" className="sr-only">
           Search Products

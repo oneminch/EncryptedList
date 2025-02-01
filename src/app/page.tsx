@@ -53,7 +53,7 @@ export default async function HomePage({
           <GenericError message="Error Fetching Tags." />
         )}
 
-        <section className="w-full min-w-60 flex-[1]">
+        <section className="w-full min-w-60 flex-1">
           {products !== null || productError === undefined ? (
             <>
               <ProductList products={products} />

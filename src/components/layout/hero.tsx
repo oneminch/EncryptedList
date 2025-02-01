@@ -45,7 +45,7 @@ export default function Hero({
         {pageMeta[currentPath]?.description}
       </p>
 
-      <ThemeToggle className="md:!hidden absolute top-2 right-2 !border-b !rounded-full" />
+      <ThemeToggle className="md:hidden! absolute top-2 right-2 border-b! rounded-full!" />
 
       {currentPath === "/" && withSearchBar && <Search />}
     </div>

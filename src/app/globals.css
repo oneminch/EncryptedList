@@ -1,24 +1,26 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
-@layer utilities {
+@theme {
+  --font-custom-sans: "Space Grotesk", sans-serif;
+  --screen-sm: 640px;
+}
+
+@utility card-style {
   /* Uniform Card Style */
-  .card-style {
-    @apply border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800;
-  }
+  @apply border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800;
+}
 
-  .global-focus {
-    @apply outline-none ring-2 ring-offset-2 ring-offset-white dark:ring-offset-zinc-900 ring-zinc-900 dark:ring-zinc-100 ring-opacity-75;
-  }
+@utility global-focus {
+  @apply outline-hidden ring-2 ring-offset-2 ring-offset-white dark:ring-offset-zinc-900 ring-zinc-900/75 dark:ring-zinc-100/75;
+}
 
-  .action-item {
-    @apply h-9 flex items-center justify-center rounded-md border border-b-2  border-zinc-200 dark:border-zinc-700 focus-visible:global-focus bg-zinc-50 dark:bg-zinc-800;
-  }
+@utility action-item {
+  @apply h-9 flex items-center justify-center rounded-md border border-b-2  border-zinc-200 dark:border-zinc-700 focus-visible:global-focus bg-zinc-50 dark:bg-zinc-800;
+}
 
-  .icon-button {
-    @apply w-10 h-10 flex items-center justify-center *:shrink-0 rounded p-1 text-zinc-900 dark:text-zinc-50 bg-white dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 border border-zinc-200 dark:border-zinc-700 focus-visible:global-focus text-xl;
-  }
+@utility icon-button {
+  @apply w-10 h-10 flex items-center justify-center *:shrink-0 rounded-sm p-1 text-zinc-900 dark:text-zinc-50 bg-white dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 border border-zinc-200 dark:border-zinc-700 focus-visible:global-focus text-xl;
 }
 
 * {
@@ -27,7 +29,7 @@
 }
 
 html {
-  @apply m-0 p-0 font-sans antialiased;
+  @apply m-0 p-0 font-custom-sans antialiased;
 }
 
 body {

@@ -13,7 +13,7 @@ export default function ErrorPage({
     <section className="absolute inset-0 flex flex-col items-center justify-center">
       <GenericError
         message={error.message}
-        classes="!bg-transparent !border-none"
+        classes="bg-transparent! border-none!"
       />
       <button
         type="button"

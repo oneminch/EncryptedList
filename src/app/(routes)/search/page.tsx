@@ -36,7 +36,7 @@ export default function SearchPage(): React.ReactNode {
 
           <Search focusWhenMounted />
 
-          <ThemeToggle className="md:!hidden absolute top-2 right-2 !border-b !rounded-full" />
+          <ThemeToggle className="md:hidden! absolute top-2 right-2 border-b! rounded-full!" />
         </div>
       </section>
     </>

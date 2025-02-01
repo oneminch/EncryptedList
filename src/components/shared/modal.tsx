@@ -53,15 +53,15 @@ const Modal: React.FC<ModalProps> = ({
       {isOpen &&
         ReactDOM.createPortal(
           <div
-            className="fixed inset-0 flex items-end justify-center sm:items-center bg-zinc-50/75 dark:bg-zinc-900/75 backdrop-blur-sm z-50 transition-opacity duration-300 ease-out"
+            className="fixed inset-0 flex items-end justify-center sm:items-center bg-zinc-50/75 dark:bg-zinc-900/75 backdrop-blur-xs z-50 transition-opacity duration-300 ease-out"
             onClick={handleClose}>
             <div
-              className="relative w-full sm:w-auto h-auto max-w-screen-sm rounded-t-lg sm:rounded-lg pt-6 pb-8 px-8 flex flex-col gap-y-4 justify-between bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-700 transform overflow-auto"
+              className="relative w-full sm:w-auto h-auto max-w-(--breakpoint-sm) rounded-t-lg sm:rounded-lg pt-6 pb-8 px-8 flex flex-col gap-y-4 justify-between bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-700 transform overflow-auto"
               tabIndex={-1}
               ref={modalContainerRef}
               onClick={(e) => e.stopPropagation()}>
               <button
-                className="icon-button !w-8 !h-8 !border-none !bg-transparent !hidden sm:!flex absolute top-2 right-2 !rounded-full"
+                className="icon-button w-8! h-8! border-none! bg-transparent! hidden! sm:flex! absolute top-2 right-2 rounded-full!"
                 aria-label="Close Modal"
                 title="Close Modal"
                 onClick={handleClose}>
@@ -72,7 +72,7 @@ const Modal: React.FC<ModalProps> = ({
               </h2>
               {children}
               <button
-                className="icon-button mt-6 mx-auto !text-xs !w-auto !h-8 !px-4 !flex md:!hidden !rounded-full"
+                className="icon-button mt-6 mx-auto text-xs! w-auto! h-8! px-4! flex! md:hidden! rounded-full!"
                 onClick={handleClose}>
                 Close
               </button>

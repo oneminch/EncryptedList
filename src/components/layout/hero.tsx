@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -11,11 +12,11 @@ const Search = dynamic(() => import("@/components/search/search"), {
   ssr: false
 });
 
-export default function Hero({
+const Hero = ({
   withSearchBar
 }: {
   withSearchBar?: boolean;
-}): React.ReactNode {
+}): React.ReactNode => {
   const currentPath = usePathname() as keyof typeof pageMeta;
 
   return (
@@ -50,4 +51,6 @@ export default function Hero({
       {currentPath === "/" && withSearchBar && <Search />}
     </div>
   );
-}
+};
+
+export default React.memo(Hero);

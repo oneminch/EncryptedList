@@ -1,18 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import Sort from "@/components/products/product-sort";
 import TagItem from "@/components/products/product-filter-tag";
 import useTag from "@/hooks/useTag";
 
-export default function Filter({
+const Filter = ({
   tags,
   className
 }: {
   tags: string[];
   className?: string;
-}): React.ReactNode {
+}): React.ReactNode => {
   const { handleClearTags, areAnyTagsSelected, totalSelectedTags } = useTag();
 
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -70,4 +70,6 @@ export default function Filter({
       </div>
     </form>
   );
-}
+};
+
+export default React.memo(Filter);

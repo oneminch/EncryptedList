@@ -6,11 +6,11 @@ import { Icon } from "@iconify/react";
 import { useDebounce, useWindowSize } from "@uidotdev/usehooks";
 import SearchSuggestions from "@/components/search/search-suggestions";
 
-export default function Search({
+const Search = ({
   focusWhenMounted
 }: {
   focusWhenMounted?: boolean;
-}): React.ReactNode {
+}): React.ReactNode => {
   const router = useRouter();
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -117,4 +117,6 @@ export default function Search({
       )}
     </div>
   );
-}
+};
+
+export default React.memo(Search);

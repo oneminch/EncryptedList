@@ -1,9 +1,10 @@
 "use client";
 
+import React from "react";
 import { Icon } from "@iconify/react";
 import useTag from "@/hooks/useTag";
 
-export default function TagItem({ tag }: { tag: string }): React.ReactNode {
+const TagItem = ({ tag }: { tag: string }): React.ReactNode => {
   const { handleSelectTag, isTagSelected } = useTag();
 
   return (
@@ -25,4 +26,6 @@ py-1 md:px-3 md:py-1 flex items-center justify-center rounded-full peer-checked:
       </span>
     </label>
   );
-}
+};
+
+export default React.memo(TagItem);

@@ -9,14 +9,14 @@ interface ModalProps {
   onClose?: () => void;
   title: string;
   children: React.ReactNode;
-  triggerText: string;
+  triggerContent: string | React.ReactNode;
   triggerClasses?: string;
 }
 
 const Modal: React.FC<ModalProps> = ({
   title,
   children,
-  triggerText,
+  triggerContent,
   triggerClasses
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,8 +47,12 @@ const Modal: React.FC<ModalProps> = ({
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)} className={triggerClasses}>
-        {triggerText}
+      <button
+        title={title}
+        aria-label={title}
+        onClick={() => setIsOpen(true)}
+        className={`cursor-pointer shrink-0 ${triggerClasses}`}>
+        {triggerContent}
       </button>
       {isOpen &&
         ReactDOM.createPortal(

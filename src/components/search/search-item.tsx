@@ -25,7 +25,7 @@ export default function SearchItem({
             href={`${product.url}?ref=encryptedlist.xyz`}
             target="_blank"
             rel="noopener"
-            className="flex items-center gap-x-2 font-medium group focus-visible:underline group-hover:underline underline-offset-2 decoration-dashed decoration-yellow-500 rounded-xs focus-visible:global-focus">
+            className="flex items-center gap-x-2 font-medium group focus-visible:underline group-hover:underline underline-offset-2 decoration-yellow-500 rounded-xs focus-visible:global-focus">
             {product.name}
             <Icon
               icon="heroicons:link-20-solid"

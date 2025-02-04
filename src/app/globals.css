@@ -23,6 +23,10 @@
   @apply w-10 h-10 flex items-center justify-center *:shrink-0 rounded-sm p-1 text-zinc-900 dark:text-zinc-50 bg-white dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 border border-zinc-200 dark:border-zinc-700 focus-visible:global-focus text-xl;
 }
 
+@utility debug {
+  @apply outline outline-red-400 *:outline *:outline-inherit;
+}
+
 * {
   transition: all 250ms, color, background-color, border-color,
     text-decoration-color, fill, stroke 100ms;

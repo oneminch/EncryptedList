@@ -65,7 +65,7 @@ const Modal: React.FC<ModalProps> = ({
               ref={modalContainerRef}
               onClick={(e) => e.stopPropagation()}>
               <button
-                className="icon-button w-8! h-8! border-none! bg-transparent! hidden! sm:flex! absolute top-2 right-2 rounded-full!"
+                className="icon-button w-8! h-8! border-none! bg-transparent! hover:bg-zinc-200! dark:hover:bg-zinc-700! hidden! sm:flex! absolute top-2 right-2 rounded-md!"
                 aria-label="Close Modal"
                 title="Close Modal"
                 onClick={handleClose}>
@@ -76,7 +76,7 @@ const Modal: React.FC<ModalProps> = ({
               </h2>
               {children}
               <button
-                className="icon-button mt-6 mx-auto text-xs! w-auto! h-8! px-4! flex! md:hidden! rounded-full!"
+                className="icon-button mt-6 mx-auto text-xs! w-auto! h-8! px-4! flex! md:hidden! rounded-full! hover:bg-zinc-200! dark:hover:bg-zinc-700!"
                 onClick={handleClose}>
                 Close
               </button>

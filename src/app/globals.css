@@ -20,7 +20,7 @@
 }
 
 @utility icon-button {
-  @apply w-10 h-10 flex items-center justify-center *:shrink-0 rounded-sm p-1 text-zinc-900 dark:text-zinc-50 bg-white dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 border border-zinc-200 dark:border-zinc-700 focus-visible:global-focus text-xl;
+  @apply w-10 h-10 flex items-center justify-center *:shrink-0 rounded-sm p-1 text-zinc-900 dark:text-zinc-50 bg-white dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 border border-zinc-200 dark:border-zinc-700 focus-visible:global-focus text-xl cursor-pointer;
 }
 
 @utility debug {

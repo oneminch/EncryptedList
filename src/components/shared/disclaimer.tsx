@@ -24,8 +24,8 @@ export default function Disclaimer(): React.ReactNode {
           or encryption on a subset of their features.
         </li>
         <li>
-          Data provided is for informational purposes only. Please do your
-          research before trusting a service with your data.
+          Please do your research before trusting a service with your data. Data
+          provided is for informational purposes only.
         </li>
         <li>
           App information may change without notice. I strive to provide

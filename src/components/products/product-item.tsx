@@ -45,11 +45,11 @@ export default function ProductItem({
             ))}
           </div>
         </div>
-        <div className="absolute top-0 right-0 w-6 flex flex-col items-center gap-1.5 *:transition-transform *:duration-200 *:last:delay-75! *:translate-x-1 *:opacity-0 *:invisible group-hover:*:opacity-100 group-hover:*:translate-x-0 group-hover:*:visible group-focus-within:*:opacity-100 group-focus-within:*:translate-x-0 group-focus-within:*:visible">
+        <div className="absolute top-0 right-0 w-6 flex flex-col items-center gap-1.5 *:w-6 *:h-6 *:transition-transform *:duration-200 *:last:delay-75! *:translate-x-1 *:opacity-0 *:invisible group-hover:*:opacity-100 group-hover:*:translate-x-0 group-hover:*:visible group-focus-within:*:opacity-100 group-focus-within:*:translate-x-0 group-focus-within:*:visible">
           <Modal
             title="Report Product"
             triggerContent={<Icon icon="heroicons:flag-20-solid" />}
-            triggerClasses="flex items-center justify-center w-6 h-6 rounded-md bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 hover:bg-yellow-500 focus-visible:global-focus">
+            triggerClasses="flex items-center justify-center rounded-md bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 hover:bg-yellow-500 dark:hover:text-zinc-900 focus-visible:global-focus">
             <Alternatives productName={product.name} />
           </Modal>
           <Modal
@@ -57,7 +57,7 @@ export default function ProductItem({
             triggerContent={
               <Icon icon="heroicons:arrows-right-left-20-solid" />
             }
-            triggerClasses="flex items-center justify-center w-6 h-full rounded-md bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 hover:bg-yellow-500 focus-visible:global-focus">
+            triggerClasses="flex items-center justify-center rounded-md bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 hover:bg-yellow-500 dark:hover:text-zinc-900 focus-visible:global-focus">
             <Alternatives productName={product.name} />
           </Modal>
         </div>

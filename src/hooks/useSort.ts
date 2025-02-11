@@ -8,33 +8,34 @@ export default function useSort() {
   const { replace } = useRouter();
 
   const [isSorted, setIsSorted] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const sortFromUrl = searchParams.get("sort");
     setIsSorted(sortFromUrl !== null && sortFromUrl.length > 0);
+
+    setIsLoading(false);
   }, [searchParams]);
 
-  const handleSort = (e: React.FormEvent<HTMLButtonElement>) => {
+  const handleSort = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    setIsLoading(true);
+    const newSortedState = !isSorted;
 
-    setIsSorted((prevSortedState) => {
-      const newSortedState = !prevSortedState;
-      const sortParams = newSortedState ? "asc" : "";
-
+    setTimeout(() => {
       updateSearchParams({
         key: "sort",
-        value: sortParams,
+        value: newSortedState ? "asc" : "",
         searchParams,
         pathname,
         callback: replace
       });
-
-      return newSortedState;
-    });
+    }, 0);
   };
 
   return {
     isSorted,
+    isLoading,
     handleSort
   };
 }

@@ -82,8 +82,8 @@ const slugify = (s: string) => {
     .replace(/^-+|-+$/g, "");
 };
 
-const sleep = async () =>
-  await new Promise((resolve) => setTimeout(resolve, 60000));
+const sleep = async (time: number = 1000) =>
+  await new Promise((resolve) => setTimeout(resolve, time));
 
 export {
   limit,

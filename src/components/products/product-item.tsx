@@ -14,14 +14,15 @@ export default function ProductItem({
     <li className="w-full px-2 py-4 border-b last:border-none border-zinc-100 dark:border-zinc-800 bg-transparent flex flex-col gap-y-2 group">
       <div className="flex items-center gap-x-3 relative">
         <Image
-          className="bg-zinc-200 rounded-lg h-full aspect-square shrink-0 overflow-hidden text-xs text-center"
-          src={`https://icons.encryptedlist.xyz/icons/apps/signal.png`}
-          // `https://icons.encryptedlist.xyz/icons/apps/${slugify(product.name)}.png`
+          className="p-0.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg h-full aspect-square shrink-0 overflow-hidden text-xs text-center ring-1 ring-zinc-300 dark:ring-zinc-700"
+          src={`https://icons.encryptedlist.xyz/icons/apps/${slugify(
+            product.name
+          )}.png`}
           width={45}
           height={45}
           alt={`Logo for ${product.name}`}
         />
-        <div className="flex flex-col items-start gap-y-1.5">
+        <div className="flex flex-col items-start gap-y-2">
           <a
             href={`${product.url}?ref=encryptedlist.xyz`}
             target="_blank"
@@ -35,10 +36,10 @@ export default function ProductItem({
             />
           </a>
 
-          <div className="flex items-center gap-x-1">
+          <div className="flex items-center flex-wrap gap-1">
             {product.tags.split(",").map((tag: string) => (
               <span
-                className="text-xs font-medium px-3 py-0.5 rounded-full flex items-center justify-center bg-zinc-200 dark:bg-zinc-700"
+                className="text-xs shrink-0 px-3 py-0.5 rounded-full flex items-center justify-center bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
                 key={tag}>
                 {tag}
               </span>
@@ -63,7 +64,7 @@ export default function ProductItem({
         </div>
       </div>
       <div>
-        <div className="rounded-lg text-zinc-600 dark:text-zinc-400">
+        <div className="rounded-lg text-zinc-700 dark:text-zinc-300">
           {product.description}
         </div>
       </div>

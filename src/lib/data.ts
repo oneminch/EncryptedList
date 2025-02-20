@@ -5,16 +5,16 @@ import { LibsqlError } from "@libsql/client";
 
 const filterProductsSql = `
   WITH filtered_apps AS (
-    SELECT a.id, a.name, a.icon, a.description, a.url,
+    SELECT a.id, a.name, a.description, a.url,
       GROUP_CONCAT(t.name, ',') AS all_tags
     FROM apps a
     LEFT JOIN app_tags at ON a.id = at.app_id
     LEFT JOIN tags t ON at.tag_id = t.id
     WHERE (((:query) IS NULL) OR (LOWER(a.name) LIKE '%' || LOWER((:query)) || '%') OR (LOWER(a.description) LIKE '%' || LOWER((:query)) || '%'))
-    GROUP BY a.id, a.name, a.icon, a.description, a.url
+    GROUP BY a.id, a.name, a.description, a.url
   ),
   filtered_and_tagged AS (
-    SELECT id, name, icon, description, url, all_tags AS tags
+    SELECT id, name, description, url, all_tags AS tags
     FROM filtered_apps
     WHERE (:tags) IS NULL OR id IN (
       SELECT a.id
@@ -47,8 +47,17 @@ const queryTagsSql = `
   ORDER BY name ASC;
 `;
 
+const queryAlternativesSql = `
+  SELECT a2.name
+  FROM apps a1
+  JOIN app_alternatives alts ON a1.id = alts.app_id
+  JOIN alternatives a2 ON alts.alternative_id = a2.id
+  WHERE a1.name = :productName
+  ORDER BY a2.name ASC;
+`;
+
 const searchProductsSql = `
-  SELECT id, name, icon, description, url
+  SELECT id, name, description, url
   FROM apps
   WHERE ((:query) IS NULL) OR (LOWER(name) LIKE '%' || LOWER((:query)) || '%') OR (LOWER(description) LIKE '%' || LOWER((:query)) || '%')
   ORDER BY name ASC
@@ -106,6 +115,32 @@ const getTags = async (): Promise<{
   }
 };
 
+const getAlternatives = async (
+  productName: string
+): Promise<{
+  alternatives: string[];
+  error: string | null;
+}> => {
+  const db = getDBClient();
+  try {
+    const res = await db.execute({
+      sql: queryAlternativesSql,
+      args: { productName }
+    });
+
+    return {
+      alternatives: res.rows.map((altObject) => altObject.name) as string[],
+      error: null
+    };
+  } catch (error: any) {
+    // console.error(error);
+    return {
+      alternatives: [],
+      error: error.message as string
+    };
+  }
+};
+
 const searchProducts = async (query: string): Promise<SearchProduct[]> => {
   const db = getDBClient();
 
@@ -140,4 +175,11 @@ const fetcher = async (query: string): Promise<any> => {
   return response.json();
 };
 
-export { searchProductsSql, getProducts, getTags, searchProducts, fetcher };
+export {
+  searchProductsSql,
+  getProducts,
+  getTags,
+  getAlternatives,
+  searchProducts,
+  fetcher
+};

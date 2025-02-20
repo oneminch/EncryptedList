@@ -23,7 +23,7 @@ const Filter = ({
 
   return (
     <form
-      className={`border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 py-4 px-5 md:sticky md:top-2 rounded-lg flex flex-col gap-y-4 w-full md:w-64 h-auto min-h-12 ${
+      className={`border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 py-4 px-5 md:sticky md:top-2 rounded-lg flex flex-col gap-y-4 w-full md:w-72 h-auto min-h-12 ${
         isCollapsed && "gap-y-0 md:gap-y-4"
       } ${className}`}>
       <header className="flex items-center justify-between">
@@ -59,7 +59,7 @@ const Filter = ({
         className={`${
           isCollapsed ? "max-h-0 md:max-h-96 hidden md:block" : "block max-h-96"
         } overflow-hidden md:overflow-visible transition-all duration-100 ease-linear space-y-4`}>
-        <div className="flex md:flex-col flex-row md:items-start items-center gap-x-2 gap-y-2 flex-wrap">
+        <div className="flex flex-row flex-wrap items-center gap-2">
           {tags && tags.map((item) => <TagItem key={item} tag={item} />)}
         </div>
 

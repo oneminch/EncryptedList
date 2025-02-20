@@ -1,17 +1,17 @@
 import useSWR from "swr";
 import { fetcher } from "@/lib/data";
-import type { SearchProduct } from "@/lib/types";
+import type { SearchResults } from "@/lib/types";
 
 export default function useSearchSuggest(query: string) {
-  const { data, error, isLoading } = useSWR<SearchProduct[], Error>(
+  const { data, error, isLoading } = useSWR<SearchResults, Error>(
     query,
     fetcher
   );
 
   return {
-    products: data?.slice(0, 3) || [],
-    totalCount: data?.length || 0,
-    isEmpty: data?.length === 0,
+    products: data?.searchResults || [],
+    totalCount: data?.count || 0,
+    isEmpty: data?.count === 0,
     isError: !!error,
     isLoading
   };

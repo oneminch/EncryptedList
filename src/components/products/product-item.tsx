@@ -14,7 +14,7 @@ export default function ProductItem({
     <li className="w-full px-2 py-4 border-b last:border-none border-zinc-100 dark:border-zinc-800 bg-transparent flex flex-col gap-y-2 group">
       <div className="flex items-center gap-x-3 relative">
         <Image
-          className="p-0.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg h-full aspect-square shrink-0 overflow-hidden text-xs text-center ring-1 ring-zinc-300 dark:ring-zinc-700"
+          className="p-0.5 bg-zinc-200 dark:bg-zinc-800 rounded-lg h-full aspect-square object-contain shrink-0 overflow-hidden text-xs text-center ring-1 ring-zinc-300 dark:ring-zinc-700"
           src={`https://icons.encryptedlist.xyz/icons/apps/${slugify(
             product.name
           )}.png`}
@@ -50,17 +50,19 @@ export default function ProductItem({
           <Modal
             title="Report Product"
             triggerContent={<Icon icon="heroicons:flag-20-solid" />}
-            triggerClasses="flex items-center justify-center rounded-md bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 hover:bg-yellow-500 dark:hover:text-zinc-900 focus-visible:global-focus">
+            triggerClasses="flex items-center justify-center rounded-md bg-zinc-200 dark:bg-zinc-800 border-[0.5px] border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 hover:bg-yellow-500 hover:border-yellow-500 dark:hover:text-zinc-900 focus-visible:global-focus">
             <Alternatives productName={product.name} />
           </Modal>
-          <Modal
-            title="Alternatives"
-            triggerContent={
-              <Icon icon="heroicons:arrows-right-left-20-solid" />
-            }
-            triggerClasses="flex items-center justify-center rounded-md bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 hover:bg-yellow-500 dark:hover:text-zinc-900 focus-visible:global-focus">
-            <Alternatives productName={product.name} />
-          </Modal>
+          {product.has_alternatives === 1 && (
+            <Modal
+              title="Alternatives"
+              triggerContent={
+                <Icon icon="heroicons:arrows-right-left-20-solid" />
+              }
+              triggerClasses="flex items-center justify-center rounded-md bg-zinc-200 dark:bg-zinc-800 border-[0.5px] border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 hover:bg-yellow-500 hover:border-yellow-500 dark:hover:text-zinc-900 focus-visible:global-focus">
+              <Alternatives productName={product.name} />
+            </Modal>
+          )}
         </div>
       </div>
       <div>

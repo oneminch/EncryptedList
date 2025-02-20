@@ -29,7 +29,7 @@ const Filter = ({
       <header className="flex items-center justify-between">
         <h2 className="hidden md:block font-medium text-xl">Tags</h2>
         <button
-          className="flex items-center md:hidden gap-x-1 pl-1 pr-2 w-full font-medium text-xl outline-hidden group cursor-pointer"
+          className="flex items-center md:hidden gap-x-1 pl-1 pr-3 w-full font-medium text-xl outline-hidden group cursor-pointer"
           type="button"
           onClick={toggleCollapse}>
           <span>Tags</span>
@@ -43,7 +43,7 @@ const Filter = ({
           />
           {totalSelectedTags() > 0 && (
             <span
-              className="ml-auto bg-yellow-400 text-zinc-900 rounded-full text-base w-6 h-6"
+              className="ml-auto dark:bg-white dark:text-zinc-900 text-white bg-zinc-900 rounded-full text-base w-6 h-6 ring-2 ring-zinc-300 dark:ring-zinc-700 ring-offset-2 ring-offset-white dark:ring-offset-zinc-900"
               title={`${totalSelectedTags()} Tags Selected`}>
               {totalSelectedTags()}
             </span>
@@ -57,9 +57,11 @@ const Filter = ({
 
       <div
         className={`${
-          isCollapsed ? "max-h-0 md:max-h-96 hidden md:block" : "block max-h-96"
+          isCollapsed
+            ? "max-h-0 md:max-h-max hidden md:block"
+            : "block max-h-max"
         } overflow-hidden md:overflow-visible transition-all duration-100 ease-linear space-y-4`}>
-        <div className="flex flex-row flex-wrap items-center gap-2">
+        <div className="flex flex-row flex-wrap items-center gap-2 overflow-visible p-1 md:p-0">
           {tags && tags.map((item) => <TagItem key={item} tag={item} />)}
         </div>
 

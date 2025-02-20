@@ -12,7 +12,7 @@
 }
 
 @utility global-focus {
-  @apply outline-hidden ring-2 ring-offset-2 ring-offset-white dark:ring-offset-zinc-900 ring-zinc-900/75 dark:ring-zinc-100/75;
+  @apply outline-hidden ring-2 ring-offset-2 ring-offset-white dark:ring-offset-zinc-900 ring-black/90 dark:ring-white/90;
 }
 
 @utility action-item {

@@ -17,14 +17,19 @@ interface ProductResultSet {
 
 interface Product {
   id: string;
-  icon: string;
   name: string;
   tags: string;
   description: string;
   url: string;
+  has_alternatives: number;
 }
 
-type SearchProduct = Omit<Product, "tags" | "description">;
+type SearchProduct = Omit<Product, "tags" | "description" | "has_alternatives">;
+
+interface SearchResults {
+  count: number;
+  searchResults: SearchProduct[];
+}
 
 interface QueryParams {
   page?: number;
@@ -51,5 +56,6 @@ export type {
   Product,
   QueryParams,
   QueryParamKeys,
-  SearchProduct
+  SearchProduct,
+  SearchResults
 };

@@ -1,4 +1,9 @@
-import type { ProductResultSet, Product, SearchProduct } from "@/lib/types";
+import type {
+  ProductResultSet,
+  Product,
+  SearchProduct,
+  SearchResults
+} from "@/lib/types";
 import { createDBArgs, limit as itemsPerPage } from "@/lib/utils";
 import getDBClient from "@/lib/db";
 import { LibsqlError } from "@libsql/client";
@@ -29,7 +34,11 @@ const filterProductsSql = `
   total_count AS (
     SELECT COUNT(*) AS total FROM filtered_and_tagged
   )
-  SELECT fat.*, tc.total
+  SELECT fat.*, tc.total,
+    CASE
+      WHEN EXISTS (SELECT 1 FROM app_alternatives aa WHERE aa.app_id = fat.id) THEN 1
+      ELSE 0
+    END AS has_alternatives
   FROM filtered_and_tagged fat, total_count tc
   ORDER BY
     CASE
@@ -141,7 +150,7 @@ const getAlternatives = async (
   }
 };
 
-const searchProducts = async (query: string): Promise<SearchProduct[]> => {
+const searchProducts = async (query: string): Promise<SearchResults> => {
   const db = getDBClient();
 
   try {
@@ -151,7 +160,11 @@ const searchProducts = async (query: string): Promise<SearchProduct[]> => {
         query
       }
     });
-    return result.rows as unknown as SearchProduct[];
+
+    return {
+      count: result.rows.length,
+      searchResults: result.rows as unknown as SearchProduct[]
+    };
   } catch (e) {
     if (e instanceof LibsqlError) {
       console.error(e);

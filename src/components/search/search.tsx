@@ -101,7 +101,7 @@ const Search = ({
             onKeyDown={handleKeyDown}
             type="text"
             autoFocus={focusWhenMounted}
-            placeholder="Search Over 250 Apps"
+            placeholder="Search 200+ Secure Apps"
           />
           <span className="hidden sm:flex items-center justify-center w-6 h-6 bg-white dark:bg-zinc-900 border-[0.5px] border-b-2 border-zinc-300 dark:border-zinc-600 text-sm rounded-md absolute right-2 text-zinc-400 dark:text-zinc-600">
             /

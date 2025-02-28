@@ -5,19 +5,21 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 
 interface ModalProps {
-  isOpen?: boolean;
-  onClose?: () => void;
+  // isOpen?: boolean;
+  // onClose?: () => void;
   title: string;
   children: React.ReactNode;
   triggerContent: string | React.ReactNode;
   triggerClasses?: string;
+  closableByAnyMeans?: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({
   title,
   children,
   triggerContent,
-  triggerClasses
+  triggerClasses,
+  closableByAnyMeans = true
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const modalContainerRef = useRef<HTMLDivElement | null>(null);
@@ -34,7 +36,7 @@ const Modal: React.FC<ModalProps> = ({
 
   useEffect(() => {
     const handleEscapeKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+      if (event.key === "Escape" && closableByAnyMeans) {
         handleClose();
       }
     };
@@ -57,8 +59,10 @@ const Modal: React.FC<ModalProps> = ({
       {isOpen &&
         ReactDOM.createPortal(
           <div
-            className="fixed inset-0 flex items-end justify-center sm:items-center bg-zinc-50/75 dark:bg-zinc-900/75 backdrop-blur-xs z-50 transition-opacity duration-300 ease-out"
-            onClick={handleClose}>
+            className={`fixed inset-0 flex items-end justify-center sm:items-center bg-zinc-50/75 dark:bg-zinc-900/75 backdrop-blur-xs z-50 transition-opacity duration-300 ease-out ${
+              closableByAnyMeans && "cursor-pointer"
+            }`}
+            onClick={closableByAnyMeans ? handleClose : undefined}>
             <div
               className="relative w-full sm:w-auto h-auto max-w-(--breakpoint-sm) rounded-t-lg sm:rounded-lg pt-6 pb-8 px-8 flex flex-col gap-y-4 justify-between bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-700 transform overflow-auto"
               tabIndex={-1}

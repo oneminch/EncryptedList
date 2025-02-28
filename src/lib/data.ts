@@ -4,7 +4,7 @@ import type {
   SearchProduct,
   SearchResults
 } from "@/lib/types";
-import { createDBArgs, limit as itemsPerPage } from "@/lib/utils";
+import { createDBArgs, limit as itemsPerPage, sleep } from "@/lib/utils";
 import getDBClient from "@/lib/db";
 import { LibsqlError } from "@libsql/client";
 
@@ -173,7 +173,7 @@ const searchProducts = async (query: string): Promise<SearchResults> => {
   }
 };
 
-const fetcher = async (query: string): Promise<any> => {
+const searchFetcher = async (query: string): Promise<any> => {
   const response = await fetch("/api/search", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -188,11 +188,27 @@ const fetcher = async (query: string): Promise<any> => {
   return response.json();
 };
 
+const submitReport = async (data: Record<string, any>): Promise<any> => {
+  const response = await fetch("/api/report", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ reportData: data }),
+    cache: "no-store"
+  });
+
+  if (!response.ok) {
+    throw new Error("Submission Failed. Try Again.");
+  }
+
+  return response.json();
+};
+
 export {
   searchProductsSql,
   getProducts,
   getTags,
   getAlternatives,
   searchProducts,
-  fetcher
+  searchFetcher,
+  submitReport
 };

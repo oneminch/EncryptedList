@@ -31,6 +31,10 @@ interface SearchResults {
   searchResults: SearchProduct[];
 }
 
+interface ReportResults {
+  message: string;
+}
+
 interface QueryParams {
   page?: number;
   query?: string;
@@ -57,5 +61,6 @@ export type {
   QueryParams,
   QueryParamKeys,
   SearchProduct,
-  SearchResults
+  SearchResults,
+  ReportResults
 };

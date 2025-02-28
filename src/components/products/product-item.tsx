@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import Modal from "../shared/modal";
 import { slugify } from "@/lib/utils";
 import Alternatives from "./product-alternatives-list";
+import ReportProduct from "../shared/report-product";
 
 export default function ProductItem({
   product
@@ -49,9 +50,10 @@ export default function ProductItem({
         <div className="absolute top-0 right-0 w-6 flex flex-col items-center gap-1.5 *:w-6 *:h-6 *:transition-transform *:duration-200 *:last:delay-75! *:translate-x-1 *:opacity-0 *:invisible group-hover:*:opacity-100 group-hover:*:translate-x-0 group-hover:*:visible group-focus-within:*:opacity-100 group-focus-within:*:translate-x-0 group-focus-within:*:visible">
           <Modal
             title="Report Product"
+            closableByAnyMeans={false}
             triggerContent={<Icon icon="heroicons:flag-20-solid" />}
             triggerClasses="flex items-center justify-center rounded-md bg-zinc-200 dark:bg-zinc-800 border-[0.5px] border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 hover:bg-yellow-500 hover:border-yellow-500 dark:hover:text-zinc-900 focus-visible:global-focus">
-            <Alternatives productName={product.name} />
+            <ReportProduct productName={product.name} />
           </Modal>
           {product.has_alternatives === 1 && (
             <Modal

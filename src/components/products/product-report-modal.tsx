@@ -1,8 +1,8 @@
 "use client";
 
-import ModalIcon from "./modal-icon";
+import ModalIcon from "../modal/modal-icon";
 import React, { useState } from "react";
-import ProductItemPill from "../products/product-item-pill";
+import ProductItemPill from "./product-item-pill";
 import { submitReport } from "@/lib/data";
 import { Icon } from "@iconify/react";
 

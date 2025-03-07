@@ -5,7 +5,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import ThemeToggle from "@/components/shared/theme-toggle";
+import ThemeToggle from "@/components/misc/theme-toggle";
 import pageMeta from "@/lib/metadata";
 
 const Search = dynamic(() => import("@/components/search/search"), {

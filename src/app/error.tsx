@@ -1,6 +1,6 @@
 "use client";
 
-import GenericError from "@/components/shared/generic-error";
+import GenericError from "@/components/misc/generic-error";
 
 export default function ErrorPage({
   error,

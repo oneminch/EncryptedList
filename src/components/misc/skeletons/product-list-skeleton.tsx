@@ -1,4 +1,4 @@
-import ProductItemSkeleton from "@/components/skeletons/product-item-skeleton";
+import ProductItemSkeleton from "@/components/misc/skeletons/product-item-skeleton";
 
 export default function ProductListSkeleton(): React.ReactNode {
   return (

@@ -1,8 +1,8 @@
-import ModalIcon from "../shared/modal-icon";
+import ModalIcon from "../modal/modal-icon";
 import React from "react";
 import ProductItemPill from "./product-item-pill";
 import { getAlternatives } from "@/lib/data";
-import GenericError from "../shared/generic-error";
+import GenericError from "../misc/generic-error";
 
 interface AlternativesListProps {
   productName: string;

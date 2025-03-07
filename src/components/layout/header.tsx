@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Icon } from "@iconify/react";
-import ThemeToggle from "@/components/shared/theme-toggle";
+import ThemeToggle from "@/components/misc/theme-toggle";
 
 export default function Header(): React.ReactNode {
   return (

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import GoBackButton from "@/components/shared/go-back";
+import GoBackButton from "@/components/misc/go-back";
 import pageMeta from "@/lib/metadata";
 import { Icon } from "@iconify/react";
 

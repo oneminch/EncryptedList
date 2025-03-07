@@ -1,7 +1,7 @@
 import Header from "@/components/layout/header";
 import Hero from "@/components/layout/hero";
-import ProductFilterSkeleton from "@/components/skeletons/product-filter-skeleton";
-import ProductListSkeleton from "@/components/skeletons/product-list-skeleton";
+import ProductFilterSkeleton from "@/components/misc/skeletons/product-filter-skeleton";
+import ProductListSkeleton from "@/components/misc/skeletons/product-list-skeleton";
 
 export default function LoadingPage(): React.ReactNode {
   return (

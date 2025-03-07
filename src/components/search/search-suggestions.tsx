@@ -1,7 +1,7 @@
 "use client";
 
 import SearchItem from "./search-item";
-import SearchSkeleton from "../skeletons/search-skeleton";
+import SearchSkeleton from "../misc/skeletons/search-skeleton";
 import useSearchSuggest from "@/hooks/useSearchSuggest";
 import type { SearchProduct } from "@/lib/types";
 import SuggestionItem from "./search-suggestion-item";

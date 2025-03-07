@@ -1,5 +1,5 @@
-import Disclaimer from "../shared/disclaimer";
-import Modal from "../shared/modal";
+import Disclaimer from "../misc/disclaimer";
+import Modal from "../modal/modal";
 
 export default function Footer(): React.ReactNode {
   return (

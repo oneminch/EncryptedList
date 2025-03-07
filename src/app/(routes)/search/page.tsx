@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import pageMeta from "@/lib/metadata";
-import ThemeToggle from "@/components/shared/theme-toggle";
+import ThemeToggle from "@/components/misc/theme-toggle";
 
 const Search = dynamic(() => import("@/components/search/search"), {
   ssr: false

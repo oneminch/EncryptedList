@@ -1,10 +1,10 @@
 import Image from "next/image";
 import type { Product } from "@/lib/types";
 import { Icon } from "@iconify/react";
-import Modal from "../shared/modal";
+import Modal from "../modal/modal";
 import { slugify } from "@/lib/utils";
 import Alternatives from "./product-alternatives-list";
-import ReportProduct from "../shared/report-product";
+import ReportProduct from "./product-report-modal";
 
 export default function ProductItem({
   product

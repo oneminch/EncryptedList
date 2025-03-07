@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import ReportEmailTemplate from "@/components/shared/templates/report-email-template";
+import ReportEmailTemplate from "@/components/misc/templates/report-email-template";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);

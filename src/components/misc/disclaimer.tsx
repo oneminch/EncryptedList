@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import ModalIcon from "./modal-icon";
+import ModalIcon from "../modal/modal-icon";
 
 export default function Disclaimer(): React.ReactNode {
   return (

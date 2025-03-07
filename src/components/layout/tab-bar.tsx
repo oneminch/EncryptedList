@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import NavLink from "../shared/nav-link";
+import NavLink from "../misc/nav-link";
 
 export default function TabBar(): React.ReactNode {
   return (

@@ -188,11 +188,25 @@ const searchFetcher = async (query: string): Promise<any> => {
   return response.json();
 };
 
-const submitReport = async (data: Record<string, any>): Promise<any> => {
+const submitAppReport = async (data: Record<string, any>): Promise<any> => {
   const response = await fetch("/api/report", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ reportData: data }),
+    cache: "no-store"
+  });
+
+  if (!response.ok) {
+    throw new Error("Submission Failed. Try Again.");
+  }
+
+  return response.json();
+};
+
+const submitNewApp = async (formData: FormData) => {
+  const response = await fetch("/api/submit", {
+    method: "POST",
+    body: formData,
     cache: "no-store"
   });
 
@@ -210,5 +224,6 @@ export {
   getAlternatives,
   searchProducts,
   searchFetcher,
-  submitReport
+  submitAppReport,
+  submitNewApp
 };

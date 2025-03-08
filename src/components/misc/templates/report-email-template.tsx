@@ -1,7 +1,6 @@
-import { slugify } from "@/lib/utils";
 import * as React from "react";
 
-interface ProductReportTemplateProps {
+interface ReportEmailTemplateProps {
   productName: string;
   problem: string;
   optionalMessage: string;
@@ -26,7 +25,7 @@ const ProblemPill: React.FC<{ problem: string }> = ({ problem }) => {
   );
 };
 
-const ReportEmailTemplate: React.FC<Readonly<ProductReportTemplateProps>> = ({
+const ReportEmailTemplate: React.FC<Readonly<ReportEmailTemplateProps>> = ({
   productName,
   problem,
   optionalMessage
@@ -35,6 +34,7 @@ const ReportEmailTemplate: React.FC<Readonly<ProductReportTemplateProps>> = ({
     <section
       style={{
         fontFamily: "Arial, sans-serif",
+        fontSize: "0.875rem",
         color: "#495057",
         padding: "1.25rem",
         border: "1px solid #dee2e6",

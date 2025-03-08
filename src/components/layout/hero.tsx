@@ -47,7 +47,6 @@ const Hero = ({
       </p>
 
       <ThemeToggle className="md:hidden! absolute top-2 right-2 border-b! rounded-full!" />
-
       {currentPath === "/" && withSearchBar && <Search />}
     </div>
   );

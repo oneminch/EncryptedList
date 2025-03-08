@@ -9,6 +9,12 @@ interface FetchResult {
   error: string | null;
 }
 
+interface SubmissionFormData {
+  appName: string;
+  appUrl: string;
+  optionalMessage: string;
+}
+
 interface ProductResultSet {
   products: Product[];
   totalPages: number | null;
@@ -62,5 +68,6 @@ export type {
   QueryParamKeys,
   SearchProduct,
   SearchResults,
+  SubmissionFormData,
   ReportResults
 };

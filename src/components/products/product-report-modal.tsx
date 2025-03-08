@@ -3,7 +3,7 @@
 import ModalIcon from "../modal/modal-icon";
 import React, { useState } from "react";
 import ProductItemPill from "./product-item-pill";
-import { submitReport } from "@/lib/data";
+import { submitAppReport } from "@/lib/data";
 import { Icon } from "@iconify/react";
 
 interface ReportProductProps {
@@ -72,8 +72,7 @@ const ReportProduct: React.FC<ReportProductProps> = ({ productName }) => {
 
     try {
       setIsSubmissionPending(true);
-      const response = await submitReport(reportData);
-      setIsSubmissionError(false);
+      const response = await submitAppReport(reportData);
       setSubmissionResponse(response?.message);
     } catch (error: any) {
       setIsSubmissionError(true);
@@ -97,7 +96,10 @@ const ReportProduct: React.FC<ReportProductProps> = ({ productName }) => {
           <legend className="px-2 font-medium text-zinc-600 dark:text-zinc-400 flex items-center gap-x-1">
             <span>What seems to be wrong with</span>
             <ProductItemPill productName={productName} />
-            <span>?</span>
+            <span>?</span>{" "}
+            <abbr title="Required" className="text-rose-500">
+              *
+            </abbr>
           </legend>
           <div className="flex flex-col gap-y-2 pt-2 pb-4 text-sm">
             {problems.map((problem) => (

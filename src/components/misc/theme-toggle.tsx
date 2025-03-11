@@ -18,15 +18,11 @@ export default function ThemeToggle({
     <div>
       <button
         type="button"
-        className={`action-item w-9 ${className}`}
+        className={`w-7 h-7 flex items-center justify-center rounded-full focus-visible:global-focus hover:bg-zinc-100 dark:hover:bg-zinc-800 focus-visible:bg-zinc-100 dark:focus-visible:bg-zinc-800 cursor-pointer text-base ${className}`}
         onClick={handleThemeToggle}
         aria-label="Toggle Theme">
         <Icon
-          icon={
-            theme === "dark"
-              ? "heroicons:moon-20-solid"
-              : "heroicons:sun-20-solid"
-          }
+          icon={theme === "dark" ? "ph:moon-duotone" : "ph:sun-duotone"}
           data-testid="theme-toggle-icon"
         />
       </button>

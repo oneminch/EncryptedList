@@ -20,7 +20,8 @@ const Hero = ({
   const currentPath = usePathname() as keyof typeof pageMeta;
 
   return (
-    <div className="mt-2 md:mt-0 px-6 py-10 md:py-8 flex flex-col items-center justify-center gap-y-4 border md:border-t-0 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 rounded-lg md:rounded-t-none relative">
+    <div className="mt-2 md:mt-0 px-6 pt-12 pb-16 flex flex-col items-center justify-center gap-y-4 rounded-lg md:rounded-t-none relative">
+      {/*  border md:border-t-0 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900  */}
       <div
         className={`flex items-center gap-2 ${
           currentPath !== "/" ? "flex-col" : "flex-row"
@@ -46,7 +47,7 @@ const Hero = ({
         {pageMeta[currentPath]?.description}
       </p>
 
-      <ThemeToggle className="md:hidden! absolute top-2 right-2 border-b! rounded-full!" />
+      <ThemeToggle className="md:hidden! text-lg! absolute top-2 right-2" />
       {currentPath === "/" && withSearchBar && <Search />}
     </div>
   );

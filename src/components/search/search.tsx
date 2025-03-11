@@ -80,7 +80,7 @@ const Search = ({
   return (
     <div className="w-full sm:w-2/3 lg:w-1/2 relative bg-transparent rounded-lg">
       <form
-        className="w-full p-4 sticky top-0 sm:border-b border-zinc-200 dark:border-zinc-700 bg-transparent backdrop-blur-sm flex items-center justify-center sm:border-none sm:p-0 rounded-lg"
+        className="w-full p-1 sticky top-0 sm:border-b border-zinc-200 dark:border-zinc-700 bg-transparent backdrop-blur-sm flex items-center justify-center sm:border-none sm:p-0 rounded-lg"
         onSubmit={handleQuerySubmit}>
         <label htmlFor="search-query" className="sr-only">
           Search Products
@@ -88,10 +88,10 @@ const Search = ({
         <div className="w-full flex items-center justify-center relative rounded-lg">
           <Icon
             icon="heroicons:magnifying-glass-20-solid"
-            className="flex items-center justify-center w-6 h-6 absolute left-2 text-zinc-400 dark:text-zinc-600"
+            className="flex items-center justify-center w-6 text-lg absolute left-1.5 text-zinc-400 dark:text-zinc-600"
           />
           <input
-            className="w-full h-10 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 py-2 px-10 focus-visible:global-focus"
+            className="w-full h-9 text-base rounded-lg border-[0.75px] border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800/75 py-2 px-9 focus-visible:global-focus placeholder:text-sm"
             id="search-query"
             value={query}
             ref={inputRef}
@@ -103,10 +103,14 @@ const Search = ({
             autoFocus={focusWhenMounted}
             placeholder="Search 200+ Secure Apps"
           />
-          <span className="hidden sm:flex items-center justify-center w-6 h-6 bg-white dark:bg-zinc-900 border-[0.5px] border-b-2 border-zinc-300 dark:border-zinc-600 text-sm rounded-md absolute right-2 text-zinc-400 dark:text-zinc-600">
+          <span className="hidden sm:flex items-center justify-center w-6 h-6 bg-white dark:bg-zinc-900 border-[0.5px] border-b-2 border-zinc-300 dark:border-zinc-600 text-sm rounded-md absolute right-1.5 text-zinc-400 dark:text-zinc-600">
             /
           </span>
         </div>
+        <span className="flex items-center justify-center gap-x-2 rounded-lg border-[0.75px] border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800/75 py-2 px-4 text-sm ml-2 text-zinc-600 dark:text-zinc-400">
+          Filters
+          <Icon icon="heroicons:hashtag-20-solid" />
+        </span>
       </form>
       {isSearching && (
         <SearchSuggestions

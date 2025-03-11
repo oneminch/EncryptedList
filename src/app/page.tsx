@@ -46,14 +46,14 @@ export default async function HomePage({
       </section>
       <section
         id="main-content"
-        className="flex flex-col md:flex-row items-start gap-2">
-        {tags.length > 0 || tagError !== null ? (
+        className="flex flex-col md:flex-row items-start gap-4">
+        {/* {tags.length > 0 || tagError !== null ? (
           <Filter className="shrink-0" tags={tags} />
         ) : (
           <GenericError message="Error Fetching Tags." />
-        )}
+        )} */}
 
-        <section className="w-full min-w-60 flex-1">
+        <section className="w-full min-w-60 flex-1 ">
           {products !== null || productError === undefined ? (
             <>
               <ProductList products={products} />

@@ -9,7 +9,7 @@ export default function ProductList({
   products: Product[];
 }): React.ReactNode {
   return (
-    <ul className="w-full border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 flex flex-col px-4 py-2 rounded-lg">
+    <ul className="w-full px-2 md:px-6 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       <SearchStatus />
 
       {products.length > 0 ? (
@@ -17,7 +17,7 @@ export default function ProductList({
           <ProductItem product={item} key={item.id} />
         ))
       ) : (
-        <li className="w-full p-8 bg-transparent flex flex-col items-center gap-y-4 text-center text-zinc-600 dark:text-zinc-400">
+        <li className="w-full p-8 flex flex-col items-center gap-y-4 text-center text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 rounded-lg">
           <Icon
             icon="heroicons:magnifying-glass-20-solid"
             className="text-5xl"

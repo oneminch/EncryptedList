@@ -2,12 +2,12 @@
 
 import ModalIcon from "../modal/modal-icon";
 import React, { useState } from "react";
-import ProductItemPill from "./product-item-pill";
+import AppItemPill from "./app-item-pill";
 import { submitAppReport } from "@/lib/data";
 import { Icon } from "@iconify/react";
 
-interface ReportProductProps {
-  productName: string;
+interface ReportAppProps {
+  appName: string;
 }
 
 const problems = [
@@ -18,7 +18,7 @@ const problems = [
   "Other"
 ];
 
-const ReportProduct: React.FC<ReportProductProps> = ({ productName }) => {
+const ReportApp: React.FC<ReportAppProps> = ({ appName }) => {
   // Form State
   const [selectedProblem, setSelectedProblem] = useState<string>("");
   const [optionalMessage, setOptionalMessage] = useState<string>("");
@@ -65,7 +65,7 @@ const ReportProduct: React.FC<ReportProductProps> = ({ productName }) => {
     }
 
     const reportData = {
-      productName,
+      appName,
       problem: selectedProblem,
       optionalMessage
     };
@@ -84,7 +84,7 @@ const ReportProduct: React.FC<ReportProductProps> = ({ productName }) => {
 
   return (
     <section className="min-w-sm">
-      <ModalIcon icon="heroicons:flag-20-solid" />
+      <ModalIcon icon="ph:flag-banner-duotone" />
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-y-2">
         <fieldset
@@ -95,7 +95,7 @@ const ReportProduct: React.FC<ReportProductProps> = ({ productName }) => {
           }`}>
           <legend className="px-2 font-medium text-zinc-600 dark:text-zinc-400 flex items-center gap-x-1">
             <span>What seems to be wrong with</span>
-            <ProductItemPill productName={productName} />
+            <AppItemPill appName={appName} />
             <span>?</span>{" "}
             <abbr title="Required" className="text-rose-500">
               *
@@ -155,8 +155,8 @@ const ReportProduct: React.FC<ReportProductProps> = ({ productName }) => {
               <Icon
                 icon={
                   isSubmissionError
-                    ? "heroicons:exclamation-circle"
-                    : "heroicons:check-circle"
+                    ? "ph:warning-circle-duotone"
+                    : "ph:check-circle-duotone"
                 }
               />
               {submissionResponse}
@@ -178,4 +178,4 @@ const ReportProduct: React.FC<ReportProductProps> = ({ productName }) => {
   );
 };
 
-export default ReportProduct;
+export default ReportApp;

@@ -1,14 +1,9 @@
-import type {
-  ProductResultSet,
-  Product,
-  SearchProduct,
-  SearchResults
-} from "@/lib/types";
+import type { SearchApp, SearchResults, AppResultSet, App } from "@/lib/types";
 import { createDBArgs, limit as itemsPerPage, sleep } from "@/lib/utils";
 import getDBClient from "@/lib/db";
 import { LibsqlError } from "@libsql/client";
 
-const filterProductsSql = `
+const filterAppsSql = `
   WITH filtered_apps AS (
     SELECT a.id, a.name, a.description, a.url,
       GROUP_CONCAT(t.name, ',') AS all_tags
@@ -61,11 +56,11 @@ const queryAlternativesSql = `
   FROM apps a1
   JOIN app_alternatives alts ON a1.id = alts.app_id
   JOIN alternatives a2 ON alts.alternative_id = a2.id
-  WHERE a1.name = :productName
+  WHERE a1.name = :appName
   ORDER BY a2.name ASC;
 `;
 
-const searchProductsSql = `
+const searchAppsSql = `
   SELECT id, name, description, url
   FROM apps
   WHERE ((:query) IS NULL) OR (LOWER(name) LIKE '%' || LOWER((:query)) || '%') OR (LOWER(description) LIKE '%' || LOWER((:query)) || '%')
@@ -73,13 +68,13 @@ const searchProductsSql = `
   LIMIT 4;
 `;
 
-const getProducts = async (fetchParams: string): Promise<ProductResultSet> => {
+const getApps = async (fetchParams: string): Promise<AppResultSet> => {
   const db = getDBClient();
   const dbArgs = createDBArgs(fetchParams);
 
   try {
     const res = await db.execute({
-      sql: filterProductsSql,
+      sql: filterAppsSql,
       args: { ...dbArgs }
     });
 
@@ -87,7 +82,7 @@ const getProducts = async (fetchParams: string): Promise<ProductResultSet> => {
       res.rows.length > 0 ? (res.rows[0].total as number) : 0;
 
     return {
-      products: res.rows as unknown as Product[],
+      apps: res.rows as unknown as App[],
       totalPages:
         totalFilteredItems > itemsPerPage
           ? Math.ceil(totalFilteredItems / itemsPerPage)
@@ -96,7 +91,7 @@ const getProducts = async (fetchParams: string): Promise<ProductResultSet> => {
   } catch (error: any) {
     // console.error(error);
     return {
-      products: [],
+      apps: [],
       totalPages: null,
       error: error.message as string
     };
@@ -125,7 +120,7 @@ const getTags = async (): Promise<{
 };
 
 const getAlternatives = async (
-  productName: string
+  appName: string
 ): Promise<{
   alternatives: string[];
   error: string | null;
@@ -134,7 +129,7 @@ const getAlternatives = async (
   try {
     const res = await db.execute({
       sql: queryAlternativesSql,
-      args: { productName }
+      args: { appName }
     });
 
     return {
@@ -150,12 +145,12 @@ const getAlternatives = async (
   }
 };
 
-const searchProducts = async (query: string): Promise<SearchResults> => {
+const searchApps = async (query: string): Promise<SearchResults> => {
   const db = getDBClient();
 
   try {
     const result = await db.execute({
-      sql: searchProductsSql,
+      sql: searchAppsSql,
       args: {
         query
       }
@@ -163,7 +158,7 @@ const searchProducts = async (query: string): Promise<SearchResults> => {
 
     return {
       count: result.rows.length,
-      searchResults: result.rows as unknown as SearchProduct[]
+      searchResults: result.rows as unknown as SearchApp[]
     };
   } catch (e) {
     if (e instanceof LibsqlError) {
@@ -218,11 +213,11 @@ const submitNewApp = async (formData: FormData) => {
 };
 
 export {
-  searchProductsSql,
-  getProducts,
+  searchAppsSql,
+  getApps,
   getTags,
   getAlternatives,
-  searchProducts,
+  searchApps,
   searchFetcher,
   submitAppReport,
   submitNewApp

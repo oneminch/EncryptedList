@@ -2,15 +2,14 @@ import type { Metadata } from "next";
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
 import Hero from "@/components/layout/hero";
-import Filter from "@/components/products/product-filter";
-import ProductList from "@/components/products/product-list";
-import Pagination from "@/components/products/product-pagination";
+import AppList from "@/components/apps/app-list";
+import Pagination from "@/components/apps/app-pagination";
 import GenericError from "@/components/misc/generic-error";
-import Disclaimer from "@/components/misc/disclaimer";
 import pageMeta from "@/lib/metadata";
 import type { QueryParams } from "@/lib/types";
-import { stringifySearchParams as stringify } from "@/lib/utils";
-import { getProducts, getTags } from "@/lib/data";
+import { sleep, stringifySearchParams as stringify } from "@/lib/utils";
+import { getApps, getTags } from "@/lib/data";
+import PageDivider from "@/components/misc/divider";
 
 export const metadata: Metadata = {
   title: { absolute: pageMeta["/"].title },
@@ -30,10 +29,9 @@ export default async function HomePage({
 }: {
   searchParams: QueryParams;
 }): Promise<React.ReactNode> {
-  const [
-    { products, totalPages, error: productError },
-    { tags, error: tagError }
-  ] = await Promise.all([getProducts(stringify(searchParams)), getTags()]);
+  await sleep(4000);
+  const [{ apps, totalPages, error: appsError }, { tags, error: tagError }] =
+    await Promise.all([getApps(stringify(searchParams)), getTags()]);
 
   return (
     <>
@@ -42,27 +40,29 @@ export default async function HomePage({
         <Hero withSearchBar />
       </section>
       <section className="mb-2 block md:hidden">
-        <Hero />
+        {/* <Hero /> */}
+        <Hero withSearchBar />
       </section>
-      <section
-        id="main-content"
-        className="flex flex-col md:flex-row items-start gap-4">
+
+      <PageDivider />
+
+      <section>
         {/* {tags.length > 0 || tagError !== null ? (
           <Filter className="shrink-0" tags={tags} />
         ) : (
           <GenericError message="Error Fetching Tags." />
         )} */}
 
-        <section className="w-full min-w-60 flex-1 ">
-          {products !== null || productError === undefined ? (
+        <section className="w-full min-w-60 px-2 md:px-6 flex-1 ">
+          {apps !== null || appsError === undefined ? (
             <>
-              <ProductList products={products} />
+              <AppList apps={apps} />
               {totalPages !== null && (
                 <Pagination totalPages={totalPages} disabled={false} />
               )}
             </>
           ) : (
-            <GenericError message={productError} />
+            <GenericError message={appsError} />
           )}
         </section>
       </section>

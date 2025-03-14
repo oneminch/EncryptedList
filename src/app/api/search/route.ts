@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
-import { searchProducts } from "@/lib/data";
+import { searchApps } from "@/lib/data";
 
 export async function POST(request: Request) {
   const { query } = await request.json();
 
   try {
-    const result = await searchProducts(query);
+    const result = await searchApps(query);
 
     return NextResponse.json({
       count: result.count,

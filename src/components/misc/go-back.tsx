@@ -15,7 +15,7 @@ export default function GoBackButton(): React.ReactNode {
       type="button"
       className="action-item px-4 py-1 gap-x-2"
       onClick={handleGoBack}>
-      <Icon icon="heroicons:arrow-left-20-solid" />
+      <Icon icon="ph:arrow-left" />
       Go Back
     </button>
   );

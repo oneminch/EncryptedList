@@ -1,7 +1,7 @@
 import * as React from "react";
 
 interface ReportEmailTemplateProps {
-  productName: string;
+  appName: string;
   problem: string;
   optionalMessage: string;
 }
@@ -26,7 +26,7 @@ const ProblemPill: React.FC<{ problem: string }> = ({ problem }) => {
 };
 
 const ReportEmailTemplate: React.FC<Readonly<ReportEmailTemplateProps>> = ({
-  productName,
+  appName,
   problem,
   optionalMessage
 }) => {
@@ -45,7 +45,7 @@ const ReportEmailTemplate: React.FC<Readonly<ReportEmailTemplateProps>> = ({
         Someone reported
         <span>
           {" "}
-          &ldquo;<strong>{productName}</strong>&rdquo;{" "}
+          &ldquo;<strong>{appName}</strong>&rdquo;{" "}
         </span>
         for the
         <ProblemPill problem={problem} />

@@ -2,15 +2,15 @@ import React from "react";
 import Image from "next/image";
 import { slugify } from "@/lib/utils";
 
-interface ProductItemPillProps {
+interface AppItemPillProps {
   className?: string;
-  productName: string;
+  appName: string;
   isAlternative?: boolean;
 }
 
-const ProductItemPill: React.FC<ProductItemPillProps> = ({
+const AppItemPill: React.FC<AppItemPillProps> = ({
   className,
-  productName,
+  appName,
   isAlternative
 }) => {
   return (
@@ -22,14 +22,14 @@ const ProductItemPill: React.FC<ProductItemPillProps> = ({
         className="bg-zinc-200 object-contain rounded-sm w-4 h-4 aspect-square shrink-0 overflow-hidden text-xs m-0 text-center"
         src={`https://icons.encryptedlist.xyz/icons/${
           isAlternative ? "alternatives" : "apps"
-        }/${slugify(productName)}.png`}
+        }/${slugify(appName)}.png`}
         width={20}
         height={20}
-        alt={`Logo for ${productName}`}
+        alt={`Logo for ${appName}`}
       />
-      <p>{productName}</p>
+      <p>{appName}</p>
     </div>
   );
 };
 
-export default ProductItemPill;
+export default AppItemPill;

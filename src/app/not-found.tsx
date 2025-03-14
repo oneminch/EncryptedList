@@ -30,7 +30,7 @@ export default function NotFound(): React.ReactNode {
           </li>
           <li>
             <Link className="action-item px-4 py-1 gap-x-2" href="/">
-              <Icon icon="heroicons:home" />
+              <Icon icon="ph:house-duotone" />
               Go Home
             </Link>
           </li>

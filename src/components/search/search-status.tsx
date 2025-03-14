@@ -15,14 +15,14 @@ export default function SearchStatus(): React.ReactNode {
 
   return (
     searchQuery.length > 0 && (
-      <div className="pt-2 py-4 my-2 border-b border-zinc-200 dark:border-zinc-700 flex items-center justify-between gap-x-1 text-zinc-500 dark:text-zinc-400 bg-white dark:bg-zinc-900">
+      <div className="w-full text-sm px-5 py-2.5 mb-4 border-[0.9px] border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-t-2xl rounded-b-lg flex items-center justify-between gap-x-1 text-zinc-600 dark:text-zinc-400">
         <div className="flex items-center">
           <Icon
-            icon="heroicons:magnifying-glass-20-solid"
+            icon="ph:magnifying-glass-duotone"
             className="flex items-center justify-center mr-2 text-xl"
           />
           <h2 className="text-left font-medium">
-            Showing Results for &#10077;
+            Showing Search Results for &#10077;
             <span className="underline decoration-yellow-400 text-zinc-800 dark:text-zinc-100">
               {searchQuery}
             </span>

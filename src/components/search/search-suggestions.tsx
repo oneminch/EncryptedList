@@ -1,9 +1,9 @@
 "use client";
 
 import SearchItem from "./search-item";
-import SearchSkeleton from "../misc/skeletons/search-skeleton";
+import SearchItemSkeleton from "../misc/skeletons/search-item-skeleton";
 import useSearchSuggest from "@/hooks/useSearchSuggest";
-import type { SearchProduct } from "@/lib/types";
+import type { SearchApp } from "@/lib/types";
 import SuggestionItem from "./search-suggestion-item";
 
 export default function SearchSuggestions({
@@ -15,7 +15,7 @@ export default function SearchSuggestions({
   onNoSuggestions: () => void;
   onSomeSuggestions: () => void;
 }): React.ReactNode {
-  const { products, totalCount, isEmpty, isError, isLoading } =
+  const { apps, totalCount, isEmpty, isError, isLoading } =
     useSearchSuggest(query);
 
   if (isError || isEmpty) {
@@ -29,16 +29,16 @@ export default function SearchSuggestions({
   return (
     <ul
       id="search-suggestions"
-      className="w-full sm:mt-2 sm:max-h-72 bg-white dark:bg-zinc-900 z-50 sm:absolute sm:top-full border-t sm:border border-zinc-200 dark:border-zinc-700 sm:rounded-md sm:shadow-xl shadow-black/15 dark:shadow-black overflow-y-auto overflow-x-hidden">
+      className="w-full mt-2 max-h-72 bg-white dark:bg-zinc-900 z-50 absolute top-[calc(100%-3rem)] border-[0.9px] border-zinc-300 dark:border-zinc-700 rounded-md shadow-xl shadow-black/15 dark:shadow-black overflow-y-auto overflow-x-hidden">
       {isError && (
         <SuggestionItem content={"An Error Has Occurred. Try Again."} />
       )}
-      {isLoading && <SearchSkeleton />}
-      {isEmpty && <SuggestionItem content={"No Matching Products Found."} />}
+      {isLoading && <SearchItemSkeleton />}
+      {isEmpty && <SuggestionItem content={"No Matching Apps Found."} />}
       {!isError && !isEmpty && !isLoading && (
         <>
-          {products.map((item: SearchProduct) => (
-            <SearchItem product={item} key={item.id} />
+          {apps.map((item: SearchApp) => (
+            <SearchItem app={item} key={item.id} />
           ))}
           {totalCount > 3 && (
             <SuggestionItem content={"Press 'Enter' for All Results"} />

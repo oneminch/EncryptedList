@@ -9,7 +9,7 @@ export default function useSearchSuggest(query: string) {
   );
 
   return {
-    products: data?.searchResults || [],
+    apps: data?.searchResults || [],
     totalCount: data?.count || 0,
     isEmpty: data?.count === 0,
     isError: !!error,

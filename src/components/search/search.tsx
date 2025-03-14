@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { useDebounce, useWindowSize } from "@uidotdev/usehooks";
 import SearchSuggestions from "@/components/search/search-suggestions";
+import metadata from "@/lib/metadata";
 
 const Search = ({
   focusWhenMounted
@@ -78,20 +79,20 @@ const Search = ({
   };
 
   return (
-    <div className="w-full sm:w-2/3 lg:w-1/2 relative bg-transparent rounded-lg">
+    <div className="w-full sm:w-4/5 lg:w-7/12 max-w-3xl mx-auto relative bg-transparent rounded-xl">
       <form
-        className="w-full p-1 sticky top-0 sm:border-b border-zinc-200 dark:border-zinc-700 bg-transparent backdrop-blur-sm flex items-center justify-center sm:border-none sm:p-0 rounded-lg"
+        className="w-full sticky top-0 bg-transparent backdrop-blur-sm flex flex-col items-center justify-center sm:flex-row gap-y-2 gap-x-1 rounded-xl"
         onSubmit={handleQuerySubmit}>
         <label htmlFor="search-query" className="sr-only">
-          Search Products
+          Search Apps
         </label>
         <div className="w-full flex items-center justify-center relative rounded-lg">
           <Icon
-            icon="heroicons:magnifying-glass-20-solid"
+            icon="ph:magnifying-glass"
             className="flex items-center justify-center w-6 text-lg absolute left-1.5 text-zinc-400 dark:text-zinc-600"
           />
           <input
-            className="w-full h-9 text-base rounded-lg border-[0.75px] border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800/75 py-2 px-9 focus-visible:global-focus placeholder:text-sm"
+            className="w-full h-9 text-base rounded-lg sm:rounded-l-3xl sm:rounded-r border-[0.9px] border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900/50 py-2 px-9 focus-visible:global-focus placeholder:text-sm"
             id="search-query"
             value={query}
             ref={inputRef}
@@ -101,15 +102,15 @@ const Search = ({
             onKeyDown={handleKeyDown}
             type="text"
             autoFocus={focusWhenMounted}
-            placeholder="Search 200+ Secure Apps"
+            placeholder={metadata["/search"].description}
           />
-          <span className="hidden sm:flex items-center justify-center w-6 h-6 bg-white dark:bg-zinc-900 border-[0.5px] border-b-2 border-zinc-300 dark:border-zinc-600 text-sm rounded-md absolute right-1.5 text-zinc-400 dark:text-zinc-600">
-            /
+          <span className="hidden sm:flex items-center justify-center w-6 h-full -mt-0.5 text-sm rounded-md absolute right-2 text-zinc-500 dark:text-zinc-500 shrink-0 leading-0">
+            [ / ]
           </span>
         </div>
-        <span className="flex items-center justify-center gap-x-2 rounded-lg border-[0.75px] border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800/75 py-2 px-4 text-sm ml-2 text-zinc-600 dark:text-zinc-400">
-          Filters
-          <Icon icon="heroicons:hashtag-20-solid" />
+        <span className="shrink-0 w-full sm:w-24 h-9 flex items-center justify-center gap-x-1.5 rounded-lg sm:rounded-r-3xl sm:rounded-l border-[0.9px] border-zinc-800 dark:border-zinc-200 bg-zinc-800 dark:bg-zinc-200 py-2 px-4 text-sm text-zinc-200 dark:text-zinc-800">
+          Tags
+          <Icon icon="ph:tag-duotone" />
         </span>
       </form>
       {isSearching && (

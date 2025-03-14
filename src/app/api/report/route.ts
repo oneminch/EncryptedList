@@ -10,16 +10,16 @@ export async function POST(request: Request) {
   const { reportData } = await request.json();
 
   try {
-    const { productName, problem } = reportData;
+    const { appName, problem } = reportData;
 
-    if (!productName.trim() || !problem.trim()) {
+    if (!appName.trim() || !problem.trim()) {
       throw new Error("Submission Failed. Missing Field");
     }
 
     const { error } = await resend.emails.send({
       from: `EncryptedList <${sender}>`,
       to: receiver,
-      subject: `Reporting "${productName}" (EncryptedList)`,
+      subject: `Reporting "${appName}" (EncryptedList)`,
       react: ReportEmailTemplate(reportData)
     });
 

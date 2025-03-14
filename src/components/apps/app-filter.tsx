@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
-import Sort from "@/components/products/product-sort";
-import TagItem from "@/components/products/product-filter-tag";
+import Sort from "@/components/apps/app-sort";
+import TagItem from "@/components/apps/app-filter-tag";
 import useTag from "@/hooks/useTag";
 
 const Filter = ({
@@ -34,11 +34,7 @@ const Filter = ({
           onClick={toggleCollapse}>
           <span>Tags</span>
           <Icon
-            icon={
-              isCollapsed
-                ? "heroicons:chevron-right-20-solid"
-                : "heroicons:chevron-down-20-solid"
-            }
+            icon={isCollapsed ? "ph:caret-right" : "ph:caret-down"}
             className="flex items-center justify-center text-2xl group-focus-visible:global-focus rounded-lg"
           />
           {totalSelectedTags() > 0 && (

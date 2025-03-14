@@ -7,17 +7,27 @@ export default function Header(): React.ReactNode {
     <header className="w-full max-w-5xl mx-auto py-3 px-6 flex items-center justify-end">
       {/*  border border-y-0 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 */}
       <nav className="flex items-center justify-between">
-        <ul className="flex items-center justify-between gap-x-2 *:shrink-0">
-          <li>
-            <ThemeToggle />
-          </li>
+        <ul className="flex items-center justify-between gap-x-1.5 *:shrink-0">
           <li>
             <Link
-              className="text-sm flex items-center justify-center rounded-md focus-visible:global-focus cursor-pointer px-3 py-1 gap-x-2 border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-700 bg-zinc-100 dark:bg-zinc-800"
+              className="text-sm flex items-center justify-center rounded-md focus-visible:global-focus cursor-pointer px-3 py-1 gap-x-2 underline decoration-yellow-400 decoration-dashed hover:bg-zinc-200 dark:hover:bg-zinc-800 focus-visible:bg-zinc-200/50 dark:focus-visible:bg-zinc-800/50"
+              href="/">
+              Home
+              <Icon icon="ph:house-duotone" />
+            </Link>
+          </li>
+          <li className="w-0 h-3 border-x-[0.5px] border-zinc-300 dark:border-zinc-700"></li>
+          <li>
+            <Link
+              className="text-sm flex items-center justify-center rounded-md focus-visible:global-focus cursor-pointer px-3 py-1 gap-x-2 underline decoration-yellow-400 decoration-dashed hover:bg-zinc-200 dark:hover:bg-zinc-800 focus-visible:bg-zinc-200/50 dark:focus-visible:bg-zinc-800/50"
               href="/submit">
               Submit
               <Icon icon="ph:circles-three-plus-duotone" />
             </Link>
+          </li>
+          <li className="w-0 h-3 border-x-[0.5px] border-zinc-300 dark:border-zinc-700"></li>
+          <li>
+            <ThemeToggle />
           </li>
         </ul>
       </nav>

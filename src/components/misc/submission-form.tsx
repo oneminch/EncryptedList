@@ -69,7 +69,7 @@ const SubmissionForm: React.FC = () => {
   return (
     <form
       onSubmit={handleFormSubmit}
-      className="flex flex-col gap-y-2 w-1/3 text-sm">
+      className="flex flex-col gap-y-2 w-2/3 max-w-md text-sm">
       <div className="flex flex-col gap-y-4">
         <label>
           <p>
@@ -121,7 +121,7 @@ const SubmissionForm: React.FC = () => {
               ? "translate-y-0 opacity-100"
               : "translate-y-1 opacity-0"
           }`}>
-          <Icon icon="heroicons:exclamation-circle" />
+          <Icon icon="ph:warning-circle-duotone" />
           {validationError}
         </p>
       </div>
@@ -156,8 +156,8 @@ const SubmissionForm: React.FC = () => {
             <Icon
               icon={
                 isSubmissionError
-                  ? "heroicons:exclamation-circle"
-                  : "heroicons:check-circle"
+                  ? "ph:warning-circle-duotone"
+                  : "ph:check-circle-duotone"
               }
             />
             {submissionResponse}

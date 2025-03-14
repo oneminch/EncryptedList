@@ -1,10 +1,10 @@
 interface ApiResponse {
-  recipes: Product[];
+  recipes: App[];
   total: number;
 }
 
 interface FetchResult {
-  products: Product[] | null;
+  apps: App[] | null;
   total: number | null;
   error: string | null;
 }
@@ -15,13 +15,13 @@ interface SubmissionFormData {
   optionalMessage: string;
 }
 
-interface ProductResultSet {
-  products: Product[];
+interface AppResultSet {
+  apps: App[];
   totalPages: number | null;
   error?: string;
 }
 
-interface Product {
+interface App {
   id: string;
   name: string;
   tags: string;
@@ -30,11 +30,11 @@ interface Product {
   has_alternatives: number;
 }
 
-type SearchProduct = Omit<Product, "tags" | "description" | "has_alternatives">;
+type SearchApp = Omit<App, "tags" | "description" | "has_alternatives">;
 
 interface SearchResults {
   count: number;
-  searchResults: SearchProduct[];
+  searchResults: SearchApp[];
 }
 
 interface ReportResults {
@@ -61,12 +61,12 @@ type QueryParamKeys = keyof QueryParams;
 export type {
   ApiResponse,
   DBArgTypes,
-  ProductResultSet,
+  AppResultSet,
   FetchResult,
-  Product,
+  App,
   QueryParams,
   QueryParamKeys,
-  SearchProduct,
+  SearchApp,
   SearchResults,
   SubmissionFormData,
   ReportResults

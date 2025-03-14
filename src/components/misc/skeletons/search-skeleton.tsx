@@ -1,14 +1,8 @@
 export default function SearchSkeleton(): React.ReactNode {
   return (
-    <>
-      {Array.from({ length: 3 }, (_, index) => (
-        <li
-          key={index}
-          className="w-full p-4 border-b last:border-none border-zinc-100 dark:border-zinc-800 flex items-center gap-x-4 animate-pulse">
-          <div className="bg-zinc-200 dark:bg-zinc-700 rounded-full h-8 w-8 shrink-0" />
-          <div className="bg-zinc-200 dark:bg-zinc-700 rounded-lg w-1/3 h-2" />
-        </li>
-      ))}
-    </>
+    <div className="w-full sm:w-4/5 lg:w-7/12 max-w-3xl h-9 bg-transparent flex flex-col items-center justify-center sm:flex-row gap-y-2 gap-x-1 animate-pulse">
+      <div className="w-full h-full text-base rounded-lg sm:rounded-l-3xl sm:rounded-r border-[0.75px] border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 py-2 px-9" />
+      <div className="shrink-0 w-24 h-full rounded-lg sm:rounded-r-3xl sm:rounded-l border-[0.75px] border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 ml-1" />
+    </div>
   );
 }

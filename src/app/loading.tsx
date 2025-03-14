@@ -1,7 +1,7 @@
 import Header from "@/components/layout/header";
 import Hero from "@/components/layout/hero";
-import ProductFilterSkeleton from "@/components/misc/skeletons/product-filter-skeleton";
-import ProductListSkeleton from "@/components/misc/skeletons/product-list-skeleton";
+import PageDivider from "@/components/misc/divider";
+import AppListSkeleton from "@/components/misc/skeletons/app-list-skeleton";
 
 export default function LoadingPage(): React.ReactNode {
   return (
@@ -13,13 +13,12 @@ export default function LoadingPage(): React.ReactNode {
       <section className="mb-2 block md:hidden">
         <Hero />
       </section>
-      <section
-        id="main-content"
-        className="flex flex-col md:flex-row items-start gap-2">
-        <ProductFilterSkeleton />
 
-        <section className="min-w-60 w-full">
-          <ProductListSkeleton />
+      <PageDivider />
+
+      <section className="flex flex-col md:flex-row items-start gap-4">
+        <section className="w-full min-w-60 flex-1 ">
+          <AppListSkeleton />
         </section>
       </section>
     </>

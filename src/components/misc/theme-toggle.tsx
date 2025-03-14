@@ -18,7 +18,7 @@ export default function ThemeToggle({
     <div>
       <button
         type="button"
-        className={`w-7 h-7 flex items-center justify-center rounded-full focus-visible:global-focus hover:bg-zinc-100 dark:hover:bg-zinc-800 focus-visible:bg-zinc-100 dark:focus-visible:bg-zinc-800 cursor-pointer text-base ${className}`}
+        className={`w-7 h-7 flex items-center justify-center rounded-full focus-visible:global-focus hover:bg-zinc-200 dark:hover:bg-zinc-700 focus-visible:bg-zinc-200/50 dark:focus-visible:bg-zinc-800/50 cursor-pointer text-base ${className}`}
         onClick={handleThemeToggle}
         aria-label="Toggle Theme">
         <Icon

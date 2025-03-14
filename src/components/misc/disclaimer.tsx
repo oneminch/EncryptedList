@@ -4,7 +4,7 @@ import ModalIcon from "../modal/modal-icon";
 export default function Disclaimer(): React.ReactNode {
   return (
     <section className="px-4 min-w-sm">
-      <ModalIcon icon="heroicons:exclamation-circle-20-solid" />
+      <ModalIcon icon="ph:info-duotone" />
 
       <ul className="[&>li]:list-disc marker:text-yellow-500 dark:marker:text-yellow-400">
         <li>
@@ -17,7 +17,7 @@ export default function Disclaimer(): React.ReactNode {
             zero-knowledge encryption
           </a>
           <Icon
-            icon="heroicons:arrow-top-right-on-square-20-solid"
+            icon="ph:arrow-up-right"
             className="inline-block mx-1 text-zinc-700 dark:text-yellow-400"
           />
           as a feature. This can include services that have opt-in encryption,

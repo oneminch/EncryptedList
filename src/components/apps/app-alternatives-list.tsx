@@ -1,23 +1,23 @@
 import ModalIcon from "../modal/modal-icon";
 import React from "react";
-import ProductItemPill from "./product-item-pill";
+import AppItemPill from "./app-item-pill";
 import { getAlternatives } from "@/lib/data";
 import GenericError from "../misc/generic-error";
 
 interface AlternativesListProps {
-  productName: string;
+  appName: string;
 }
 
 const AlternativesList: React.FC<AlternativesListProps> = async ({
-  productName
+  appName
 }) => {
-  const { alternatives, error: tagError } = await getAlternatives(productName);
+  const { alternatives, error: tagError } = await getAlternatives(appName);
 
   return (
     <section className="min-w-sm">
-      <ModalIcon icon="heroicons:arrows-right-left-20-solid" />
+      <ModalIcon icon="ph:arrows-left-right-duotone" />
       <div className="[&>span]:font-semibold flex items-center gap-x-1 mb-2">
-        <ProductItemPill productName={productName} />
+        <AppItemPill appName={appName} />
         <p className="flex items-center">
           can be a more secure alternative to:
         </p>
@@ -26,9 +26,9 @@ const AlternativesList: React.FC<AlternativesListProps> = async ({
         {alternatives.length > 0 || tagError !== null ? (
           alternatives.map((appName) => (
             <li key={appName}>
-              <ProductItemPill
+              <AppItemPill
                 className="h-7 p-1 text-base rounded-md [&>img]:w-5 [&>img]:h-5"
-                productName={appName}
+                appName={appName}
                 isAlternative
               />
             </li>

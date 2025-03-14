@@ -45,7 +45,7 @@ const Modal: React.FC<ModalProps> = ({
     return () => {
       window.removeEventListener("keydown", handleEscapeKey);
     };
-  }, []);
+  }, [closableByAnyMeans]);
 
   return (
     <>
@@ -73,7 +73,7 @@ const Modal: React.FC<ModalProps> = ({
                 aria-label="Close Modal"
                 title="Close Modal"
                 onClick={handleClose}>
-                <Icon icon="heroicons:x-mark-20-solid" />
+                <Icon icon="ph:x" />
               </button>
               <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
                 {title}

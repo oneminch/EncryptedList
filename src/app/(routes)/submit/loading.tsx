@@ -1,24 +1,9 @@
-import type { Metadata } from "next";
 import Header from "@/components/layout/header";
 import Hero from "@/components/layout/hero";
-import pageMeta from "@/lib/metadata";
-import SubmissionForm from "@/components/misc/submission-form";
 import PageDivider from "@/components/misc/divider";
+import SubmissionFormSkeleton from "@/components/misc/skeletons/submission-form-skeleton";
 
-export const metadata: Metadata = {
-  title: pageMeta["/submit"].title,
-  description: pageMeta["/submit"].description,
-  openGraph: {
-    title: pageMeta["/submit"].title,
-    description: pageMeta["/submit"].description
-  },
-  twitter: {
-    title: pageMeta["/submit"].title,
-    description: pageMeta["/submit"].description
-  }
-};
-
-export default function SubmitPage(): React.ReactNode {
+export default function LoadingPage(): React.ReactNode {
   return (
     <>
       <section className="mb-2 hidden md:block">
@@ -32,7 +17,7 @@ export default function SubmitPage(): React.ReactNode {
       <PageDivider />
 
       <section className="py-12 mx-auto w-full sm:w-5/6 lg:w-2/3 max-w-xl flex flex-col items-center justify-center border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 rounded-lg">
-        <SubmissionForm />
+        <SubmissionFormSkeleton />
       </section>
     </>
   );

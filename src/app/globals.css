@@ -4,6 +4,17 @@
 @theme {
   --font-custom-sans: "Space Grotesk", sans-serif;
   --screen-sm: 640px;
+  --color-zinc-50: #f8f9fa;
+  --color-zinc-100: #f1f3f5;
+  --color-zinc-200: #e9ecef;
+  --color-zinc-300: #dee2e6;
+  --color-zinc-400: #ced4da;
+  --color-zinc-500: #adb5bd;
+  --color-zinc-600: #868e96;
+  --color-zinc-700: #495057;
+  --color-zinc-800: #343a40;
+  --color-zinc-900: #212529;
+  --color-zinc-950: #121416;
 }
 
 @utility card-style {
@@ -11,8 +22,12 @@
   @apply border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800;
 }
 
+@utility external-link {
+  @apply underline underline-offset-2 decoration-yellow-500;
+}
+
 @utility global-focus {
-  @apply outline-hidden ring-2 ring-offset-2 ring-offset-white dark:ring-offset-zinc-900 ring-black/90 dark:ring-white/90;
+  @apply outline-hidden ring-2 ring-zinc-300/50 dark:ring-zinc-700/50;
 }
 
 @utility action-item {
@@ -37,5 +52,5 @@ html {
 }
 
 body {
-  @apply w-full min-w-80 bg-zinc-50/50 dark:bg-zinc-950 text-zinc-800 dark:text-zinc-100;
+  @apply w-full min-w-80 bg-zinc-50 dark:bg-zinc-950 text-zinc-800 dark:text-zinc-100;
 }

@@ -7,8 +7,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "@/components/misc/theme-toggle";
 import pageMeta from "@/lib/metadata";
+import SearchSkeleton from "../misc/skeletons/search-skeleton";
 
 const Search = dynamic(() => import("@/components/search/search"), {
+  loading: () => <SearchSkeleton />,
   ssr: false
 });
 
@@ -20,14 +22,13 @@ const Hero = ({
   const currentPath = usePathname() as keyof typeof pageMeta;
 
   return (
-    <div className="mt-2 md:mt-0 px-6 pt-12 pb-16 flex flex-col items-center justify-center gap-y-4 rounded-lg md:rounded-t-none relative">
-      {/*  border md:border-t-0 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900  */}
+    <div className="mt-2 md:mt-0 px-2 pt-12 pb-4 flex flex-col items-center justify-center gap-y-4 rounded-lg md:rounded-t-none relative">
       <div
         className={`flex items-center gap-2 ${
           currentPath !== "/" ? "flex-col" : "flex-row"
         }`}>
         <Link
-          className="flex items-center justify-center rounded-full focus-visible:global-focus"
+          className="flex items-center justify-center rounded-full focus-visible:global-focus focus-visible:ring-yellow-500 dark:focus-visible:ring-yellow-500"
           href="/"
           aria-label="Home"
           title="Home">

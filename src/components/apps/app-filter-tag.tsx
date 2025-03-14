@@ -20,7 +20,7 @@ const TagItem = ({ tag }: { tag: string }): React.ReactNode => {
       <span className="w-full h-full py-1 px-4 md:px-3 md:py-0.5 flex items-center justify-center rounded-full peer-checked:bg-yellow-500 dark:peer-checked:bg-yellow-500 peer-checked:text-zinc-800 bg-zinc-200 dark:bg-zinc-700 peer-focus-visible:global-focus cursor-pointer peer-disabled:cursor-not-allowed">
         <span>{tag}</span>
         {isTagSelected(tag.toLocaleLowerCase()) && (
-          <Icon icon="heroicons:check-16-solid" className="ml-1" />
+          <Icon icon="ph:check" className="ml-1" />
         )}
       </span>
     </label>

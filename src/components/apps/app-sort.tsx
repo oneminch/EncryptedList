@@ -14,11 +14,11 @@ export default function Sort(): React.ReactNode {
           ? "bg-yellow-500 border-zinc-800 dark:border-yellow-500"
           : "bg-zinc-50 dark:text-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700"
       }`}
-      aria-label="Sort Products"
-      title="Sort Products"
+      aria-label="Sort Apps"
+      title="Sort Apps"
       disabled={isLoading}
       onClick={handleSort}>
-      <Icon icon="heroicons:arrows-up-down-20-solid" />
+      <Icon icon="ph:sort-ascending" />
     </button>
   );
 }

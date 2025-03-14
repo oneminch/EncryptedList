@@ -1,8 +1,8 @@
 const metadata = {
   "/": {
-    title: "EncryptedList · Find Secure Apps",
+    title: "EncryptedList · Find Secure-by-Design Apps",
     minimalTitle: "EncryptedList",
-    description: "Browse & Find Secure Software."
+    description: "Browse & Find Secure-by-Design Software."
   },
   "/search": {
     title: "Search",
@@ -12,7 +12,7 @@ const metadata = {
   "/submit": {
     title: "Submit",
     minimalTitle: "Submit",
-    description: "Add New Products to the List."
+    description: "Add New Apps to the List."
   },
   "/not-found": {
     title: "Page Not Found",

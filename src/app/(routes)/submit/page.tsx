@@ -2,8 +2,17 @@ import type { Metadata } from "next";
 import Header from "@/components/layout/header";
 import Hero from "@/components/layout/hero";
 import pageMeta from "@/lib/metadata";
-import SubmissionForm from "@/components/misc/submission-form";
 import PageDivider from "@/components/misc/divider";
+import SubmissionFormSkeleton from "@/components/misc/skeletons/submission-form-skeleton";
+import dynamic from "next/dynamic";
+
+const SubmissionForm = dynamic(
+  () => import("@/components/misc/submission-form"),
+  {
+    loading: () => <SubmissionFormSkeleton />,
+    ssr: false
+  }
+);
 
 export const metadata: Metadata = {
   title: pageMeta["/submit"].title,

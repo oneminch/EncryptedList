@@ -40,7 +40,7 @@ export default function AppItem({ app }: { app: App }): React.ReactNode {
         }}
       />
 
-      <div className="z-10 text-sm h-full flex flex-col items-start justify-between gap-y-4 relative">
+      <div className="z-10 text-sm w-full *:w-full h-full flex flex-col items-start justify-between gap-y-4 relative">
         <p className="rounded-lg text-zinc-700 dark:text-zinc-300">
           {app.description}
         </p>

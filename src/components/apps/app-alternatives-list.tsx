@@ -14,11 +14,11 @@ const AlternativesList: React.FC<AlternativesListProps> = async ({
   const { alternatives, error: tagError } = await getAlternatives(appName);
 
   return (
-    <section className="min-w-sm">
+    <section className="min-w-xs">
       <ModalIcon icon="ph:arrows-left-right-duotone" />
       <div className="[&>span]:font-semibold flex items-center gap-x-1 mb-2">
-        <AppItemPill appName={appName} />
-        <p className="flex items-center">
+        <p className="break-words">
+          <AppItemPill appName={appName} />
           can be a more secure alternative to:
         </p>
       </div>

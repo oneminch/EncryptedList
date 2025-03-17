@@ -92,7 +92,7 @@ const Search = ({
             className="flex items-center justify-center w-6 text-lg absolute left-1.5 text-zinc-400 dark:text-zinc-600"
           />
           <input
-            className="w-full h-9 text-base rounded-lg sm:rounded-l-3xl sm:rounded-r border-[0.9px] border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900/50 py-2 px-9 focus-visible:global-focus placeholder:text-sm"
+            className="w-full h-9 text-base placeholder:text-sm rounded-lg sm:rounded-l-3xl sm:rounded-r border-[0.9px] border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900/50 py-2 px-9 focus-visible:global-focus"
             id="search-query"
             value={query}
             ref={inputRef}

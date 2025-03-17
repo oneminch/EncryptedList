@@ -84,7 +84,7 @@ const SubmissionForm: React.FC = () => {
             name="appName"
             value={formData.appName}
             onChange={handleInputChange}
-            className={`w-full py-1 px-2 mt-2 text-sm bg-zinc-50 dark:bg-zinc-800 rounded-md focus-visible:global-focus border ${
+            className={`w-full py-1 px-2 mt-2 text-base placeholder:text-sm bg-zinc-50 dark:bg-zinc-800 rounded-md focus-visible:global-focus border ${
               validationError.length > 0
                 ? "border-rose-500 dark:border-rose-500"
                 : "border-zinc-200 dark:border-zinc-700"
@@ -104,7 +104,7 @@ const SubmissionForm: React.FC = () => {
             name="appUrl"
             value={formData.appUrl}
             onChange={handleInputChange}
-            className={`w-full py-1 px-2 mt-2 text-sm bg-zinc-50 dark:bg-zinc-800 rounded-md focus-visible:global-focus border ${
+            className={`w-full py-1 px-2 mt-2 text-base placeholder:text-sm bg-zinc-50 dark:bg-zinc-800 rounded-md focus-visible:global-focus border ${
               validationError.length > 0
                 ? "border-rose-500 dark:border-rose-500"
                 : "border-zinc-200 dark:border-zinc-700"
@@ -136,7 +136,7 @@ const SubmissionForm: React.FC = () => {
           placeholder="Provide more details..."
           value={formData.optionalMessage}
           onChange={handleInputChange}
-          className="w-full p-2 resize-y text-sm bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-md focus-visible:global-focus"
+          className="w-full p-2 resize-y text-base placeholder:text-sm bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-md focus-visible:global-focus"
           rows={4}
         />
       </label>

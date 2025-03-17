@@ -3,7 +3,7 @@ import ModalIcon from "../modal/modal-icon";
 
 export default function Disclaimer(): React.ReactNode {
   return (
-    <section className="px-4 min-w-sm">
+    <section className="px-4 min-w-xs">
       <ModalIcon icon="ph:info-duotone" />
 
       <ul className="[&>li]:list-disc marker:text-yellow-500 dark:marker:text-yellow-400">

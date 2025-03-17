@@ -83,7 +83,7 @@ const ReportApp: React.FC<ReportAppProps> = ({ appName }) => {
   };
 
   return (
-    <section className="min-w-sm">
+    <section className="min-w-xs">
       <ModalIcon icon="ph:flag-banner-duotone" />
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-y-2">
@@ -136,7 +136,7 @@ const ReportApp: React.FC<ReportAppProps> = ({ appName }) => {
             placeholder="Provide more details..."
             value={optionalMessage}
             onChange={handleMessageChange}
-            className="w-full p-2 resize-y text-sm border border-zinc-300 dark:border-zinc-500 rounded-md focus-visible:global-focus"
+            className="w-full p-2 resize-y text-base placeholder:text-sm border border-zinc-300 dark:border-zinc-500 rounded-md focus-visible:global-focus"
             rows={4}
           />
         </label>

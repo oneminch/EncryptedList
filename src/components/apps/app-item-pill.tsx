@@ -15,7 +15,7 @@ const AppItemPill: React.FC<AppItemPillProps> = ({
 }) => {
   return (
     <div
-      className={`inline-flex justify-start items-center gap-x-2 w-auto h-6 p-1 pr-2 rounded-md text-sm shrink-0 bg-zinc-100 dark:bg-zinc-800 border-[0.5px] border-zinc-300 dark:border-zinc-700 ${
+      className={`inline-flex justify-start items-center gap-x-2 w-auto h-6 p-1 pr-2 mr-1.5 rounded-md text-sm shrink-0 bg-zinc-100 dark:bg-zinc-800 border-[0.5px] border-zinc-300 dark:border-zinc-700 ${
         className && className
       }`}>
       <Image

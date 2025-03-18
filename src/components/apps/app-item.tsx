@@ -21,7 +21,7 @@ export default function AppItem({ app }: { app: App }): React.ReactNode {
           <a
             href={`${app.url}?ref=encryptedlist.xyz`}
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             title={`${app.name}: Open Website in New Tab`}
             className="w-full flex items-center gap-x-1 font-medium text-sm sm:text-base group external-link sm:no-underline focus-visible:external-link group-hover:external-link rounded-xs focus-visible:global-focus break-words">
             <span>{app.name}</span>

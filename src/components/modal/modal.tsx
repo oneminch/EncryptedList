@@ -80,7 +80,7 @@ const Modal: React.FC<ModalProps> = ({
               </h2>
               {children}
               <button
-                className="icon-button mt-6 mx-auto text-xs! w-auto! h-8! px-4! flex! md:hidden! rounded-full! hover:bg-zinc-200! dark:hover:bg-zinc-700!"
+                className="icon-button mt-6 mx-auto text-xs! w-auto! h-8! px-4! flex! sm:hidden! rounded-full! hover:bg-zinc-200! dark:hover:bg-zinc-700!"
                 onClick={handleClose}>
                 Close
               </button>

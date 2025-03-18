@@ -2,13 +2,13 @@ import React from "react";
 import Image from "next/image";
 import { slugify } from "@/lib/utils";
 
-interface AppItemPillProps {
+interface AltItemPillProps {
   className?: string;
   appName: string;
   isAlternative?: boolean;
 }
 
-const AppItemPill: React.FC<AppItemPillProps> = ({
+const AltItemPill: React.FC<AltItemPillProps> = ({
   className,
   appName,
   isAlternative
@@ -32,4 +32,4 @@ const AppItemPill: React.FC<AppItemPillProps> = ({
   );
 };
 
-export default AppItemPill;
+export default AltItemPill;

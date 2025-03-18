@@ -41,7 +41,7 @@ const AppItemOptions: React.FC<AppItemOptionsProps> = ({ app }) => {
         <li className="transform scale-95 group-has-[:checked]/options:scale-100 transition-transform duration-300 ease-in-out">
           {app.hasAlternatives && (
             <Modal
-              title="Alternatives"
+              title="Alternative To"
               triggerContent={
                 <>
                   <span>Alternative To</span>

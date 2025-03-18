@@ -2,7 +2,7 @@
 
 import ModalIcon from "../modal/modal-icon";
 import React, { useState } from "react";
-import AppItemPill from "./app-item-pill";
+import AltItemPill from "./app-item-pill";
 import { submitAppReport } from "@/lib/data";
 import { Icon } from "@iconify/react";
 
@@ -93,10 +93,17 @@ const ReportApp: React.FC<ReportAppProps> = ({ appName }) => {
               ? "border-rose-500 dark:border-rose-500"
               : "border-zinc-300 dark:border-zinc-500"
           }`}>
-          <legend className="px-2 font-medium text-zinc-600 dark:text-zinc-400 flex items-center gap-x-1">
+          <legend className="px-2 font-medium text-zinc-600 dark:text-zinc-400">
             <span>What seems to be wrong with</span>
-            <AppItemPill appName={appName} />
-            <span>?</span>{" "}
+            <span className="font-semibold text-yellow-400">
+              {" "}
+              &#10077;
+              <span className="text-zinc-800 dark:text-zinc-200">
+                {appName}
+              </span>
+              &#10078;
+            </span>
+            <span>? </span>
             <abbr title="Required" className="text-rose-500">
               *
             </abbr>

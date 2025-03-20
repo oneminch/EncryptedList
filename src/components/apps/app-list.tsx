@@ -2,7 +2,6 @@ import AppItem from "@/components/apps/app-item";
 import SearchStatus from "@/components/search/search-status";
 import type { App } from "@/lib/types";
 import { Icon } from "@iconify/react";
-import React from "react";
 
 type AppListProps = { apps: App[] };
 

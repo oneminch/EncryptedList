@@ -4,7 +4,11 @@ import { Icon } from "@iconify/react";
 import { slugify } from "@/lib/utils";
 import AppItemOptions from "./app-item-options";
 
-export default function AppItem({ app }: { app: App }): React.ReactNode {
+interface AppItemProps {
+  app: App;
+}
+
+const AppItem: React.FC<AppItemProps> = ({ app }) => {
   return (
     <li className="w-full min-h-52 px-5 pt-4 pb-6 flex flex-col gap-y-3 border-[0.9px] border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 rounded-lg hover:ring-2 hover:ring-zinc-200/75 dark:hover:ring-zinc-800/75 group relative overflow-hidden">
       <div className="w-[calc(100%-1.85rem)] flex flex-col items-start md:flex-row md:items-center gap-2 relative">
@@ -57,4 +61,6 @@ export default function AppItem({ app }: { app: App }): React.ReactNode {
       </div>
     </li>
   );
-}
+};
+
+export default AppItem;

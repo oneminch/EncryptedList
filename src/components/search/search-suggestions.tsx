@@ -6,23 +6,23 @@ import useSearchSuggest from "@/hooks/useSearchSuggest";
 import type { SearchApp } from "@/lib/types";
 import SuggestionItem from "./search-suggestion-item";
 
-export default function SearchSuggestions({
-  query,
-  onNoSuggestions,
-  onSomeSuggestions
-}: {
+interface SearchSuggestionsProps {
   query: string;
   onNoSuggestions: () => void;
   onSomeSuggestions: () => void;
-}): React.ReactNode {
+}
+
+const SearchSuggestions: React.FC<SearchSuggestionsProps> = ({
+  query,
+  onNoSuggestions,
+  onSomeSuggestions
+}) => {
   const { apps, totalCount, isEmpty, isError, isLoading } =
     useSearchSuggest(query);
 
   if (isError || isEmpty) {
-    // Disable Submission Handler for <Search />
     onNoSuggestions();
   } else {
-    // Re-enable Submission for <Search />
     onSomeSuggestions();
   }
 
@@ -47,4 +47,6 @@ export default function SearchSuggestions({
       )}
     </ul>
   );
-}
+};
+
+export default SearchSuggestions;

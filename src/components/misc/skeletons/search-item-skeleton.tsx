@@ -1,4 +1,4 @@
-export default function SearchItemSkeleton(): React.ReactNode {
+const SearchItemSkeleton: React.FC = () => {
   return (
     <>
       {Array.from({ length: 3 }, (_, index) => (
@@ -11,4 +11,6 @@ export default function SearchItemSkeleton(): React.ReactNode {
       ))}
     </>
   );
-}
+};
+
+export default SearchItemSkeleton;

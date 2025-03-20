@@ -12,7 +12,6 @@ export async function POST(request: Request) {
       searchResults: result.searchResults.slice(0, 3)
     });
   } catch (error) {
-    // console.error(error);
     return NextResponse.json(
       { error: (error as Error).message },
       { status: 500 }

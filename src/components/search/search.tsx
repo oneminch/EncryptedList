@@ -1,17 +1,13 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { useDebounce, useWindowSize } from "@uidotdev/usehooks";
 import SearchSuggestions from "@/components/search/search-suggestions";
 import metadata from "@/lib/metadata";
 
-const Search = ({
-  focusWhenMounted
-}: {
-  focusWhenMounted?: boolean;
-}): React.ReactNode => {
+const Search: React.FC = () => {
   const router = useRouter();
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -48,7 +44,7 @@ const Search = ({
     }
   };
 
-  const hideSuggestions = (e: React.FocusEvent<HTMLInputElement>) => {
+  const hideSuggestions = () => {
     if (windowSize.width && windowSize.width >= 640) {
       setIsSearching(false);
     }
@@ -101,7 +97,6 @@ const Search = ({
             onChange={handleQueryChange}
             onKeyDown={handleKeyDown}
             type="text"
-            autoFocus={focusWhenMounted}
             placeholder={metadata["/search"].description}
           />
           <span className="hidden sm:flex items-center justify-center w-6 h-full -mt-0.5 text-sm rounded-md absolute right-2 text-zinc-500 dark:text-zinc-500 shrink-0 leading-0">
@@ -124,4 +119,4 @@ const Search = ({
   );
 };
 
-export default React.memo(Search);
+export default memo(Search);

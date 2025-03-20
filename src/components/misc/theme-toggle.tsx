@@ -3,11 +3,11 @@
 import { useTheme } from "next-themes";
 import { Icon } from "@iconify/react";
 
-export default function ThemeToggle({
-  className
-}: {
+interface ThemeToggleProps {
   className?: string;
-}): React.ReactNode {
+}
+
+const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
   const { theme, setTheme } = useTheme();
 
   const handleThemeToggle = () => {
@@ -28,4 +28,6 @@ export default function ThemeToggle({
       </button>
     </div>
   );
-}
+};
+
+export default ThemeToggle;

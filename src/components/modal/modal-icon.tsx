@@ -1,7 +1,11 @@
-import React from "react";
 import { Icon } from "@iconify/react";
+import { memo } from "react";
 
-const ModalIcon = ({ icon }: { icon: string }): React.ReactNode => {
+interface ModalIconProps {
+  icon: string;
+}
+
+const ModalIcon: React.FC<ModalIconProps> = ({ icon }) => {
   return (
     <div className="absolute top-0 left-0 w-9 h-9 bg-yellow-400 rounded-br-full">
       <Icon
@@ -12,4 +16,4 @@ const ModalIcon = ({ icon }: { icon: string }): React.ReactNode => {
   );
 };
 
-export default React.memo(ModalIcon);
+export default memo(ModalIcon);

@@ -12,7 +12,7 @@ const metadata = {
   "/submit": {
     title: "Submit",
     minimalTitle: "Submit",
-    description: "Add New Apps to the List."
+    description: "Contribute New Apps to the List."
   },
   "/not-found": {
     title: "Page Not Found",

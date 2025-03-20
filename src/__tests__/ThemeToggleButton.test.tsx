@@ -3,7 +3,6 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ThemeToggle from "@/components/misc/theme-toggle";
 
-// Mock the useTheme hook
 const mockSetTheme = vi.fn();
 const useThemeMock = {
   theme: "light",
@@ -16,7 +15,6 @@ vi.mock("next-themes", () => ({
 
 describe("ThemeToggle", () => {
   beforeEach(() => {
-    // Reset the mock before each test
     mockSetTheme.mockClear();
   });
 

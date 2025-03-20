@@ -1,16 +1,13 @@
 import Header from "@/components/layout/header";
 import Hero from "@/components/layout/hero";
-import PageDivider from "@/components/misc/divider";
+import PageDivider from "@/components/misc/page-divider";
 import SubmissionFormSkeleton from "@/components/misc/skeletons/submission-form-skeleton";
 
-export default function LoadingPage(): React.ReactNode {
+const LoadingSubmitPage: React.FC = () => {
   return (
     <>
-      <section className="mb-2 hidden md:block">
-        <Header />
-        <Hero withSearchBar />
-      </section>
-      <section className="mb-2 block md:hidden">
+      <section className="mb-2">
+        <Header className="hidden md:flex" />
         <Hero />
       </section>
 
@@ -21,4 +18,6 @@ export default function LoadingPage(): React.ReactNode {
       </section>
     </>
   );
-}
+};
+
+export default LoadingSubmitPage;

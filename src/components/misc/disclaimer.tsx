@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
 import ModalIcon from "../modal/modal-icon";
 
-export default function Disclaimer(): React.ReactNode {
+const Disclaimer: React.FC = () => {
   return (
     <section className="px-4 min-w-xs">
       <ModalIcon icon="ph:info-duotone" />
@@ -13,7 +13,7 @@ export default function Disclaimer(): React.ReactNode {
             href="https://tresorit.com/blog/zero-knowledge-encryption?ref=encryptedlist"
             className="underline decoration-yellow-400 focus-visible:global-focus"
             target="_blank"
-            rel="noopener">
+            rel="noopener noreferrer">
             zero-knowledge encryption
           </a>
           <Icon
@@ -34,4 +34,6 @@ export default function Disclaimer(): React.ReactNode {
       </ul>
     </section>
   );
-}
+};
+
+export default Disclaimer;

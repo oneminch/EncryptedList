@@ -1,12 +1,10 @@
 "use client";
 
 import { Icon } from "@iconify/react";
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 
 interface ModalProps {
-  // isOpen?: boolean;
-  // onClose?: () => void;
   title: string;
   children: React.ReactNode;
   triggerContent: string | React.ReactNode;

@@ -2,7 +2,7 @@ import useSWR from "swr";
 import { searchFetcher } from "@/lib/data";
 import type { SearchResults } from "@/lib/types";
 
-export default function useSearchSuggest(query: string) {
+const useSearchSuggest = (query: string) => {
   const { data, error, isLoading } = useSWR<SearchResults, Error>(
     query,
     searchFetcher
@@ -15,4 +15,6 @@ export default function useSearchSuggest(query: string) {
     isError: !!error,
     isLoading
   };
-}
+};
+
+export default useSearchSuggest;

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/layout/header";
 import Hero from "@/components/layout/hero";
 import pageMeta from "@/lib/metadata";
-import PageDivider from "@/components/misc/divider";
+import PageDivider from "@/components/misc/page-divider";
 import SubmissionFormSkeleton from "@/components/misc/skeletons/submission-form-skeleton";
 import dynamic from "next/dynamic";
 
@@ -27,22 +27,21 @@ export const metadata: Metadata = {
   }
 };
 
-export default function SubmitPage(): React.ReactNode {
+const SubmitPage: React.FC = () => {
   return (
     <>
-      <section className="mb-2 hidden md:block">
-        <Header />
-        <Hero withSearchBar />
-      </section>
-      <section className="mb-2 block md:hidden">
+      <section className="mb-2">
+        <Header className="hidden md:flex" />
         <Hero />
       </section>
 
       <PageDivider />
 
-      <section className="py-12 mx-auto w-full sm:w-5/6 lg:w-2/3 max-w-xl flex flex-col items-center justify-center border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 rounded-lg">
+      <section className="py-10 mx-auto w-full sm:w-5/6 lg:w-2/3 max-w-xl flex flex-col items-center justify-center border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 rounded-lg">
         <SubmissionForm />
       </section>
     </>
   );
-}
+};
+
+export default SubmitPage;

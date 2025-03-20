@@ -2,13 +2,12 @@
 
 import GenericError from "@/components/misc/generic-error";
 
-export default function ErrorPage({
-  error,
-  reset
-}: {
+interface ErrorPageProps {
   error: Error & { digest?: string };
   reset: () => void;
-}): React.ReactNode {
+}
+
+const ErrorPage: React.FC<ErrorPageProps> = ({ error, reset }) => {
   return (
     <section className="absolute inset-0 flex flex-col items-center justify-center">
       <GenericError
@@ -23,4 +22,6 @@ export default function ErrorPage({
       </button>
     </section>
   );
-}
+};
+
+export default ErrorPage;

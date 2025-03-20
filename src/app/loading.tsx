@@ -1,17 +1,14 @@
 import Header from "@/components/layout/header";
 import Hero from "@/components/layout/hero";
-import PageDivider from "@/components/misc/divider";
+import PageDivider from "@/components/misc/page-divider";
 import AppListSkeleton from "@/components/misc/skeletons/app-list-skeleton";
 
-export default function LoadingPage(): React.ReactNode {
+const LoadingPage: React.FC = () => {
   return (
     <>
-      <section className="mb-2 hidden md:block">
-        <Header />
+      <section className="mb-2">
+        <Header className="hidden md:flex" />
         <Hero withSearchBar />
-      </section>
-      <section className="mb-2 block md:hidden">
-        <Hero />
       </section>
 
       <PageDivider />
@@ -23,4 +20,6 @@ export default function LoadingPage(): React.ReactNode {
       </section>
     </>
   );
-}
+};
+
+export default LoadingPage;

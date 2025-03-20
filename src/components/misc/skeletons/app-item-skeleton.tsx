@@ -1,4 +1,4 @@
-export default function AppItemSkeleton(): React.ReactNode {
+const AppItemSkeleton: React.FC = () => {
   return (
     <li className="w-full h-64 px-5 pt-4 pb-6 flex flex-col gap-y-3 border-[0.75px] border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 rounded-lg hover:ring-2 hover:ring-zinc-200/75 dark:hover:ring-zinc-800/75 group relative overflow-hidden animate-pulse">
       <div className="flex items-center gap-x-3 relative">
@@ -22,4 +22,6 @@ export default function AppItemSkeleton(): React.ReactNode {
       </div>
     </li>
   );
-}
+};
+
+export default AppItemSkeleton;

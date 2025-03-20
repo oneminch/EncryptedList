@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 
-export default function SearchStatus(): React.ReactNode {
+const SearchStatus: React.FC = () => {
   const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -38,4 +38,6 @@ export default function SearchStatus(): React.ReactNode {
       </div>
     )
   );
-}
+};
+
+export default SearchStatus;

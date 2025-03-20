@@ -1,10 +1,13 @@
 "use client";
 
-import React from "react";
 import { Icon } from "@iconify/react";
 import useTag from "@/hooks/useTag";
 
-const TagItem = ({ tag }: { tag: string }): React.ReactNode => {
+interface TagItemProps {
+  tag: string;
+}
+
+const TagItem: React.FC<TagItemProps> = ({ tag }) => {
   const { handleSelectTag, isTagSelected, isLoading } = useTag();
 
   return (

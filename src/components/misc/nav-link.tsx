@@ -9,12 +9,12 @@ interface NavLinkProps extends LinkProps {
   activeClassName: string;
 }
 
-export default function NavLink({
+const NavLink: React.FC<NavLinkProps> = ({
   activeClassName,
   children,
   className,
   ...props
-}: NavLinkProps): React.ReactNode {
+}) => {
   const pathname = usePathname();
   const isActive = pathname === props.href;
 
@@ -23,4 +23,6 @@ export default function NavLink({
       {children}
     </Link>
   );
-}
+};
+
+export default NavLink;

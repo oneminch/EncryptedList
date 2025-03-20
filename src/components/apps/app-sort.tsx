@@ -3,7 +3,7 @@
 import { Icon } from "@iconify/react";
 import useSort from "@/hooks/useSort";
 
-export default function Sort(): React.ReactNode {
+const Sort: React.FC = () => {
   const { isSorted, handleSort, isLoading } = useSort();
 
   return (
@@ -21,4 +21,6 @@ export default function Sort(): React.ReactNode {
       <Icon icon="ph:sort-ascending" />
     </button>
   );
-}
+};
+
+export default Sort;

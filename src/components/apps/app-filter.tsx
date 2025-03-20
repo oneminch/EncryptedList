@@ -1,18 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Icon } from "@iconify/react";
 import Sort from "@/components/apps/app-sort";
 import TagItem from "@/components/apps/app-filter-tag";
 import useTag from "@/hooks/useTag";
 
-const Filter = ({
-  tags,
-  className
-}: {
+interface FilterProps {
   tags: string[];
   className?: string;
-}): React.ReactNode => {
+}
+
+const Filter: React.FC<FilterProps> = ({ tags, className }) => {
   const { handleClearTags, areAnyTagsSelected, totalSelectedTags } = useTag();
 
   const [isCollapsed, setIsCollapsed] = useState(true);

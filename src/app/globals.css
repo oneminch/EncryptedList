@@ -17,11 +17,6 @@
   --color-zinc-950: #121416;
 }
 
-@utility card-style {
-  /* Uniform Card Style */
-  @apply border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800;
-}
-
 @utility external-link {
   @apply underline underline-offset-2 decoration-yellow-500;
 }
@@ -39,7 +34,7 @@
 }
 
 @utility debug {
-  @apply outline outline-red-400 *:outline *:outline-inherit;
+  @apply outline outline-red-400 **:outline;
 }
 
 * {

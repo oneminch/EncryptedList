@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { updateSearchParams } from "@/lib/utils";
 
-export default function useTag() {
+const useTag = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { replace } = useRouter();
@@ -70,4 +70,6 @@ export default function useTag() {
     handleClearTags,
     totalSelectedTags
   };
-}
+};
+
+export default useTag;

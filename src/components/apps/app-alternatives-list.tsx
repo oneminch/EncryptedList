@@ -1,6 +1,6 @@
 import ModalIcon from "../modal/modal-icon";
-import React from "react";
-import AltItemPill from "./app-item-pill";
+
+import AltItemPill from "./alt-item-pill";
 import { getAlternatives } from "@/lib/data";
 import GenericError from "../misc/generic-error";
 
@@ -8,9 +8,7 @@ interface AlternativesListProps {
   appName: string;
 }
 
-const AlternativesList: React.FC<AlternativesListProps> = async ({
-  appName
-}) => {
+const AlternativesList = async ({ appName }: AlternativesListProps) => {
   const { alternatives, error: tagError } = await getAlternatives(appName);
 
   return (

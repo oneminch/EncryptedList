@@ -3,7 +3,7 @@
 import { SubmissionFormData } from "@/lib/types";
 import { submitNewApp } from "@/lib/data";
 import { Icon } from "@iconify/react";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const initialState = {
   appName: "",
@@ -69,7 +69,7 @@ const SubmissionForm: React.FC = () => {
   return (
     <form
       onSubmit={handleFormSubmit}
-      className="flex flex-col gap-y-2 w-2/3 max-w-md text-sm">
+      className="flex flex-col gap-y-2 w-4/5 max-w-md text-sm">
       <div className="flex flex-col gap-y-4">
         <label>
           <p>

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { updateSearchParams } from "@/lib/utils";
 
-export default function useSort() {
+const useSort = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { replace } = useRouter();
@@ -38,4 +38,6 @@ export default function useSort() {
     isLoading,
     handleSort
   };
-}
+};
+
+export default useSort;

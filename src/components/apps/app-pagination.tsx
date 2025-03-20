@@ -3,13 +3,12 @@
 import { Icon } from "@iconify/react";
 import usePagination from "@/hooks/usePagination";
 
-export default function Pagination({
-  totalPages,
-  disabled
-}: {
+interface PaginationProps {
   totalPages: number;
   disabled: boolean;
-}): React.ReactNode {
+}
+
+const Pagination: React.FC<PaginationProps> = ({ totalPages, disabled }) => {
   const { currentPage, isOnFirstPage, isOnLastPage, toPrevPage, toNextPage } =
     usePagination(totalPages);
 
@@ -42,4 +41,6 @@ export default function Pagination({
       </button>
     </div>
   );
-}
+};
+
+export default Pagination;

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import { memo } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -14,11 +14,11 @@ const Search = dynamic(() => import("@/components/search/search"), {
   ssr: false
 });
 
-const Hero = ({
-  withSearchBar
-}: {
+interface HeroProps {
   withSearchBar?: boolean;
-}): React.ReactNode => {
+}
+
+const Hero: React.FC<HeroProps> = ({ withSearchBar }) => {
   const currentPath = usePathname() as keyof typeof pageMeta;
 
   return (
@@ -49,9 +49,9 @@ const Hero = ({
       </p>
 
       <ThemeToggle className="md:hidden! text-lg! absolute top-2 right-2" />
-      {currentPath === "/" && withSearchBar && <Search />}
+      {withSearchBar && <Search />}
     </div>
   );
 };
 
-export default React.memo(Hero);
+export default memo(Hero);

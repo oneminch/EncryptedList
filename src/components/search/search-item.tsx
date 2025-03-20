@@ -3,11 +3,11 @@ import { slugify } from "@/lib/utils";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 
-export default function SearchItem({
-  app
-}: {
+interface SearchItemProps {
   app: SearchApp;
-}): React.ReactNode {
+}
+
+const SearchItem: React.FC<SearchItemProps> = ({ app }) => {
   return (
     <li className="w-full p-3 border-b last:border-none border-zinc-100 dark:border-zinc-800 flex flex-col gap-y-4 group">
       <div className="flex items-center gap-x-4">
@@ -24,7 +24,7 @@ export default function SearchItem({
           <a
             href={`${app.url}?ref=encryptedlist.xyz`}
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             className="flex items-center gap-x-2 font-medium group underline sm:no-underline sm:focus-visible:underline sm:group-hover:underline underline-offset-2 decoration-yellow-500 rounded-xs focus-visible:global-focus">
             {app.name}
             <Icon
@@ -36,4 +36,6 @@ export default function SearchItem({
       </div>
     </li>
   );
-}
+};
+
+export default SearchItem;

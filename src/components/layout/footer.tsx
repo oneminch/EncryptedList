@@ -1,7 +1,7 @@
 import Disclaimer from "../misc/disclaimer";
 import Modal from "../modal/modal";
 
-export default function Footer(): React.ReactNode {
+const Footer: React.FC = () => {
   return (
     <footer className="w-full mt-4 mx-auto space-y-2 py-6 px-12 text-center text-zinc-600 dark:text-zinc-300 overflow-hidden">
       <p>
@@ -20,4 +20,6 @@ export default function Footer(): React.ReactNode {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

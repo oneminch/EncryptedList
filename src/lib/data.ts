@@ -1,5 +1,5 @@
 import type { SearchApp, SearchResults, AppResultSet, App } from "@/lib/types";
-import { createDBArgs, limit as itemsPerPage, sleep } from "@/lib/utils";
+import { createDBArgs, limit as itemsPerPage } from "@/lib/utils";
 import getDBClient from "@/lib/db";
 import { LibsqlError } from "@libsql/client";
 
@@ -89,7 +89,6 @@ const getApps = async (fetchParams: string): Promise<AppResultSet> => {
           : null
     };
   } catch (error: any) {
-    // console.error(error);
     return {
       apps: [],
       totalPages: null,
@@ -111,7 +110,6 @@ const getTags = async (): Promise<{
       error: null
     };
   } catch (error: any) {
-    // console.error(error);
     return {
       tags: [],
       error: error.message as string
@@ -137,7 +135,6 @@ const getAlternatives = async (
       error: null
     };
   } catch (error: any) {
-    // console.error(error);
     return {
       alternatives: [],
       error: error.message as string

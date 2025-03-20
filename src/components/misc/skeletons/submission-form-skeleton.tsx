@@ -1,6 +1,6 @@
-export default function SubmissionFormSkeleton(): React.ReactNode {
+const SubmissionFormSkeleton: React.FC = () => {
   return (
-    <div className="flex flex-col gap-y-2 w-2/3 max-w-md mx-auto text-sm animate-pulse">
+    <div className="flex flex-col gap-y-2 w-4/5 max-w-md mx-auto text-sm animate-pulse">
       <div className="flex flex-col gap-y-4">
         <label>
           <p className="w-24 h-4 bg-zinc-100 dark:bg-zinc-700 rounded" />
@@ -26,4 +26,6 @@ export default function SubmissionFormSkeleton(): React.ReactNode {
       </div>
     </div>
   );
-}
+};
+
+export default SubmissionFormSkeleton;

@@ -1,8 +1,7 @@
 "use client";
 
 import ModalIcon from "../modal/modal-icon";
-import React, { useState } from "react";
-import AltItemPill from "./app-item-pill";
+import { useState } from "react";
 import { submitAppReport } from "@/lib/data";
 import { Icon } from "@iconify/react";
 
@@ -19,12 +18,10 @@ const problems = [
 ];
 
 const ReportApp: React.FC<ReportAppProps> = ({ appName }) => {
-  // Form State
   const [selectedProblem, setSelectedProblem] = useState<string>("");
   const [optionalMessage, setOptionalMessage] = useState<string>("");
   const [formError, setFormError] = useState<string>("");
 
-  // Submission State
   const [submissionResponse, setSubmissionResponse] = useState<string>("");
   const [isSubmissionError, setIsSubmissionError] = useState(false);
   const [isSubmissionPending, setIsSubmissionPending] = useState(false);

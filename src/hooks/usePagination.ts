@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { updateSearchParams } from "@/lib/utils";
 
-export default function usePagination(totalPages: number) {
+const usePagination = (totalPages: number) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { replace } = useRouter();
@@ -77,4 +77,6 @@ export default function usePagination(totalPages: number) {
     toPrevPage: paginate.toPrevPage,
     toNextPage: paginate.toNextPage
   };
-}
+};
+
+export default usePagination;

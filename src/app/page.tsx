@@ -9,7 +9,7 @@ import pageMeta from "@/lib/metadata";
 import type { QueryParams } from "@/lib/types";
 import { sleep, stringifySearchParams as stringify } from "@/lib/utils";
 import { getApps, getTags } from "@/lib/data";
-import PageDivider from "@/components/misc/divider";
+import PageDivider from "@/components/misc/page-divider";
 
 export const metadata: Metadata = {
   title: { absolute: pageMeta["/"].title },
@@ -24,23 +24,21 @@ export const metadata: Metadata = {
   }
 };
 
-export default async function HomePage({
-  searchParams
-}: {
+interface HomePageProps {
   searchParams: QueryParams;
-}): Promise<React.ReactNode> {
+}
+
+const HomePage = async ({ searchParams }: HomePageProps) => {
   await sleep(4000);
-  const [{ apps, totalPages, error: appsError }, { tags, error: tagError }] =
-    await Promise.all([getApps(stringify(searchParams)), getTags()]);
+  const [{ apps, totalPages, error: appsError }] = await Promise.all([
+    getApps(stringify(searchParams)),
+    getTags()
+  ]);
 
   return (
     <>
-      <section className="mb-2 hidden md:block">
-        <Header />
-        <Hero withSearchBar />
-      </section>
-      <section className="mb-2 block md:hidden">
-        {/* <Hero /> */}
+      <section className="mb-2">
+        <Header className="hidden md:flex" />
         <Hero withSearchBar />
       </section>
 
@@ -70,4 +68,6 @@ export default async function HomePage({
       <Footer />
     </>
   );
-}
+};
+
+export default HomePage;

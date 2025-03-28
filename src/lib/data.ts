@@ -61,9 +61,9 @@ const queryAlternativesSql = `
 `;
 
 const searchAppsSql = `
-  SELECT id, name, description, url
+  SELECT id, name, url
   FROM apps
-  WHERE ((:query) IS NULL) OR (LOWER(name) LIKE '%' || LOWER((:query)) || '%') OR (LOWER(description) LIKE '%' || LOWER((:query)) || '%')
+  WHERE ((:query) IS NULL) OR (name LIKE '%' || (:query) || '%')
   ORDER BY name ASC
   LIMIT 4;
 `;

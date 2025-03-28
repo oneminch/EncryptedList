@@ -8,12 +8,14 @@ import SuggestionItem from "./search-suggestion-item";
 
 interface SearchSuggestionsProps {
   query: string;
+  className: string;
   onNoSuggestions: () => void;
   onSomeSuggestions: () => void;
 }
 
 const SearchSuggestions: React.FC<SearchSuggestionsProps> = ({
   query,
+  className,
   onNoSuggestions,
   onSomeSuggestions
 }) => {
@@ -29,7 +31,7 @@ const SearchSuggestions: React.FC<SearchSuggestionsProps> = ({
   return (
     <ul
       id="search-suggestions"
-      className="w-full mt-2 max-h-72 bg-white dark:bg-zinc-900 z-50 absolute top-[calc(100%-3rem)] sm:top-full border-[0.9px] border-zinc-300 dark:border-zinc-700 rounded-md shadow-xl shadow-black/15 dark:shadow-black overflow-y-auto overflow-x-hidden">
+      className={`w-full mt-2 max-h-72 bg-white dark:bg-zinc-900 z-50 absolute top-[calc(100%-3rem)] sm:top-full border-[0.9px] border-zinc-300 dark:border-zinc-700 rounded-md shadow-xl shadow-black/15 dark:shadow-black overflow-y-auto overflow-x-hidden ${className}`}>
       {isError && (
         <SuggestionItem content={"An Error Has Occurred. Try Again."} />
       )}

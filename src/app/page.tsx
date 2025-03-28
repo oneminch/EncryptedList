@@ -60,10 +60,12 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
               )}
             </>
           ) : (
-            <GenericError message={appsError} />
+            <GenericError classes="col-span-full!" message={appsError} />
           )}
         </section>
       </section>
+
+      <PageDivider />
 
       <Footer />
     </>

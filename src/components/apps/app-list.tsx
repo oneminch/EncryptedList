@@ -13,12 +13,10 @@ const AppList: React.FC<AppListProps> = ({ apps }) => {
         {apps.length > 0 ? (
           apps.map((item: App) => <AppItem app={item} key={item.id} />)
         ) : (
-          <li className="w-full p-8 flex flex-col items-center gap-y-4 text-center text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 rounded-lg">
+          <li className="col-span-full w-full p-8 flex flex-col items-center gap-y-4 text-center text-zinc-500 dark:text-zinc-500">
             <Icon icon="ph:magnifying-glass-duotone" className="text-5xl" />
             <h3 className="text-2xl font-bold">No Apps Found.</h3>
-            <p className="text-lg">
-              Try refining your search or selected tags.
-            </p>
+            <p>Try refining your search or selected tags.</p>
           </li>
         )}
       </ul>

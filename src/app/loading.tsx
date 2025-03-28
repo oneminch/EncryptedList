@@ -1,3 +1,4 @@
+import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
 import Hero from "@/components/layout/hero";
 import PageDivider from "@/components/misc/page-divider";
@@ -18,6 +19,10 @@ const LoadingPage: React.FC = () => {
           <AppListSkeleton />
         </section>
       </section>
+
+      <PageDivider />
+
+      <Footer />
     </>
   );
 };

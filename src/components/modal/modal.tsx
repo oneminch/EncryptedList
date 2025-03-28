@@ -62,7 +62,7 @@ const Modal: React.FC<ModalProps> = ({
             }`}
             onClick={closableByAnyMeans ? handleClose : undefined}>
             <div
-              className="relative w-full sm:w-auto h-auto max-w-(--breakpoint-sm) rounded-t-lg sm:rounded-lg pt-6 pb-8 px-8 flex flex-col gap-y-4 justify-between bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-700 transform overflow-auto"
+              className="relative w-full sm:w-auto h-auto max-w-(--breakpoint-sm) rounded-t-lg sm:rounded-lg pt-6 pb-8 px-8 flex flex-col gap-y-4 justify-between bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 transform overflow-auto"
               tabIndex={-1}
               ref={modalContainerRef}
               onClick={(e) => e.stopPropagation()}>
@@ -73,7 +73,7 @@ const Modal: React.FC<ModalProps> = ({
                 onClick={handleClose}>
                 <Icon icon="ph:x" />
               </button>
-              <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+              <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
                 {title}
               </h2>
               {children}

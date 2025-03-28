@@ -31,7 +31,7 @@ const AppItem: React.FC<AppItemProps> = ({ app }) => {
             <span>{app.name}</span>
             <Icon
               icon="ph:arrow-up-right"
-              className="text-lg text-zinc-600 dark:text-zinc-400 transition-all duration-75 scale-90 sm:opacity-0 sm:invisible group-hover:opacity-100 group-hover:scale-100 group-hover:visible group-focus-visible:opacity-100 group-focus-visible:scale-100 group-focus-visible:visible"
+              className="text-lg text-yellow-500 dark:text-yellow-500 transition-all duration-75 scale-90 sm:opacity-0 sm:invisible group-hover:opacity-100 group-hover:scale-100 group-hover:visible group-focus-visible:opacity-100 group-focus-visible:scale-100 group-focus-visible:visible"
             />
           </a>
         </div>

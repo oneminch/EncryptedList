@@ -1,12 +1,21 @@
 "use client";
 
-import { memo } from "react";
+import { memo, useState } from "react";
 import { Icon } from "@iconify/react";
+import { CSSTransition } from "react-transition-group";
 import SearchSuggestions from "@/components/search/search-suggestions";
 import metadata from "@/lib/metadata";
 import useSearchQuery from "@/hooks/useSearchQuery";
+import Filter from "./search-filter";
+import useTag from "@/hooks/useTag";
+import { getTags } from "@/lib/data";
+import GenericError from "../misc/generic-error";
 
-const Search: React.FC = () => {
+interface SearchProps {
+  tagsInfo: Awaited<ReturnType<typeof getTags>>;
+}
+
+const Search: React.FC<SearchProps> = ({ tagsInfo }) => {
   const {
     query,
     debouncedQuery,
@@ -18,10 +27,18 @@ const Search: React.FC = () => {
     handleQueryChange
   } = useSearchQuery();
 
+  const { totalSelectedTags } = useTag();
+
+  const [toggleFilters, setToggleFilters] = useState(false);
+
+  const handleToggleTags = () => {
+    setToggleFilters((prev) => !prev);
+  };
+
   return (
     <div className="w-full sm:w-4/5 lg:w-7/12 max-w-3xl mx-auto relative bg-transparent rounded-xl group">
       <form
-        className="w-full sticky top-0 bg-transparent backdrop-blur-sm flex flex-col items-center justify-center sm:flex-row gap-y-2 gap-x-1 rounded-xl"
+        className="w-full bg-transparent backdrop-blur-sm flex flex-col items-center justify-center sm:flex-row gap-y-2 gap-x-1 rounded-xl"
         onSubmit={handleQuerySubmit}>
         <label htmlFor="search-query" className="sr-only">
           Search Apps
@@ -48,20 +65,46 @@ const Search: React.FC = () => {
             [ / ]
           </span>
         </div>
-        <span className="shrink-0 w-full sm:w-24 h-9 flex items-center justify-center gap-x-1.5 rounded-lg sm:rounded-r-3xl sm:rounded-l border-[0.9px] border-zinc-800 dark:border-zinc-200 bg-zinc-800 dark:bg-zinc-200 py-2 px-4 text-sm text-zinc-200 dark:text-zinc-800">
-          Tags
-          <Icon icon="ph:tag-duotone" />
-        </span>
+        <button
+          type="button"
+          onClick={handleToggleTags}
+          className="shrink-0 cursor-pointer w-full sm:w-32 h-9 flex items-center justify-center gap-x-4 rounded-lg sm:rounded-r-3xl sm:rounded-l border-[0.9px] border-zinc-800 dark:border-zinc-200 bg-zinc-800 dark:bg-zinc-200 py-2 px-4 text-sm text-zinc-200 dark:text-zinc-800 relative focus-visible:global-focus">
+          <span className="inline-flex items-center gap-x-1.5">
+            <Icon icon="ph:funnel-duotone" />
+            Filters
+          </span>
+          <Icon icon={!toggleFilters ? "ph:caret-down" : "ph:caret-up"} />
+
+          {totalSelectedTags() > 0 && (
+            <span
+              className="absolute -top-1 -right-1 bg-yellow-500 text-zinc-900 rounded-full text-xs w-4 h-4"
+              title={`${totalSelectedTags()} Tags Selected`}>
+              {totalSelectedTags()}
+            </span>
+          )}
+        </button>
       </form>
 
       <SearchSuggestions
-        className={`hidden group-focus-within:${
-          isSearching ? "block" : "hidden"
+        className={`absolute top-9 hidden ${
+          isSearching ? "group-focus-within:block" : "peer-focus-within:hidden"
         }`}
         query={debouncedQuery.trim()}
         onNoSuggestions={() => setIsSubmittingAllowed(false)}
         onSomeSuggestions={() => setIsSubmittingAllowed(true)}
       />
+
+      <CSSTransition
+        in={toggleFilters}
+        timeout={300}
+        classNames="fade"
+        unmountOnExit>
+        {tagsInfo.tags.length > 0 || tagsInfo.error !== null ? (
+          <Filter tags={tagsInfo.tags} />
+        ) : (
+          <GenericError message="Error Fetching Tags." />
+        )}
+      </CSSTransition>
     </div>
   );
 };

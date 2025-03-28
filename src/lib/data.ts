@@ -5,16 +5,16 @@ import { LibsqlError } from "@libsql/client";
 
 const filterAppsSql = `
   WITH filtered_apps AS (
-    SELECT a.id, a.name, a.description, a.url,
+    SELECT a.id, a.name, a.description, a.url, a.created_at,
       GROUP_CONCAT(t.name, ',') AS all_tags
     FROM apps a
     LEFT JOIN app_tags at ON a.id = at.app_id
     LEFT JOIN tags t ON at.tag_id = t.id
     WHERE (((:query) IS NULL) OR (LOWER(a.name) LIKE '%' || LOWER((:query)) || '%') OR (LOWER(a.description) LIKE '%' || LOWER((:query)) || '%'))
-    GROUP BY a.id, a.name, a.description, a.url
+    GROUP BY a.id, a.name, a.description, a.url, a.created_at
   ),
   filtered_and_tagged AS (
-    SELECT id, name, description, url, all_tags AS tags
+    SELECT id, name, description, url, created_at, all_tags AS tags
     FROM filtered_apps
     WHERE (:tags) IS NULL OR id IN (
       SELECT a.id
@@ -37,10 +37,10 @@ const filterAppsSql = `
   FROM filtered_and_tagged fat, total_count tc
   ORDER BY
     CASE
-      WHEN (:sort) = 'asc' THEN name
+      WHEN (:sort) = 'asc' THEN fat.name
     END ASC,
     CASE
-      WHEN (:sort) IS NULL THEN id
+      WHEN (:sort) IS NULL THEN fat.created_at
     END DESC
   LIMIT (:limit) OFFSET (:offset);
 `;

@@ -49,3 +49,19 @@ html {
 body {
   @apply w-full min-w-80 bg-zinc-50 dark:bg-zinc-950 text-zinc-800 dark:text-zinc-100;
 }
+
+.fade-enter {
+  @apply opacity-0 invisible max-h-0;
+}
+
+.fade-enter-active {
+  @apply transition-all duration-300 ease-out opacity-100 visible max-h-96;
+}
+
+.fade-exit {
+  @apply opacity-100 visible max-h-96;
+}
+
+.fade-exit-active {
+  @apply transition-all duration-300 ease-in opacity-0 invisible max-h-0;
+}

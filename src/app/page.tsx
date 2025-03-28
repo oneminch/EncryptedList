@@ -30,7 +30,7 @@ interface HomePageProps {
 
 const HomePage = async ({ searchParams }: HomePageProps) => {
   await sleep(4000);
-  const [{ apps, totalPages, error: appsError }] = await Promise.all([
+  const [{ apps, totalPages, error: appsError }, tagsInfo] = await Promise.all([
     getApps(stringify(searchParams)),
     getTags()
   ]);
@@ -39,18 +39,12 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
     <>
       <section className="mb-2">
         <Header className="hidden md:flex" />
-        <Hero withSearchBar />
+        <Hero withSearchBar tagsInfo={tagsInfo} />
       </section>
 
       <PageDivider />
 
       <section>
-        {/* {tags.length > 0 || tagError !== null ? (
-          <Filter className="shrink-0" tags={tags} />
-        ) : (
-          <GenericError message="Error Fetching Tags." />
-        )} */}
-
         <section className="w-full min-w-60 px-2 md:px-6 flex-1 ">
           {apps !== null || appsError === undefined ? (
             <>

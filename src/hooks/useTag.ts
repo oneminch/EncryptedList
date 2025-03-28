@@ -22,29 +22,37 @@ const useTag = () => {
   const totalSelectedTags = (): number => selectedTags.length;
 
   const handleSelectTag = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIsLoading(true);
-
-    const updatedTags = new Set(selectedTags);
     const tagName = e.target.name;
 
-    if (updatedTags.has(tagName)) {
-      updatedTags.delete(tagName);
-    } else {
-      updatedTags.add(tagName);
-    }
+    setSelectedTags((prevTags) => {
+      const updatedTags = new Set(prevTags);
 
-    const tagParams = Array.from(updatedTags);
-    setSelectedTags(tagParams);
+      if (updatedTags.has(tagName)) {
+        updatedTags.delete(tagName);
+      } else {
+        updatedTags.add(tagName);
+      }
 
-    setTimeout(() => {
+      return Array.from(updatedTags);
+    });
+  };
+
+  const handleApplySelectedTags = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    setSelectedTags((currentTags) => {
       updateSearchParams({
         key: "tag",
-        value: tagParams,
+        value: currentTags,
         searchParams,
         pathname,
         callback: replace
       });
-    }, 0);
+
+      return currentTags;
+    });
+    setIsLoading(false);
   };
 
   const handleClearTags = (e: React.FormEvent<HTMLButtonElement>) => {
@@ -52,13 +60,11 @@ const useTag = () => {
     setIsLoading(true);
 
     setTimeout(() => {
-      updateSearchParams({
-        key: "tag",
-        value: [],
-        searchParams,
-        pathname,
-        callback: replace
-      });
+      setSelectedTags([]);
+    }, 0);
+
+    setTimeout(() => {
+      setIsLoading(false);
     }, 0);
   };
 
@@ -67,6 +73,7 @@ const useTag = () => {
     isTagSelected,
     areAnyTagsSelected,
     handleSelectTag,
+    handleApplySelectedTags,
     handleClearTags,
     totalSelectedTags
   };

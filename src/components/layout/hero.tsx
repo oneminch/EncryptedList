@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import ThemeToggle from "@/components/misc/theme-toggle";
 import pageMeta from "@/lib/metadata";
 import SearchSkeleton from "../misc/skeletons/search-skeleton";
+import { getTags } from "@/lib/data";
 
 const Search = dynamic(() => import("@/components/search/search"), {
   loading: () => <SearchSkeleton />,
@@ -16,9 +17,10 @@ const Search = dynamic(() => import("@/components/search/search"), {
 
 interface HeroProps {
   withSearchBar?: boolean;
+  tagsInfo?: Awaited<ReturnType<typeof getTags>>;
 }
 
-const Hero: React.FC<HeroProps> = ({ withSearchBar }) => {
+const Hero: React.FC<HeroProps> = ({ withSearchBar, tagsInfo }) => {
   const currentPath = usePathname() as keyof typeof pageMeta;
 
   return (
@@ -49,7 +51,7 @@ const Hero: React.FC<HeroProps> = ({ withSearchBar }) => {
       </p>
 
       <ThemeToggle className="md:hidden! text-lg! absolute top-2 right-2" />
-      {withSearchBar && <Search />}
+      {withSearchBar && tagsInfo && <Search tagsInfo={tagsInfo} />}
     </div>
   );
 };

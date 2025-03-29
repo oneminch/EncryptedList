@@ -2,7 +2,7 @@ const metadata = {
   "/": {
     title: "EncryptedList · Find Secure-by-Design Apps",
     minimalTitle: "EncryptedList",
-    description: "Browse & Find Secure-by-Design Software."
+    description: "Discover Secure-by-Design Software."
   },
   "/search": {
     title: "Search",

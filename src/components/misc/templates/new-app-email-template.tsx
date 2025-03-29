@@ -59,7 +59,7 @@ const NewAppEmailTemplate: React.FC<Readonly<SubmissionFormData>> = ({
             fontFamily: "monospace"
           }}>
           <img
-            src="https://evergreens.vercel.app/logo.svg"
+            src="https://icons.encryptedlist.xyz/logo.svg"
             alt="EncryptedList Logo"
             style={{
               width: "1.25rem",

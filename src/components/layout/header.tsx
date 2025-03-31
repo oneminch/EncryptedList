@@ -9,8 +9,8 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ className }) => {
   return (
     <header
-      className={`w-full max-w-5xl mx-auto py-3 px-6 flex items-center justify-end ${className}`}>
-      <nav className="flex items-center justify-between">
+      className={`w-full max-w-5xl mx-auto py-3 px-6 flex items-center ${className}`}>
+      <nav className="flex items-center justify-between ml-auto">
         <ul className="flex items-center justify-between gap-x-1.5 *:shrink-0">
           <li>
             <Link

@@ -22,7 +22,7 @@ const Filter: React.FC<FilterProps> = ({ tags, className }) => {
 
   return (
     <form
-      className={`border-[0.9px] border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-5 py-4 mt-4 rounded-lg flex flex-col gap-y-4 w-full h-auto overflow-hidden ${className}`}>
+      className={`border border-dashed border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-5 py-4 mt-4 rounded-lg flex flex-col gap-y-4 w-full h-auto overflow-hidden ${className}`}>
       <header className="flex items-center justify-between">
         <h2 className="font-medium text-xl">Tags</h2>
 

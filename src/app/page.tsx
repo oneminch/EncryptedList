@@ -10,6 +10,7 @@ import type { QueryParams } from "@/lib/types";
 import { sleep, stringifySearchParams as stringify } from "@/lib/utils";
 import { getApps, getTags } from "@/lib/data";
 import PageDivider from "@/components/misc/page-divider";
+import PromoBanner from "@/components/misc/promotional/promo-banner";
 
 export const metadata: Metadata = {
   title: { absolute: pageMeta["/"].title },
@@ -30,7 +31,7 @@ interface HomePageProps {
 
 const HomePage = async ({ searchParams }: HomePageProps) => {
   await sleep(4000);
-  const [{ apps, totalPages, error: appsError }, tagsInfo] = await Promise.all([
+  const [appsInfo, tagsInfo] = await Promise.all([
     getApps(stringify(searchParams)),
     getTags()
   ]);
@@ -38,6 +39,17 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
   return (
     <>
       <section className="mb-2">
+        <PromoBanner
+          iconUrl="https://icons.encryptedlist.xyz/logo.svg"
+          title="EncryptedList"
+          description="Discover Secure-by-Design Software."
+          cta={{
+            label: "Visit",
+            url: "https://encryptedlist.xyz/?ref=encryptedlist"
+          }}
+          tailwindBackgroundColorVariable="--color-emerald-600"
+          tailwindForegroundColorVariable="--color-white"
+        />
         <Header className="hidden md:flex" />
         <Hero withSearchBar tagsInfo={tagsInfo} />
       </section>
@@ -46,15 +58,15 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
 
       <section>
         <section className="w-full min-w-60 px-2 md:px-6 flex-1 ">
-          {apps !== null || appsError === undefined ? (
+          {appsInfo.apps !== null || appsInfo.error === undefined ? (
             <>
-              <AppList apps={apps} />
-              {totalPages !== null && (
-                <Pagination totalPages={totalPages} disabled={false} />
+              <AppList apps={appsInfo.apps} />
+              {appsInfo.totalPages !== null && (
+                <Pagination totalPages={appsInfo.totalPages} disabled={false} />
               )}
             </>
           ) : (
-            <GenericError classes="col-span-full!" message={appsError} />
+            <GenericError classes="col-span-full!" message={appsInfo.error} />
           )}
         </section>
       </section>

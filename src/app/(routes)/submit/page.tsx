@@ -6,6 +6,7 @@ import PageDivider from "@/components/misc/page-divider";
 import SubmissionFormSkeleton from "@/components/misc/skeletons/submission-form-skeleton";
 import dynamic from "next/dynamic";
 import Footer from "@/components/layout/footer";
+import Promotion from "@/components/misc/promotional/promo-banner";
 
 const SubmissionForm = dynamic(
   () => import("@/components/misc/submission-form"),
@@ -32,6 +33,12 @@ const SubmitPage: React.FC = () => {
   return (
     <>
       <section className="mb-2">
+        <Promotion
+          iconUrl=""
+          title=""
+          description=""
+          cta={{ label: "", url: "" }}
+        />
         <Header className="hidden md:flex" />
         <Hero />
       </section>

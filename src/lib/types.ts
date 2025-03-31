@@ -58,6 +58,22 @@ interface DBArgTypes {
 
 type QueryParamKeys = keyof QueryParams;
 
+interface Promotion {
+  iconUrl: string;
+  title: string;
+  cta: { label: string; url: string };
+  tailwindBackgroundColorVariable?: string;
+  tailwindForegroundColorVariable?: string;
+}
+
+interface BannerPromotion extends Promotion {
+  shortDescription: string;
+}
+
+interface AppListPromotion extends Promotion {
+  longDescription: string;
+}
+
 export type {
   ApiResponse,
   DBArgTypes,
@@ -69,5 +85,7 @@ export type {
   SearchApp,
   SearchResults,
   SubmissionFormData,
-  ReportResults
+  ReportResults,
+  BannerPromotion,
+  AppListPromotion
 };

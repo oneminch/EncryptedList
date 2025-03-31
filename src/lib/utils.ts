@@ -1,7 +1,7 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import type { DBArgTypes, QueryParamKeys, QueryParams } from "@/lib/types";
 
-const limit = 12;
+const limit = 14;
 
 const createDBArgs = (fetchParams: string) => {
   const searchParams = new URLSearchParams(fetchParams);

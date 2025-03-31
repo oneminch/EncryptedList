@@ -39,17 +39,6 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
   return (
     <>
       <section className="mb-2">
-        <PromoBanner
-          iconUrl="https://icons.encryptedlist.xyz/logo.svg"
-          title="EncryptedList"
-          description="Discover Secure-by-Design Software."
-          cta={{
-            label: "Visit",
-            url: "https://encryptedlist.xyz/?ref=encryptedlist"
-          }}
-          tailwindBackgroundColorVariable="--color-emerald-600"
-          tailwindForegroundColorVariable="--color-white"
-        />
         <Header className="hidden md:flex" />
         <Hero withSearchBar tagsInfo={tagsInfo} />
       </section>

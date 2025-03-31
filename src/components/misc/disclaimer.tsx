@@ -31,6 +31,10 @@ const Disclaimer: React.FC = () => {
           App information may change without notice. I strive to provide
           up-to-date information but cannot guarantee its currentness.
         </li>
+        <li>
+          Additionally, the list may contain promotional items unrelated to the
+          site content.
+        </li>
       </ul>
     </section>
   );

@@ -5,7 +5,7 @@ import { LibsqlError } from "@libsql/client";
 
 const filterAppsSql = `
   WITH filtered_apps AS (
-    SELECT a.id, a.name, a.description, a.url, a.created_at,
+    SELECT a.id, a.name, a.description, a.url, a.is_featured, a.created_at,
       GROUP_CONCAT(t.name, ',') AS all_tags
     FROM apps a
     LEFT JOIN app_tags at ON a.id = at.app_id
@@ -14,7 +14,7 @@ const filterAppsSql = `
     GROUP BY a.id, a.name, a.description, a.url, a.created_at
   ),
   filtered_and_tagged AS (
-    SELECT id, name, description, url, created_at, all_tags AS tags
+    SELECT id, name, description, url, is_featured, created_at, all_tags AS tags
     FROM filtered_apps
     WHERE (:tags) IS NULL OR id IN (
       SELECT a.id
@@ -36,6 +36,10 @@ const filterAppsSql = `
     END AS has_alternatives
   FROM filtered_and_tagged fat, total_count tc
   ORDER BY
+    CASE
+      WHEN is_featured = 1 THEN 0
+      ELSE 1
+    END,
     CASE
       WHEN (:sort) = 'asc' THEN fat.name
     END ASC,

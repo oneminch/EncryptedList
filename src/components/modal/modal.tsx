@@ -22,8 +22,17 @@ const Modal: React.FC<ModalProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const modalContainerRef = useRef<HTMLDivElement | null>(null);
 
+  const [isAnimating, setIsAnimating] = useState(false);
+
   const handleClose = () => {
-    setIsOpen(false);
+    setIsAnimating(true);
+  };
+
+  const handleAnimationEnd = () => {
+    if (isAnimating) {
+      setIsAnimating(false);
+      setIsOpen(false);
+    }
   };
 
   useEffect(() => {
@@ -57,10 +66,11 @@ const Modal: React.FC<ModalProps> = ({
       {isOpen &&
         ReactDOM.createPortal(
           <div
-            className={`fixed inset-0 flex items-end justify-center sm:items-center bg-zinc-50/75 dark:bg-zinc-900/75 backdrop-blur-xs z-50 transition-opacity duration-300 ease-out ${
+            className={`fixed inset-0 flex items-end justify-center sm:items-center bg-zinc-50/75 dark:bg-zinc-900/75 backdrop-blur-xs z-50 ${
               closableByAnyMeans && "cursor-pointer"
-            }`}
-            onClick={closableByAnyMeans ? handleClose : undefined}>
+            } ${isAnimating ? "animate-fade-out" : "animate-fade-in"}`}
+            onClick={closableByAnyMeans ? handleClose : undefined}
+            onAnimationEnd={handleAnimationEnd}>
             <div
               className="relative w-full sm:w-auto h-auto max-w-(--breakpoint-sm) rounded-t-lg sm:rounded-lg pt-6 pb-8 px-8 flex flex-col gap-y-4 justify-between bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 transform overflow-auto"
               tabIndex={-1}

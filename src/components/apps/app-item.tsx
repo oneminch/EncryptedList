@@ -37,6 +37,18 @@ const AppItem: React.FC<AppItemProps> = ({ app }) => {
         </div>
       </div>
 
+      {/* {app.is_featured === 1 && (
+        <span
+          className="absolute left-0 top-0 text-(length:--spacing(2.5)) text-xs size-6 text-zinc-800 bg-yellow-500 rounded-br-full z-10"
+          title="Featured"
+          aria-label="Featured">
+          <Icon
+            icon="ph:star-duotone"
+            className="absolute top-0.75 left-0.75"
+          />
+        </span>
+      )} */}
+
       <AppItemOptions
         app={{
           name: app.name,

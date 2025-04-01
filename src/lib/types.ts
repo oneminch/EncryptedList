@@ -28,6 +28,7 @@ interface App {
   description: string;
   url: string;
   has_alternatives: number;
+  is_featured: number;
 }
 
 type SearchApp = Omit<App, "tags" | "description" | "has_alternatives">;

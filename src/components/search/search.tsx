@@ -97,7 +97,7 @@ const Search: React.FC<SearchProps> = ({ tagsInfo }) => {
       <CSSTransition
         in={toggleFilters}
         timeout={300}
-        classNames="fade"
+        classNames="filter-fade"
         unmountOnExit>
         {tagsInfo.tags.length > 0 || tagsInfo.error !== null ? (
           <Filter tags={tagsInfo.tags} />

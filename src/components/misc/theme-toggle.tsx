@@ -21,10 +21,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
         className={`w-7 h-7 flex items-center justify-center rounded-full focus-visible:global-focus hover:bg-zinc-200 dark:hover:bg-zinc-700 focus-visible:bg-zinc-200/50 dark:focus-visible:bg-zinc-800/50 cursor-pointer text-base ${className}`}
         onClick={handleThemeToggle}
         aria-label="Toggle Theme">
-        <Icon
-          icon={theme === "dark" ? "ph:moon-duotone" : "ph:sun-duotone"}
-          data-testid="theme-toggle-icon"
-        />
+        <Icon icon={theme === "dark" ? "ph:moon-duotone" : "ph:sun-duotone"} />
       </button>
     </div>
   );

@@ -1,30 +1,24 @@
-import { useState, useEffect } from "react";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import { updateSearchParams } from "@/lib/utils";
+import { useState } from "react";
+import { parseAsArrayOf, parseAsString, useQueryState } from "nuqs";
 
 const useTag = () => {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const { replace } = useRouter();
+  const [queryParamTags, setQueryParamTags] = useQueryState<string[]>(
+    "tag",
+    parseAsArrayOf(parseAsString)
+      .withOptions({ history: "push", shallow: false })
+      .withDefault([])
+  );
 
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const tagsFromUrl = searchParams.getAll("tag");
-    setSelectedTags(tagsFromUrl || []);
-
-    setIsLoading(false);
-  }, [searchParams]);
-
-  const isTagSelected = (tag: string) => selectedTags.includes(tag);
-  const areAnyTagsSelected = (): boolean => selectedTags.length <= 0;
-  const totalSelectedTags = (): number => selectedTags.length;
+  const isTagSelected = (tag: string) => queryParamTags.includes(tag);
+  const areAnyTagsSelected = (): boolean => queryParamTags.length <= 0;
+  const totalSelectedTags = (): number => queryParamTags.length;
 
   const handleSelectTag = (e: React.ChangeEvent<HTMLInputElement>) => {
     const tagName = e.target.name;
 
-    setSelectedTags((prevTags) => {
+    setQueryParamTags((prevTags) => {
       const updatedTags = new Set(prevTags);
 
       if (updatedTags.has(tagName)) {
@@ -37,30 +31,12 @@ const useTag = () => {
     });
   };
 
-  const handleApplySelectedTags = (e: React.FormEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    setSelectedTags((currentTags) => {
-      updateSearchParams({
-        key: "tag",
-        value: currentTags,
-        searchParams,
-        pathname,
-        callback: replace
-      });
-
-      return currentTags;
-    });
-    setIsLoading(false);
-  };
-
   const handleClearTags = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setIsLoading(true);
 
     setTimeout(() => {
-      setSelectedTags([]);
+      setQueryParamTags([]);
     }, 0);
 
     setTimeout(() => {
@@ -73,7 +49,6 @@ const useTag = () => {
     isTagSelected,
     areAnyTagsSelected,
     handleSelectTag,
-    handleApplySelectedTags,
     handleClearTags,
     totalSelectedTags
   };

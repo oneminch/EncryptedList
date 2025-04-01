@@ -32,7 +32,7 @@ interface HomePageProps {
 const HomePage = async ({ searchParams }: HomePageProps) => {
   await sleep(4000);
   const [appsInfo, tagsInfo] = await Promise.all([
-    getApps(stringify(searchParams)),
+    getApps(JSON.stringify(searchParams)),
     getTags()
   ]);
 

@@ -7,6 +7,7 @@ import "@fontsource/space-grotesk/400.css";
 import "@fontsource/space-grotesk/500.css";
 import "@fontsource/space-grotesk/600.css";
 import "@fontsource/space-grotesk/700.css";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const defaultDescription = pageMeta["/"].description;
 
@@ -59,12 +60,14 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
         </a>
 
         <ThemeProvider attribute="class" enableSystem>
-          <main className="max-w-5xl mx-auto px-2 min-w-72 w-full">
-            <article className="pb-24 md:pb-4">
-              {children}
-              <TabBar />
-            </article>
-          </main>
+          <NuqsAdapter>
+            <main className="max-w-5xl mx-auto px-2 min-w-72 w-full">
+              <article className="pb-24 md:pb-4">
+                {children}
+                <TabBar />
+              </article>
+            </main>
+          </NuqsAdapter>
         </ThemeProvider>
       </body>
     </html>

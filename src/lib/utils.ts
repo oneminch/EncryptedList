@@ -4,19 +4,20 @@ import type { DBArgTypes, QueryParamKeys, QueryParams } from "@/lib/types";
 const limit = 14;
 
 const createDBArgs = (fetchParams: string) => {
+  console.log(fetchParams);
   const searchParams = new URLSearchParams(fetchParams);
 
   const page = parseInt(searchParams.get("page") || "1");
   const query = searchParams.get("query");
   const sort = searchParams.get("sort");
-  const tags = searchParams.getAll("tag");
+  const tags = searchParams.get("tag");
 
   const args: DBArgTypes = {
     limit,
     offset: (page - 1) * limit,
     sort: sort?.toLocaleLowerCase() || null,
     query: query?.toLocaleLowerCase() || null,
-    tags: tags && tags.length > 0 ? JSON.stringify(tags) : null
+    tags: tags ? JSON.stringify(tags) : null
   };
 
   return args;
@@ -26,6 +27,7 @@ const stringifySearchParams = (searchParams: QueryParams): string => {
   const urlSearchParams = new URLSearchParams();
 
   Object.entries(searchParams).forEach(([key, value]) => {
+    console.log(value);
     if (Array.isArray(value)) {
       value.forEach((v) => urlSearchParams.append(key, v));
     } else if (value !== undefined) {

@@ -13,7 +13,6 @@ interface FilterProps {
 const Filter: React.FC<FilterProps> = ({ tags, className }) => {
   const {
     handleClearTags,
-    handleApplySelectedTags,
     areAnyTagsSelected,
     isTagSelected,
     isLoading,
@@ -47,7 +46,7 @@ const Filter: React.FC<FilterProps> = ({ tags, className }) => {
             className="w-full text-sm px-3 py-1 mt-auto h-8 font-medium flex items-center justify-center rounded-md focus-visible:global-focus bg-zinc-800 dark:bg-zinc-200 text-zinc-200 dark:text-zinc-800 cursor-pointer disabled:cursor-not-allowed disabled:bg-zinc-50 dark:disabled:bg-zinc-800 disabled:text-zinc-400 dark:disabled:text-zinc-500 disabled:border-zinc-200 dark:disabled:border-zinc-700 disabled:focus-visible:ring-0"
             type="submit"
             disabled={isLoading}
-            onClick={handleApplySelectedTags}>
+            onClick={() => {}}>
             Apply Tags
           </button>
           <button

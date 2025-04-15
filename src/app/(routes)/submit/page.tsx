@@ -12,8 +12,8 @@ import { type BannerPromotion } from "@/lib/types";
 const SubmissionForm = dynamic(
   () => import("@/components/misc/submission-form"),
   {
-    loading: () => <SubmissionFormSkeleton />,
-    ssr: false
+    loading: () => <SubmissionFormSkeleton />
+    // ssr: false
   }
 );
 

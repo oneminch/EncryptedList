@@ -46,7 +46,7 @@ interface QueryParams {
   page?: number;
   query?: string;
   sort?: string;
-  tag?: string[];
+  tag?: string;
 }
 
 interface DBArgTypes {

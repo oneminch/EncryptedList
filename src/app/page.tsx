@@ -7,10 +7,9 @@ import Pagination from "@/components/apps/app-pagination";
 import GenericError from "@/components/misc/generic-error";
 import pageMeta from "@/lib/metadata";
 import type { QueryParams } from "@/lib/types";
-import { sleep, stringifySearchParams as stringify } from "@/lib/utils";
+import { sleep } from "@/lib/utils";
 import { getApps, getTags } from "@/lib/data";
 import PageDivider from "@/components/misc/page-divider";
-import PromoBanner from "@/components/misc/promotional/promo-banner";
 
 export const metadata: Metadata = {
   title: { absolute: pageMeta["/"].title },
@@ -26,11 +25,12 @@ export const metadata: Metadata = {
 };
 
 interface HomePageProps {
-  searchParams: QueryParams;
+  searchParams: Promise<QueryParams>;
 }
 
-const HomePage = async ({ searchParams }: HomePageProps) => {
-  await sleep(4000);
+const HomePage = async (props: HomePageProps) => {
+  const searchParams = await props.searchParams;
+
   const [appsInfo, tagsInfo] = await Promise.all([
     getApps(JSON.stringify(searchParams)),
     getTags()

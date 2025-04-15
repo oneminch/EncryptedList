@@ -10,7 +10,7 @@ const createDBArgs = (fetchParams: string) => {
   const page = parseInt(searchParams.get("page") || "1");
   const query = searchParams.get("query");
   const sort = searchParams.get("sort");
-  const tags = searchParams.get("tag");
+  const tags = searchParams.get("tag")?.split(",") || null;
 
   const args: DBArgTypes = {
     limit,

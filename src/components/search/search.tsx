@@ -49,13 +49,18 @@ const Search: React.FC<SearchProps> = ({ tagsInfo }) => {
             className="flex items-center justify-center w-6 text-lg absolute left-1.5 text-zinc-400 dark:text-zinc-600"
           />
           <input
-            className="w-full h-9 text-base placeholder:text-sm rounded-lg sm:rounded-l-3xl sm:rounded-r border-[0.9px] border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900/50 py-2 px-9 focus-visible:global-focus scroll-mt-4"
+            className="w-full h-9 text-base placeholder:text-sm rounded-lg sm:rounded-l-3xl sm:rounded-r border-[0.9px] border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900/50 py-2 px-9 focus-visible:global-focus scroll-mt-8"
             id="search-query"
             value={query}
             ref={inputRef}
-            onFocus={(e) =>
-              e.target.scrollIntoView({ behavior: "smooth", block: "start" })
-            }
+            onFocus={(e) => {
+              setTimeout(() => {
+                e.target.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start"
+                });
+              }, 300);
+            }}
             onChange={handleQueryChange}
             onKeyDown={handleKeyDown}
             type="text"

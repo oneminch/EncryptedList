@@ -20,7 +20,7 @@ export async function POST(request: Request) {
       from: `EncryptedList <${sender}>`,
       to: receiver,
       subject: `Reporting "${appName}" (EncryptedList)`,
-      react: ReportEmailTemplate(reportData)
+      react: await ReportEmailTemplate(reportData)
     });
 
     if (error) {

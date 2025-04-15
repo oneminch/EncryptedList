@@ -7,7 +7,6 @@ import Pagination from "@/components/apps/app-pagination";
 import GenericError from "@/components/misc/generic-error";
 import pageMeta from "@/lib/metadata";
 import type { QueryParams } from "@/lib/types";
-import { sleep } from "@/lib/utils";
 import { getApps, getTags } from "@/lib/data";
 import PageDivider from "@/components/misc/page-divider";
 

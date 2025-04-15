@@ -25,7 +25,7 @@ export async function POST(request: Request) {
       from: `EncryptedList <${sender}>`,
       to: receiver,
       subject: `Submitting New App (EncryptedList)`,
-      react: NewAppEmailTemplate(formDataObj)
+      react: await NewAppEmailTemplate(formDataObj)
     });
 
     if (error) {

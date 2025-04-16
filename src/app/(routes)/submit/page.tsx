@@ -6,8 +6,8 @@ import PageDivider from "@/components/misc/page-divider";
 import SubmissionFormSkeleton from "@/components/misc/skeletons/submission-form-skeleton";
 import dynamic from "next/dynamic";
 import Footer from "@/components/layout/footer";
-import PromoBanner from "@/components/misc/promotional/promo-banner";
-import { type BannerPromotion } from "@/lib/types";
+// import PromoBanner from "@/components/misc/promotional/promo-banner";
+// import { type BannerPromotion } from "@/lib/types";
 
 const SubmissionForm = dynamic(
   () => import("@/components/misc/submission-form"),
@@ -31,22 +31,22 @@ export const metadata: Metadata = {
 };
 
 const SubmitPage: React.FC = () => {
-  const promoInfo = {
-    iconUrl: "https://icons.encryptedlist.xyz/logo.svg",
-    title: "EncryptedList",
-    shortDescription: "Discover Secure-by-Design Software.",
-    cta: {
-      label: "Learn More",
-      url: "https://encryptedlist.xyz/"
-    },
-    tailwindBackgroundColorVariable: "--color-yellow-500",
-    tailwindForegroundColorVariable: "--color-zinc-800"
-  } satisfies BannerPromotion;
+  // const promoInfo = {
+  //   iconUrl: "https://icons.encryptedlist.xyz/logo.svg",
+  //   title: "EncryptedList",
+  //   shortDescription: "Discover Secure-by-Design Software.",
+  //   cta: {
+  //     label: "Learn More",
+  //     url: "https://encryptedlist.xyz/"
+  //   },
+  //   tailwindBackgroundColorVariable: "--color-yellow-500",
+  //   tailwindForegroundColorVariable: "--color-zinc-800"
+  // } satisfies BannerPromotion;
 
   return (
     <>
       <section className="mb-2">
-        <PromoBanner {...promoInfo} />
+        {/* <PromoBanner {...promoInfo} /> */}
         <Header className="hidden md:flex" />
         <Hero />
       </section>

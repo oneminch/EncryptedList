@@ -2,24 +2,24 @@ import AppItem from "@/components/apps/app-item";
 import SearchStatus from "@/components/search/search-status";
 import type { App } from "@/lib/types";
 import { Icon } from "@iconify/react";
-import PromoCard from "../misc/promotional/promo-card";
-import { AppListPromotion } from "@/lib/types";
+// import PromoCard from "../misc/promotional/promo-card";
+// import { AppListPromotion } from "@/lib/types";
 
 type AppListProps = { apps: App[] };
 
 const AppList: React.FC<AppListProps> = ({ apps }) => {
-  const promoInfo = {
-    iconUrl: "https://icons.encryptedlist.xyz/logo.svg",
-    title: "EncryptedList",
-    longDescription:
-      "Discover apps that are secure-by-design, and protect your privacy by default.",
-    cta: {
-      label: "Learn More",
-      url: "https://encryptedlist.xyz/"
-    },
-    tailwindBackgroundColorVariable: "--color-yellow-500",
-    tailwindForegroundColorVariable: "--color-zinc-800"
-  } satisfies AppListPromotion;
+  // const promoInfo = {
+  //   iconUrl: "https://icons.encryptedlist.xyz/logo.svg",
+  //   title: "EncryptedList",
+  //   longDescription:
+  //     "Discover apps that are secure-by-design, and protect your privacy by default.",
+  //   cta: {
+  //     label: "Learn More",
+  //     url: "https://encryptedlist.xyz/"
+  //   },
+  //   tailwindBackgroundColorVariable: "--color-yellow-500",
+  //   tailwindForegroundColorVariable: "--color-zinc-800"
+  // } satisfies AppListPromotion;
 
   // const appsWithPromo = apps.flatMap((item, index) =>
   //   index === 1 ? [item, { isPromo: true, promoInfo }] : [item]

@@ -1,5 +1,4 @@
-import type { ReadonlyURLSearchParams } from "next/navigation";
-import type { DBArgTypes, QueryParamKeys, QueryParams } from "@/lib/types";
+import type { DBArgTypes, QueryParams } from "@/lib/types";
 
 const limit = 14;
 
@@ -22,43 +21,6 @@ const createDBArgs = (fetchParams: QueryParams) => {
   return args;
 };
 
-const updateSearchParams = ({
-  key,
-  value,
-  searchParams,
-  pathname,
-  callback,
-  resetPagination = true
-}: {
-  key: QueryParamKeys;
-  value: string | string[];
-  searchParams: ReadonlyURLSearchParams;
-  pathname: string;
-  callback: (href: string, options?: any) => void;
-  resetPagination?: boolean;
-}) => {
-  const params = new URLSearchParams(searchParams);
-
-  if (resetPagination) {
-    params.delete("page");
-  }
-
-  if (value.length === 0) {
-    params.delete(key);
-  } else {
-    if (typeof value == "string") {
-      params.set(key, value);
-    } else {
-      params.delete(key);
-      value.forEach((item) => {
-        params.append(key, item);
-      });
-    }
-  }
-
-  callback(`${pathname}?${params.toString()}`, { scroll: true });
-};
-
 const slugify = (s: string) => {
   return s
     .toLocaleLowerCase()
@@ -71,4 +33,4 @@ const slugify = (s: string) => {
 const sleep = async (time: number = 1000) =>
   await new Promise((resolve) => setTimeout(resolve, time));
 
-export { limit, createDBArgs, sleep, slugify, updateSearchParams };
+export { limit, createDBArgs, sleep, slugify };

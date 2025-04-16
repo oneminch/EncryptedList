@@ -1,4 +1,10 @@
-import type { SearchApp, SearchResults, AppResultSet, App } from "@/lib/types";
+import type {
+  SearchApp,
+  SearchResults,
+  AppResultSet,
+  App,
+  QueryParams
+} from "@/lib/types";
 import { createDBArgs, limit as itemsPerPage } from "@/lib/utils";
 import getDBClient from "@/lib/db";
 import { LibsqlError } from "@libsql/client";
@@ -72,7 +78,7 @@ const searchAppsSql = `
   LIMIT 4;
 `;
 
-const getApps = async (fetchParams: string): Promise<AppResultSet> => {
+const getApps = async (fetchParams: QueryParams): Promise<AppResultSet> => {
   const db = getDBClient();
   const dbArgs = createDBArgs(fetchParams);
 

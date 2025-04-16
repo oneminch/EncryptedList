@@ -31,7 +31,7 @@ const HomePage = async (props: HomePageProps) => {
   const searchParams = await props.searchParams;
 
   const [appsInfo, tagsInfo] = await Promise.all([
-    getApps(JSON.stringify(searchParams)),
+    getApps(searchParams),
     getTags()
   ]);
 

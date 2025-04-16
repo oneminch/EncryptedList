@@ -1,47 +1,45 @@
-import { useState } from "react";
+import { useTransition, useState } from "react";
 import { parseAsArrayOf, parseAsString, useQueryState } from "nuqs";
 
 const useTag = () => {
+  const [isLoading, startTransition] = useTransition();
+
   const [queryParamTags, setQueryParamTags] = useQueryState<string[]>(
     "tag",
     parseAsArrayOf(parseAsString)
-      .withOptions({ history: "push", shallow: false })
+      .withOptions({ history: "push", shallow: false, startTransition })
       .withDefault([])
   );
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [tempSelectedTags, setTempSelectedTags] = useState<Set<string>>(
+    new Set(queryParamTags)
+  );
 
-  const isTagSelected = (tag: string) => queryParamTags.includes(tag);
-  const areAnyTagsSelected = (): boolean => queryParamTags.length <= 0;
+  const isTagSelected = (tag: string) => tempSelectedTags.has(tag);
+  const areAnyTagsSelected = (): boolean => tempSelectedTags.size <= 0;
   const totalSelectedTags = (): number => queryParamTags.length;
 
   const handleSelectTag = (e: React.ChangeEvent<HTMLInputElement>) => {
     const tagName = e.target.name;
-
-    setQueryParamTags((prevTags) => {
-      const updatedTags = new Set(prevTags);
-
-      if (updatedTags.has(tagName)) {
-        updatedTags.delete(tagName);
+    setTempSelectedTags((prev) => {
+      const updated = new Set(prev);
+      if (updated.has(tagName)) {
+        updated.delete(tagName);
       } else {
-        updatedTags.add(tagName);
+        updated.add(tagName);
       }
-
-      return Array.from(updatedTags);
+      return updated;
     });
+  };
+
+  const handleApplyTags = () => {
+    setQueryParamTags(Array.from(tempSelectedTags));
   };
 
   const handleClearTags = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setQueryParamTags([]);
-    }, 0);
-
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 0);
+    setTempSelectedTags(new Set());
+    setQueryParamTags([]);
   };
 
   return {
@@ -50,6 +48,7 @@ const useTag = () => {
     areAnyTagsSelected,
     handleSelectTag,
     handleClearTags,
+    handleApplyTags,
     totalSelectedTags
   };
 };

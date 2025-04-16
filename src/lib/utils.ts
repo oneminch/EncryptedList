@@ -3,9 +3,8 @@ import type { DBArgTypes, QueryParamKeys, QueryParams } from "@/lib/types";
 
 const limit = 14;
 
-const createDBArgs = (fetchParams: string) => {
-  console.log(fetchParams);
-  const searchParams = new URLSearchParams(fetchParams);
+const createDBArgs = (fetchParams: QueryParams) => {
+  const searchParams = new URLSearchParams(Object.entries(fetchParams));
 
   const page = parseInt(searchParams.get("page") || "1");
   const query = searchParams.get("query");
@@ -21,21 +20,6 @@ const createDBArgs = (fetchParams: string) => {
   };
 
   return args;
-};
-
-const stringifySearchParams = (searchParams: QueryParams): string => {
-  const urlSearchParams = new URLSearchParams();
-
-  Object.entries(searchParams).forEach(([key, value]) => {
-    console.log(value);
-    if (Array.isArray(value)) {
-      value.forEach((v) => urlSearchParams.append(key, v));
-    } else if (value !== undefined) {
-      urlSearchParams.append(key, value);
-    }
-  });
-
-  return urlSearchParams.toString();
 };
 
 const updateSearchParams = ({
@@ -87,11 +71,4 @@ const slugify = (s: string) => {
 const sleep = async (time: number = 1000) =>
   await new Promise((resolve) => setTimeout(resolve, time));
 
-export {
-  limit,
-  createDBArgs,
-  sleep,
-  slugify,
-  stringifySearchParams,
-  updateSearchParams
-};
+export { limit, createDBArgs, sleep, slugify, updateSearchParams };

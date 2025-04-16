@@ -5,15 +5,22 @@ import { Icon } from "@iconify/react";
 interface TagItemProps {
   name: string;
   checked: boolean;
+  disabled: boolean;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const TagItem: React.FC<TagItemProps> = ({ name, checked, handleChange }) => {
+const TagItem: React.FC<TagItemProps> = ({
+  name,
+  checked,
+  disabled,
+  handleChange
+}) => {
   return (
     <label className="text-sm rounded-full min-w-16 h-6 select-none">
       <input
         type="checkbox"
         className="peer sr-only"
+        disabled={disabled}
         name={name.toLocaleLowerCase()}
         checked={checked}
         onChange={(e) => handleChange(e)}

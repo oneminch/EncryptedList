@@ -18,7 +18,6 @@
     "nuqs": "^2.4.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-transition-group": "^4.4.5",
     "resend": "^4.2.0",
     "swr": "^2.3.3"
   },
@@ -28,7 +27,6 @@
     "@types/node": "^20.17.30",
     "@types/react": "19.0.12",
     "@types/react-dom": "19.0.4",
-    "@types/react-transition-group": "^4.4.12",
     "eslint": "^8.57.1",
     "eslint-config-next": "15.2.4",
     "eslint-plugin-unused-imports": "^4.1.4",

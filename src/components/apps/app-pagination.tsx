@@ -2,6 +2,7 @@
 
 import { Icon } from "@iconify/react";
 import usePagination from "@/hooks/usePagination";
+import Spinner from "../misc/spinner";
 
 interface PaginationProps {
   totalPages: number;
@@ -9,13 +10,19 @@ interface PaginationProps {
 }
 
 const Pagination: React.FC<PaginationProps> = ({ totalPages, disabled }) => {
-  const { currentPage, isOnFirstPage, isOnLastPage, toPrevPage, toNextPage } =
-    usePagination(totalPages);
+  const {
+    currentPage,
+    isOnFirstPage,
+    isOnLastPage,
+    isLoading,
+    toPrevPage,
+    toNextPage
+  } = usePagination(totalPages);
 
   return (
-    <div className="w-72 text-sm mx-auto my-8 flex items-center justify-center gap-x-4">
+    <div className="w-72 text-sm mx-auto my-12 flex items-center justify-center gap-x-4 relative">
       <button
-        disabled={isOnFirstPage || disabled}
+        disabled={isOnFirstPage || disabled || isLoading}
         onClick={toPrevPage}
         type="button"
         aria-label="Previous Page"
@@ -29,7 +36,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages, disabled }) => {
         Page {currentPage} of {totalPages}
       </span>
       <button
-        disabled={isOnLastPage || disabled}
+        disabled={isOnLastPage || disabled || isLoading}
         onClick={toNextPage}
         type="button"
         aria-label="Next Page"
@@ -39,6 +46,9 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages, disabled }) => {
           className="text-lg group-disabled/hover-effect:translate-x-0 group-hover/hover-effect:translate-x-1"
         />
       </button>
+      {isLoading && (
+        <Spinner className="absolute right-4 top-1/2 -translate-y-1/2" />
+      )}
     </div>
   );
 };

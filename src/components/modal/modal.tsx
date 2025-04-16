@@ -57,6 +57,7 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <>
       <button
+        type="button"
         title={title}
         aria-label={title}
         onClick={() => setIsOpen(true)}

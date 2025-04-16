@@ -2,6 +2,7 @@
 
 import { Icon } from "@iconify/react";
 import useSort from "@/hooks/useSort";
+import Spinner from "../misc/spinner";
 
 const Sort: React.FC = () => {
   const { isSorted, handleSort, isLoading } = useSort();
@@ -18,7 +19,7 @@ const Sort: React.FC = () => {
       title="Sort Apps"
       disabled={isLoading}
       onClick={handleSort}>
-      <Icon icon="ph:sort-ascending" />
+      {isLoading ? <Spinner /> : <Icon icon="ph:sort-ascending" />}
     </button>
   );
 };

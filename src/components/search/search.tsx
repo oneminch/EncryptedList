@@ -1,8 +1,7 @@
 "use client";
 
-import { memo, useState } from "react";
+import { memo } from "react";
 import { Icon } from "@iconify/react";
-import { CSSTransition } from "react-transition-group";
 import SearchSuggestions from "@/components/search/search-suggestions";
 import metadata from "@/lib/metadata";
 import useSearchQuery from "@/hooks/useSearchQuery";
@@ -10,6 +9,7 @@ import Filter from "./search-filter";
 import useTag from "@/hooks/useTag";
 import { getTags } from "@/lib/data";
 import GenericError from "../misc/generic-error";
+import Modal from "../modal/modal";
 
 interface SearchProps {
   tagsInfo: Awaited<ReturnType<typeof getTags>>;
@@ -28,12 +28,6 @@ const Search: React.FC<SearchProps> = ({ tagsInfo }) => {
   } = useSearchQuery();
 
   const { totalSelectedTags } = useTag();
-
-  const [toggleFilters, setToggleFilters] = useState(false);
-
-  const handleToggleTags = () => {
-    setToggleFilters((prev) => !prev);
-  };
 
   return (
     <div className="w-full sm:w-4/5 lg:w-7/12 max-w-3xl mx-auto relative bg-transparent rounded-xl group">
@@ -70,24 +64,32 @@ const Search: React.FC<SearchProps> = ({ tagsInfo }) => {
             [ / ]
           </span>
         </div>
-        <button
-          type="button"
-          onClick={handleToggleTags}
-          className="shrink-0 cursor-pointer w-full sm:w-32 h-9 flex items-center justify-center gap-x-4 rounded-lg sm:rounded-r-3xl sm:rounded-l border-[0.9px] border-zinc-800 dark:border-zinc-200 bg-zinc-800 dark:bg-zinc-200 py-2 px-4 text-sm text-zinc-200 dark:text-zinc-800 relative focus-visible:global-focus">
-          <span className="inline-flex items-center gap-x-1.5">
-            <Icon icon="ph:funnel-duotone" />
-            Filters
-          </span>
-          <Icon icon={!toggleFilters ? "ph:caret-down" : "ph:caret-up"} />
 
-          {totalSelectedTags() > 0 && (
-            <span
-              className="absolute -top-1 -right-1 bg-yellow-500 text-zinc-900 rounded-full text-xs w-4 h-4"
-              title={`${totalSelectedTags()} Tags Selected`}>
-              {totalSelectedTags()}
-            </span>
+        <Modal
+          title=""
+          triggerContent={
+            <>
+              <span className="inline-flex items-center gap-x-1.5">
+                <Icon icon="ph:funnel-duotone" />
+                Filters
+              </span>
+
+              {totalSelectedTags() > 0 && (
+                <span
+                  className="absolute -top-1 -right-1 bg-yellow-500 text-zinc-900 rounded-full text-xs w-4 h-4"
+                  title={`${totalSelectedTags()} Tags Selected`}>
+                  {totalSelectedTags()}
+                </span>
+              )}
+            </>
+          }
+          triggerClasses="shrink-0 cursor-pointer w-full sm:w-32 h-9 flex items-center justify-center gap-x-4 rounded-lg sm:rounded-r-3xl sm:rounded-l border-[0.9px] border-zinc-800 dark:border-zinc-200 bg-zinc-800 dark:bg-zinc-200 py-2 px-4 text-sm text-zinc-200 dark:text-zinc-800 relative focus-visible:global-focus">
+          {tagsInfo.tags.length > 0 || tagsInfo.error !== null ? (
+            <Filter tags={tagsInfo.tags} />
+          ) : (
+            <GenericError message="Error Fetching Tags." />
           )}
-        </button>
+        </Modal>
       </form>
 
       <SearchSuggestions
@@ -98,18 +100,6 @@ const Search: React.FC<SearchProps> = ({ tagsInfo }) => {
         onNoSuggestions={() => setIsSubmittingAllowed(false)}
         onSomeSuggestions={() => setIsSubmittingAllowed(true)}
       />
-
-      <CSSTransition
-        in={toggleFilters}
-        timeout={300}
-        classNames="filter-fade"
-        unmountOnExit>
-        {tagsInfo.tags.length > 0 || tagsInfo.error !== null ? (
-          <Filter tags={tagsInfo.tags} />
-        ) : (
-          <GenericError message="Error Fetching Tags." />
-        )}
-      </CSSTransition>
     </div>
   );
 };

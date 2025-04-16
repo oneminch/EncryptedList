@@ -1,16 +1,24 @@
 "use client";
 
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from "react";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import { updateSearchParams } from "@/lib/utils";
+import { useEffect, useState, useTransition } from "react";
+import { parseAsString, useQueryState } from "nuqs";
 
 const usePagination = (totalPages: number) => {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const { replace } = useRouter();
-
   const INITIAL_PAGE = 1;
+
+  const [isLoading, startTransition] = useTransition();
+
+  const [page, setPage] = useQueryState(
+    "page",
+    parseAsString
+      .withOptions({
+        history: "push",
+        shallow: false,
+        startTransition
+      })
+      .withDefault(INITIAL_PAGE.toString())
+  );
+
   const [pageStatus, setPageStatus] = useState({
     current: INITIAL_PAGE,
     isFirst: true,
@@ -18,45 +26,23 @@ const usePagination = (totalPages: number) => {
   });
 
   useEffect(() => {
-    let pageFromUrl = parseInt(
-      searchParams.get("page") || INITIAL_PAGE.toString()
-    );
+    let pageNum = parseInt(page);
 
-    if (pageFromUrl > totalPages || pageFromUrl < INITIAL_PAGE) {
-      pageFromUrl = INITIAL_PAGE;
-
-      updateSearchParams({
-        key: "page",
-        value: "",
-        searchParams,
-        pathname,
-        callback: replace,
-        resetPagination: false
-      });
+    if (pageNum > totalPages || pageNum < INITIAL_PAGE) {
+      pageNum = INITIAL_PAGE;
+      setPage("");
     }
 
     setPageStatus({
-      current: pageFromUrl,
-      isFirst: pageFromUrl === INITIAL_PAGE,
-      isLast: pageFromUrl === totalPages
+      current: pageNum,
+      isFirst: pageNum === INITIAL_PAGE,
+      isLast: pageNum === totalPages
     });
-  }, [searchParams, totalPages]);
+  }, [page, totalPages, setPage]);
 
   const paginate = {
-    to: (page: number) => {
-      setPageStatus({
-        current: page,
-        isFirst: page === INITIAL_PAGE,
-        isLast: page === totalPages
-      });
-      updateSearchParams({
-        key: "page",
-        value: page.toString(),
-        searchParams,
-        pathname,
-        callback: replace,
-        resetPagination: false
-      });
+    to: (newPage: number) => {
+      setPage(newPage.toString());
     },
     toPrevPage: () => {
       if (pageStatus.current > INITIAL_PAGE) {
@@ -64,13 +50,14 @@ const usePagination = (totalPages: number) => {
       }
     },
     toNextPage: () => {
-      if (pageStatus.current <= totalPages) {
+      if (pageStatus.current < totalPages) {
         paginate.to(pageStatus.current + 1);
       }
     }
   };
 
   return {
+    isLoading,
     currentPage: pageStatus.current,
     isOnFirstPage: pageStatus.isFirst,
     isOnLastPage: pageStatus.isLast,

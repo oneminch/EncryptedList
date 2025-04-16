@@ -4,7 +4,7 @@ import Modal from "../modal/modal";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full mt-4 mx-auto pt-10 pb-6 px-6 text-zinc-600 dark:text-zinc-400 overflow-hidden text-sm">
+    <footer className="w-full mt-8 mx-auto pt-2 pb-6 px-6 text-zinc-600 dark:text-zinc-400 overflow-hidden text-sm">
       {/* <div className="flex justify-between text-left">
         <section className="flex flex-col items-start gap-2">
           <Link

@@ -169,7 +169,7 @@ const ReportApp: React.FC<ReportAppProps> = ({ appName }) => {
           <button
             type="submit"
             disabled={isSubmissionPending}
-            className="action-item w-20! h-8! border-none! px-2 bg-yellow-500 text-zinc-900 hover:bg-yellow-600 disabled:cursor-not-allowed disabled:bg-zinc-300 disabled:text-zinc-400 dark:disabled:bg-zinc-700 dark:disabled:text-zinc-500">
+            className="flex items-center justify-center rounded-md focus-visible:global-focus cursor-pointer w-20 h-8 px-2 bg-yellow-500 text-zinc-900 hover:bg-yellow-600 disabled:cursor-not-allowed disabled:bg-zinc-300 disabled:text-zinc-400 dark:disabled:bg-zinc-700 dark:disabled:text-zinc-500">
             {isSubmissionPending ? (
               <Icon icon="svg-spinners:3-dots-fade" />
             ) : (

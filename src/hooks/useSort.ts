@@ -1,36 +1,25 @@
-import { useState, useEffect } from "react";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import { updateSearchParams } from "@/lib/utils";
+import { useTransition } from "react";
+import { parseAsString, useQueryState } from "nuqs";
 
 const useSort = () => {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const { replace } = useRouter();
+  const [isLoading, startTransition] = useTransition();
 
-  const [isSorted, setIsSorted] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const sortFromUrl = searchParams.get("sort");
-    setIsSorted(sortFromUrl !== null && sortFromUrl.length > 0);
-
-    setIsLoading(false);
-  }, [searchParams]);
+  const [sort, setSort] = useQueryState(
+    "sort",
+    parseAsString
+      .withOptions({
+        history: "push",
+        shallow: false,
+        startTransition
+      })
+      .withDefault("")
+  );
+  const isSorted = sort !== "";
 
   const handleSort = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setIsLoading(true);
-    const newSortedState = !isSorted;
 
-    setTimeout(() => {
-      updateSearchParams({
-        key: "sort",
-        value: newSortedState ? "asc" : "",
-        searchParams,
-        pathname,
-        callback: replace
-      });
-    }, 0);
+    setSort(isSorted ? "" : "asc");
   };
 
   return {

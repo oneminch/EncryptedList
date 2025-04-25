@@ -1,6 +1,6 @@
 import type { App } from "@/lib/types";
 import { Icon } from "@iconify/react";
-import { slugify } from "@/lib/utils";
+import { getIconBaseUrl, slugify } from "@/lib/utils";
 import AppItemOptions from "./app-item-options";
 
 interface AppItemProps {
@@ -15,7 +15,7 @@ const AppItem: React.FC<AppItemProps> = ({ app }) => {
       <div className="w-[calc(100%-1.85rem)] flex flex-col items-start md:flex-row md:items-center gap-2 relative">
         <img
           className="w-8 z-30 p-0.5 bg-zinc-50/50 dark:bg-zinc-950/50 rounded-lg aspect-square object-contain grow-0 shrink-0 overflow-hidden text-xs text-center border-[0.9px] border-zinc-300 dark:border-zinc-700"
-          src={`${iconBaseUrl}/apps/${slugify(app.name)}.png`}
+          src={`${getIconBaseUrl(APP_ICON_SIZE)}/apps/${slugify(app.name)}.png`}
           width={APP_ICON_SIZE}
           height={APP_ICON_SIZE}
           alt={`Logo for ${app.name}`}

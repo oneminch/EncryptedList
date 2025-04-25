@@ -1,23 +1,24 @@
 import type { SearchApp } from "@/lib/types";
 import { slugify } from "@/lib/utils";
 import { Icon } from "@iconify/react";
-import Image from "next/image";
 
 interface SearchItemProps {
   app: SearchApp;
 }
 
+const SEARCH_ICON_SIZE = 32;
+
 const SearchItem: React.FC<SearchItemProps> = ({ app }) => {
   return (
     <li className="w-full p-3 border-b last:border-none border-zinc-100 dark:border-zinc-800 flex flex-col gap-y-4 group">
       <div className="flex items-center gap-x-4">
-        <Image
+        <img
           className="w-8 p-0.5 bg-zinc-50/50 dark:bg-zinc-950/50 rounded-lg aspect-square object-contain grow-0 shrink-0 overflow-hidden text-xs text-center border-[0.9px] border-zinc-300 dark:border-zinc-700"
-          src={`https://icons.encryptedlist.xyz/icons/apps/${slugify(
+          src={`https://icons.encryptedlist.xyz/cdn-cgi/image/width=${SEARCH_ICON_SIZE},quality=75/icons/apps/${slugify(
             app.name
           )}.png`}
-          width={32}
-          height={32}
+          width={SEARCH_ICON_SIZE}
+          height={SEARCH_ICON_SIZE}
           alt={`App Icon for ${app.name}`}
         />
         <div className="flex flex-col items-start gap-y-1">

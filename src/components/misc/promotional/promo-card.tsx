@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Icon } from "@iconify/react";
 import { type AppListPromotion } from "@/lib/types";
 
@@ -21,7 +20,7 @@ const PromoCard: React.FC<PromotionProps> = ({
       }}
       className="isolate w-full min-h-52 px-5 pt-4 pb-6 flex flex-col gap-y-3 border-[0.9px] border-zinc-400 dark:border-(--bg-color-variable)/50 bg-white dark:bg-zinc-900/50 rounded-lg ring-2 ring-(--bg-color-variable)/10 dark:ring-transparent hover:ring-(--bg-color-variable)/25 relative *:-z-0 dark:after:glowing-card">
       <div className="w-[calc(100%-1.85rem)] flex flex-col items-start md:flex-row md:items-center gap-2 relative">
-        <Image
+        <img
           className="w-8 p-0.5 bg-zinc-50/50 dark:bg-zinc-950/50 rounded-lg aspect-square object-contain grow-0 shrink-0 overflow-hidden text-xs text-center border-[0.9px] border-zinc-300 dark:border-zinc-700"
           src={iconUrl}
           width={36}

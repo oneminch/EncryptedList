@@ -11,26 +11,17 @@ import { LibsqlError } from "@libsql/client";
 
 const filterAppsSql = `
   WITH filtered_apps AS (
-    SELECT a.id, a.name, a.description, a.url, a.is_featured, a.created_at,
-      GROUP_CONCAT(t.name, ',') AS all_tags
-    FROM apps a
-    LEFT JOIN app_tags at ON a.id = at.app_id
-    LEFT JOIN tags t ON at.tag_id = t.id
-    WHERE ((:query) IS NULL) OR (a.name LIKE '%' || (:query) || '%') OR (a.description LIKE '%' || (:query) || '%')
-    GROUP BY a.id, a.name, a.description, a.url, a.created_at
-  ),
-  filtered_and_tagged AS (
-    SELECT id, name, description, url, is_featured, created_at, all_tags AS tags
-    FROM filtered_apps
-    WHERE (:tags) IS NULL OR id IN (
-      SELECT a.id
-      FROM apps a
-      JOIN app_tags at ON a.id = at.app_id
-      JOIN tags t ON at.tag_id = t.id
-      WHERE LOWER(t.name) IN (SELECT value FROM json_each((:tags)))
-      GROUP BY a.id
-      HAVING COUNT(DISTINCT t.name) = (SELECT COUNT(value) FROM json_each((:tags)))
-    )
+    SELECT id, name, description, url, is_featured, created_at, all_tags
+    FROM tagged_apps
+    WHERE (((:query) IS NULL) OR (name LIKE '%' || (:query) || '%') OR (description LIKE '%' || (:query) || '%'))
+      AND ((:tags) IS NULL OR id IN (
+        SELECT id
+        FROM tagged_apps
+        WHERE LOWER(t.name) IN (SELECT value FROM json_each((:tags)))
+        GROUP BY a.id
+        HAVING COUNT(DISTINCT t.name) = (SELECT COUNT(value) FROM json_each((:tags)))
+      ))
+)
   ),
   total_count AS (
     SELECT COUNT(*) AS total FROM filtered_and_tagged

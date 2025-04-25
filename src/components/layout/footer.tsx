@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
             href="/"
             aria-label="Home"
             title="Home">
-            <Image
+            <img
               src="/logo.svg"
               alt="EncryptedList's Logo"
               width={24}

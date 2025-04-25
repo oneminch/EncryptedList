@@ -1,7 +1,6 @@
 "use client";
 
 import { memo } from "react";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -34,7 +33,7 @@ const Hero: React.FC<HeroProps> = ({ withSearchBar, tagsInfo }) => {
           href="/"
           aria-label="Home"
           title="Home">
-          <Image
+          <img
             src="/logo.svg"
             alt="EncryptedList's Logo"
             width={48}

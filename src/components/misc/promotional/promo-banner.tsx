@@ -1,5 +1,4 @@
 import { Icon } from "@iconify/react";
-import Image from "next/image";
 import { BannerPromotion } from "@/lib/types";
 
 type PromotionProps = BannerPromotion;
@@ -25,7 +24,7 @@ const PromoBanner: React.FC<PromotionProps> = ({
         <Icon icon="ph:shooting-star-duotone" className="size-4" />
       </span>
       <p className="w-0 h-6 border-x-[0.75px] border-zinc-300 dark:border-zinc-700 rounded-full"></p>
-      <Image
+      <img
         src={iconUrl}
         alt={`Logo for ${title}`}
         className="size-5 rounded-lg"

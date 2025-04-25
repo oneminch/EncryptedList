@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import GoBackButton from "@/components/misc/go-back";
 import pageMeta from "@/lib/metadata";
@@ -14,7 +13,7 @@ const NotFound: React.FC = () => {
   return (
     <div className="absolute inset-0 bg-zinc-50 dark:bg-zinc-950 before:content-[''] before:absolute before:inset-0 before:bg-linear-to-b before:from-transparent before:from-85% before:to-yellow-400 z-50">
       <div className="w-full h-full flex flex-col items-center justify-center gap-y-8 bg-white/50 dark:bg-zinc-800/50 backdrop-blur-lg">
-        <Image
+        <img
           src="/logo.svg"
           alt="EncryptedList's Logo"
           className="w-20 h-20"

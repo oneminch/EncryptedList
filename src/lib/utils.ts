@@ -24,7 +24,7 @@ const createDBArgs = (fetchParams: QueryParams) => {
 const getIconBaseUrl = (width: number = 32) => {
   const quality = 85;
 
-  return `https://icons.encryptedlist.xyz/cdn-cgi/image/width=${width},quality=${quality}/icons/`;
+  return `https://icons.encryptedlist.xyz/cdn-cgi/image/width=${width},quality=${quality}/icons`;
 };
 
 const slugify = (s: string) => {

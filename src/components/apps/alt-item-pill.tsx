@@ -20,7 +20,7 @@ const AltItemPill: React.FC<AltItemPillProps> = ({
       }`}>
       <img
         className="bg-zinc-200 object-contain rounded-sm w-4 h-4 aspect-square shrink-0 overflow-hidden text-xs m-0 text-center"
-        src={`${getIconBaseUrl(PILL_ICON_SIZE)}${
+        src={`${getIconBaseUrl(PILL_ICON_SIZE)}/${
           isAlternative ? "alternatives" : "apps"
         }/${slugify(appName)}.png`}
         width={PILL_ICON_SIZE}

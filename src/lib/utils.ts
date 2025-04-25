@@ -21,6 +21,12 @@ const createDBArgs = (fetchParams: QueryParams) => {
   return args;
 };
 
+const getIconBaseUrl = (width: number = 32) => {
+  const quality = 85;
+
+  return `https://icons.encryptedlist.xyz/cdn-cgi/image/width=${width},quality=${quality}/icons/`;
+};
+
 const slugify = (s: string) => {
   return s
     .toLocaleLowerCase()
@@ -33,4 +39,4 @@ const slugify = (s: string) => {
 const sleep = async (time: number = 1000) =>
   await new Promise((resolve) => setTimeout(resolve, time));
 
-export { limit, createDBArgs, sleep, slugify };
+export { limit, createDBArgs, getIconBaseUrl, sleep, slugify };

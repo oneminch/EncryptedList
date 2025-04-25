@@ -1,4 +1,4 @@
-import { slugify } from "@/lib/utils";
+import { getIconBaseUrl, slugify } from "@/lib/utils";
 
 interface AltItemPillProps {
   className?: string;
@@ -13,6 +13,8 @@ const AltItemPill: React.FC<AltItemPillProps> = ({
   appName,
   isAlternative
 }) => {
+  const iconBaseUrl = getIconBaseUrl(PILL_ICON_SIZE);
+
   return (
     <div
       className={`inline-flex justify-start items-center gap-x-2 w-auto h-6 p-1 pr-2 mr-1.5 rounded-md text-sm shrink-0 bg-zinc-100 dark:bg-zinc-800 border-[0.5px] border-zinc-300 dark:border-zinc-700 ${
@@ -20,7 +22,7 @@ const AltItemPill: React.FC<AltItemPillProps> = ({
       }`}>
       <img
         className="bg-zinc-200 object-contain rounded-sm w-4 h-4 aspect-square shrink-0 overflow-hidden text-xs m-0 text-center"
-        src={`https://icons.encryptedlist.xyz/cdn-cgi/image/width=${PILL_ICON_SIZE},quality=75/icons/${
+        src={`${iconBaseUrl}${
           isAlternative ? "alternatives" : "apps"
         }/${slugify(appName)}.png`}
         width={PILL_ICON_SIZE}

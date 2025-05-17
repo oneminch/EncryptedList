@@ -9,50 +9,33 @@ import { createDBArgs, limit as itemsPerPage } from "@/lib/utils";
 import getDBClient from "@/lib/db";
 import { LibsqlError } from "@libsql/client";
 
+// Uses cached table containing joined apps & tags data
 const filterAppsSql = `
-  WITH filtered_apps AS (
-    SELECT a.id, a.name, a.description, a.url, a.is_featured, a.created_at,
-      GROUP_CONCAT(t.name, ',') AS all_tags
-    FROM apps a
-    LEFT JOIN app_tags at ON a.id = at.app_id
-    LEFT JOIN tags t ON at.tag_id = t.id
-    WHERE ((:query) IS NULL) OR (a.name LIKE '%' || (:query) || '%') OR (a.description LIKE '%' || (:query) || '%')
-    GROUP BY a.id, a.name, a.description, a.url, a.created_at
-  ),
-  filtered_and_tagged AS (
-    SELECT id, name, description, url, is_featured, created_at, all_tags AS tags
-    FROM filtered_apps
-    WHERE (:tags) IS NULL OR id IN (
-      SELECT a.id
-      FROM apps a
-      JOIN app_tags at ON a.id = at.app_id
-      JOIN tags t ON at.tag_id = t.id
-      WHERE LOWER(t.name) IN (SELECT value FROM json_each((:tags)))
-      GROUP BY a.id
-      HAVING COUNT(DISTINCT t.name) = (SELECT COUNT(value) FROM json_each((:tags)))
-    )
-  ),
-  total_count AS (
-    SELECT COUNT(*) AS total FROM filtered_and_tagged
+  WITH matched_apps AS (
+    SELECT *, COUNT(*) OVER() as total
+    FROM cached_apps
+    WHERE 
+      (:query IS NULL OR 
+       name LIKE '%' || (:query) || '%' OR 
+       description LIKE '%' || (:query) || '%')
+      AND
+      (:tags IS NULL OR 
+       id IN (
+         SELECT app_id 
+         FROM app_tags at 
+         JOIN tags t ON at.tag_id = t.id 
+         WHERE LOWER(t.name) IN (SELECT value FROM json_each(:tags))
+         GROUP BY app_id 
+         HAVING COUNT(*) = (SELECT COUNT(*) FROM json_each(:tags))
+       ))
   )
-  SELECT fat.*, tc.total,
-    CASE
-      WHEN EXISTS (SELECT 1 FROM app_alternatives aa WHERE aa.app_id = fat.id) THEN 1
-      ELSE 0
-    END AS has_alternatives
-  FROM filtered_and_tagged fat, total_count tc
+  SELECT *
+  FROM matched_apps
   ORDER BY
-    CASE
-      WHEN is_featured = 1 THEN 0
-      ELSE 1
-    END,
-    CASE
-      WHEN (:sort) = 'asc' THEN fat.name
-    END ASC,
-    CASE
-      WHEN (:sort) IS NULL THEN fat.created_at
-    END DESC
-  LIMIT (:limit) OFFSET (:offset);
+    is_featured DESC,
+    CASE WHEN :sort = 'asc' THEN name END ASC,
+    CASE WHEN :sort IS NULL THEN created_at END DESC
+  LIMIT :limit OFFSET :offset;
 `;
 
 const queryTagsSql = `

@@ -34,7 +34,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(
       {
-        message: "App Submitted Successfully."
+        message: "App Successfully Submitted for Review."
       },
       { status: 200 }
     );

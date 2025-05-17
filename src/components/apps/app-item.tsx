@@ -49,7 +49,7 @@ const AppItem: React.FC<AppItemProps> = ({ app }) => {
         </p>
 
         <div className="pt-4 border-t border-dashed border-zinc-200 dark:border-zinc-800 flex items-center flex-wrap gap-1">
-          {app.tags.split(",").map((tag: string) => (
+          {(app.tags || "").split(",").map((tag: string) => (
             <span
               className="text-xs shrink-0 px-3 py-0.5 rounded-full flex items-center justify-center font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700/75 dark:text-zinc-300"
               key={tag}>

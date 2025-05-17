@@ -10,6 +10,8 @@ import type { QueryParams } from "@/lib/types";
 import { getApps, getTags } from "@/lib/data";
 import PageDivider from "@/components/misc/page-divider";
 
+export const revalidate = 86400;
+
 export const metadata: Metadata = {
   title: { absolute: pageMeta["/"].title },
   description: pageMeta["/"].description,

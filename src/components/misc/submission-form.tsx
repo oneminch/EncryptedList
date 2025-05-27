@@ -4,6 +4,7 @@ import { SubmissionFormData } from "@/lib/types";
 import { submitNewApp } from "@/lib/data";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
+import Grateful from "./grateful";
 
 const initialState = {
   appName: "",
@@ -70,6 +71,8 @@ const SubmissionForm: React.FC = () => {
     <form
       onSubmit={handleFormSubmit}
       className="flex flex-col gap-y-2 w-4/5 max-w-md text-sm">
+      <Grateful className="text-center pb-5" />
+
       <div className="flex flex-col gap-y-4">
         <label>
           <p>

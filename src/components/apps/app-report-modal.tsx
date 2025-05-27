@@ -4,6 +4,7 @@ import ModalIcon from "../modal/modal-icon";
 import { useState } from "react";
 import { submitAppReport } from "@/lib/data";
 import { Icon } from "@iconify/react";
+import Grateful from "../misc/grateful";
 
 interface ReportAppProps {
   appName: string;
@@ -82,6 +83,8 @@ const ReportApp: React.FC<ReportAppProps> = ({ appName }) => {
   return (
     <section className="min-w-xs">
       <ModalIcon icon="ph:flag-banner-duotone" />
+
+      <Grateful />
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-y-2">
         <fieldset
@@ -178,6 +181,9 @@ const ReportApp: React.FC<ReportAppProps> = ({ appName }) => {
           </button>
         </div>
       </form>
+      {/* <h3 className="border-t border-dashed border-current/50 mt-3 pt-3 text-center text-xs text-zinc-400 dark:text-zinc-600">
+        Thank you for helping me make EncryptedList better.
+      </h3> */}
     </section>
   );
 };

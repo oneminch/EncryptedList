@@ -1,5 +1,6 @@
 import { useTransition } from "react";
 import { parseAsString, useQueryState } from "nuqs";
+import usePagination from "./usePagination";
 
 const useSort = () => {
   const [isLoading, startTransition] = useTransition();
@@ -15,11 +16,13 @@ const useSort = () => {
       })
       .withDefault("")
   );
+  const [_, setPage] = useQueryState("page");
   const isSorted = sort !== "";
 
   const handleSort = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
+    setPage(null);
     setSort(isSorted ? "" : "asc");
   };
 

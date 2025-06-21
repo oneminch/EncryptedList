@@ -5,7 +5,7 @@ import usePagination from "@/hooks/usePagination";
 import Spinner from "../misc/spinner";
 
 interface PaginationProps {
-  totalPages: number;
+  totalPages: number | null;
   disabled: boolean;
 }
 
@@ -20,7 +20,10 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages, disabled }) => {
   } = usePagination(totalPages);
 
   return (
-    <div className="w-72 text-sm mx-auto my-12 flex items-center justify-center gap-x-4 relative">
+    <div
+      className={`w-72 text-sm mx-auto my-12 flex items-center justify-center gap-x-4 relative ${
+        !totalPages || totalPages <= 1 ? "invisible h-0" : ""
+      }`}>
       <button
         disabled={isOnFirstPage || disabled || isLoading}
         onClick={toPrevPage}

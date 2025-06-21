@@ -15,6 +15,7 @@ const useTag = () => {
       })
       .withDefault([])
   );
+  const [_, setPage] = useQueryState("page");
 
   const [tempSelectedTags, setTempSelectedTags] = useState<Set<string>>(
     new Set(queryParamTags)
@@ -38,6 +39,7 @@ const useTag = () => {
   };
 
   const handleApplyTags = () => {
+    setPage(null);
     setQueryParamTags(Array.from(tempSelectedTags));
   };
 

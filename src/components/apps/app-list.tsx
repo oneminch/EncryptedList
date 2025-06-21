@@ -2,6 +2,7 @@ import AppItem from "@/components/apps/app-item";
 import SearchStatus from "@/components/search/search-status";
 import type { App } from "@/lib/types";
 import { Icon } from "@iconify/react";
+import Link from "next/link";
 // import PromoCard from "../misc/promotional/promo-card";
 // import { AppListPromotion } from "@/lib/types";
 
@@ -35,10 +36,15 @@ const AppList: React.FC<AppListProps> = ({ apps }) => {
             <AppItem app={item as App} key={(item as App).id} />
           ))
         ) : (
-          <li className="col-span-full w-full p-8 flex flex-col items-center gap-y-4 text-center text-zinc-500 dark:text-zinc-500">
+          <li className="col-span-full w-full p-8 flex flex-col items-center gap-y-4 text-center text-zinc-600 dark:text-zinc-500">
             <Icon icon="ph:magnifying-glass-duotone" className="text-5xl" />
             <h3 className="text-2xl font-bold">No Apps Found.</h3>
             <p>Try refining your search or selected tags.</p>
+            <Link
+              className="text-sm flex items-center justify-center rounded-md focus-visible:global-focus cursor-pointer px-3 py-1 gap-x-2 underline decoration-yellow-400 decoration-dashed bg-zinc-900 dark:bg-zinc-50 text-zinc-50 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-300 focus-visible:bg-zinc-800/50 dark:focus-visible:bg-zinc-200/50"
+              href="/">
+              Refresh
+            </Link>
           </li>
         )}
         {/* With Promo */}

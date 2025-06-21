@@ -1,23 +1,23 @@
 "use client";
 
 import { useEffect, useState, useTransition } from "react";
-import { parseAsString, useQueryState } from "nuqs";
+import { parseAsInteger, useQueryState } from "nuqs";
 
-const usePagination = (totalPages: number) => {
+const usePagination = (totalPages: number | null) => {
   const INITIAL_PAGE = 1;
 
   const [isLoading, startTransition] = useTransition();
 
   const [page, setPage] = useQueryState(
     "page",
-    parseAsString
+    parseAsInteger
       .withOptions({
         history: "push",
         shallow: false,
         startTransition,
         scroll: true
       })
-      .withDefault(INITIAL_PAGE.toString())
+      .withDefault(INITIAL_PAGE)
   );
 
   const [pageStatus, setPageStatus] = useState({
@@ -27,11 +27,10 @@ const usePagination = (totalPages: number) => {
   });
 
   useEffect(() => {
-    let pageNum = parseInt(page);
+    let pageNum = page;
 
-    if (pageNum > totalPages || pageNum < INITIAL_PAGE) {
-      pageNum = INITIAL_PAGE;
-      setPage("");
+    if (pageNum > totalPages! || pageNum < INITIAL_PAGE) {
+      setPage(null);
     }
 
     setPageStatus({
@@ -43,7 +42,7 @@ const usePagination = (totalPages: number) => {
 
   const paginate = {
     to: (newPage: number) => {
-      setPage(newPage.toString());
+      setPage(newPage);
     },
     toPrevPage: () => {
       if (pageStatus.current > INITIAL_PAGE) {
@@ -51,7 +50,7 @@ const usePagination = (totalPages: number) => {
       }
     },
     toNextPage: () => {
-      if (pageStatus.current < totalPages) {
+      if (pageStatus.current < totalPages!) {
         paginate.to(pageStatus.current + 1);
       }
     }

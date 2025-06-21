@@ -51,9 +51,8 @@ const HomePage = async (props: HomePageProps) => {
           {appsInfo.apps !== null || appsInfo.error === undefined ? (
             <>
               <AppList apps={appsInfo.apps} />
-              {appsInfo.totalPages !== null && (
-                <Pagination totalPages={appsInfo.totalPages} disabled={false} />
-              )}
+
+              <Pagination totalPages={appsInfo.totalPages} disabled={false} />
             </>
           ) : (
             <GenericError classes="col-span-full!" message={appsInfo.error} />

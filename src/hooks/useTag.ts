@@ -7,7 +7,12 @@ const useTag = () => {
   const [queryParamTags, setQueryParamTags] = useQueryState<string[]>(
     "tag",
     parseAsArrayOf(parseAsString)
-      .withOptions({ history: "push", shallow: false, startTransition })
+      .withOptions({
+        history: "push",
+        shallow: false,
+        startTransition,
+        scroll: true
+      })
       .withDefault([])
   );
 

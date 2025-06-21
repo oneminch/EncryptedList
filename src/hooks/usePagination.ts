@@ -14,7 +14,8 @@ const usePagination = (totalPages: number) => {
       .withOptions({
         history: "push",
         shallow: false,
-        startTransition
+        startTransition,
+        scroll: true
       })
       .withDefault(INITIAL_PAGE.toString())
   );

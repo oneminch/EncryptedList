@@ -10,7 +10,8 @@ const useSort = () => {
       .withOptions({
         history: "push",
         shallow: false,
-        startTransition
+        startTransition,
+        scroll: true
       })
       .withDefault("")
   );

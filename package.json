@@ -13,7 +13,6 @@
     "@fontsource/space-grotesk": "^5.2.8",
     "@libsql/client": "^0.15.4",
     "@uidotdev/usehooks": "^2.4.1",
-    "@vercel/analytics": "^1.5.0",
     "next": "15.3.3",
     "next-themes": "^0.4.6",
     "nuqs": "^2.4.3",

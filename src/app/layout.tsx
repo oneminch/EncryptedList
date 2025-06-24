@@ -7,8 +7,8 @@ import "@fontsource/space-grotesk/400.css";
 import "@fontsource/space-grotesk/500.css";
 import "@fontsource/space-grotesk/600.css";
 import "@fontsource/space-grotesk/700.css";
-import { Analytics } from "@vercel/analytics/next";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import VercelAnalytics from "@/lib/analytics";
 
 const defaultDescription = pageMeta["/"].description;
 
@@ -70,7 +70,7 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
             </main>
           </NuqsAdapter>
         </ThemeProvider>
-        <Analytics />
+        <VercelAnalytics />
       </body>
     </html>
   );

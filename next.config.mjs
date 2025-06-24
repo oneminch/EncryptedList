@@ -13,7 +13,15 @@ const nextConfig = {
         pathname: "/icons/**"
       }
     ]
-  }
+  },
+  rewrites: async () => {
+    return [
+      {
+        source: "/api/data/:match*",
+        destination: "https://encryptedlist.xyz/_vercel/insights/:match*",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

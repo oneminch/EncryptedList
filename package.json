@@ -24,6 +24,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.30.0",
+    "@iconify-json/ph": "^1.2.2",
     "@iconify/react": "^5.2.1",
     "@tailwindcss/postcss": "^4.1.11",
     "@types/node": "^24.0.10",

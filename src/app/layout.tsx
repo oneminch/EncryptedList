@@ -9,6 +9,7 @@ import "@fontsource/space-grotesk/600.css";
 import "@fontsource/space-grotesk/700.css";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import VercelAnalytics from "@/lib/analytics";
+import SkipNav from "@/components/misc/skip-nav";
 
 const defaultDescription = pageMeta["/"].description;
 
@@ -54,11 +55,7 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <a
-          href="#main-content"
-          className="flex items-center justify-center bg-yellow-400 h-9 absolute top-0 left-1/2 -translate-x-1/2 py-2 px-4 rounded-md mx-auto z-50 transform duration-300 -translate-y-[125%] opacity-0 focus-visible:translate-y-2 focus-visible:opacity-100 text-zinc-900 focus-visible:global-focus">
-          Skip to Content
-        </a>
+        <SkipNav />
 
         <ThemeProvider attribute="class" enableSystem>
           <NuqsAdapter>

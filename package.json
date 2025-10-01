@@ -18,7 +18,7 @@
     "nuqs": "^2.4.3",
     "react": "19.1.1",
     "react-dom": "19.1.1",
-    "resend": "^4.7.0",
+    "resend": "^6.1.1",
     "swr": "^2.3.4"
   },
   "devDependencies": {

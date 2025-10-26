@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import ThemeToggle from "@/components/misc/theme-toggle";
+import GitHubButton from "@/components/misc/github-button";
 
 interface HeaderProps {
   className?: string;
@@ -28,6 +29,10 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
               Submit
               <Icon icon="ph:circles-three-plus-duotone" />
             </Link>
+          </li>
+          <li className="w-0 h-3 border-x-[0.5px] border-zinc-300 dark:border-zinc-700"></li>
+          <li>
+            <GitHubButton />
           </li>
           <li className="w-0 h-3 border-x-[0.5px] border-zinc-300 dark:border-zinc-700"></li>
           <li>

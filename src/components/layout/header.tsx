@@ -32,11 +32,11 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           </li>
           <li className="w-0 h-3 border-x-[0.5px] border-zinc-300 dark:border-zinc-700"></li>
           <li>
-            <GitHubButton />
-          </li>
-          <li className="w-0 h-3 border-x-[0.5px] border-zinc-300 dark:border-zinc-700"></li>
-          <li>
             <ThemeToggle />
+          </li>
+          <li className="w-0 h-3 border-x-[0.5px] border-zinc-300 dark:border-zinc-700 mr-1"></li>
+          <li>
+            <GitHubButton />
           </li>
         </ul>
       </nav>

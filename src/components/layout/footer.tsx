@@ -1,6 +1,8 @@
 import { Icon } from "@iconify/react";
 import Disclaimer from "../misc/disclaimer";
 import Modal from "../modal/modal";
+import GitHubButton from "../misc/github-button";
+import PageDivider from "../misc/page-divider";
 
 const Footer: React.FC = () => {
   return (
@@ -39,8 +41,12 @@ const Footer: React.FC = () => {
         </section>
       </div> */}
 
-      <div className="text-sm mt-6 space-y-3 text-center text-zinc-600 dark:text-zinc-600">
-        <p>
+      <div className="text-sm space-y-3 text-center text-zinc-600 dark:text-zinc-600">
+        <GitHubButton className="md:hidden!" />
+
+        <PageDivider className="md:hidden!" />
+
+        <p className="mt-6">
           Trademarks used on this website are the property of their respective
           owners.
         </p>
